@@ -1,9 +1,7 @@
 package org.codewars.kata;
 
 public interface Eight {
-    int liters(double time){
-        return (int) Math.floor(time/0.5);
-    }
+    int liters(double time);
 
     double getVolumeOfCuboid(final double length, final double width, final double height);
 
