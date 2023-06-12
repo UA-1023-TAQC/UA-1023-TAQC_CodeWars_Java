@@ -20,7 +20,19 @@ public class EightImpl implements Eight {
     }
 
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        int pos = 0, neg = 0;
+        int [] result;
+        if(input == null || input.length == 0) return result = new int[]{};
+        else {
+            for(int i = 0; i<input.length; i++) {
+                if(input[i] == 0) continue;
+                else if(input[i] > 0)
+                    pos += 1;
+                else neg += input[i];
+            }
+        }
+        result = new int[]{pos, neg};
+        return result;
     }
 
     public int stringToNumber(String str) {
