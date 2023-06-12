@@ -2,6 +2,8 @@ package org.codewars.kata.implementation.Anastasiia3795;
 
 import org.codewars.kata.Eight;
 
+import java.util.Arrays;
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return 0;
@@ -32,6 +34,6 @@ public class EightImpl implements Eight {
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers).filter(n -> n % divider == 0).toArray();
     }
 }
