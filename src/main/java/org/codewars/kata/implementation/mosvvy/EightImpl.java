@@ -2,6 +2,9 @@ package org.codewars.kata.implementation.mosvvy;
 
 import org.codewars.kata.Eight;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return 0;
@@ -28,7 +31,7 @@ public class EightImpl implements Eight {
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        return BigDecimal.valueOf(number).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
