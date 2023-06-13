@@ -18,26 +18,13 @@ public class EightImpl implements Eight {
     }
 
     public int[] countPositivesSumNegatives(int[] input) {
-        if (input == null || input.length == 0) {
-            int[] emptyArray = {};
-            return emptyArray;
-        }
-        int countOfPositive = 0;
-        int sumOfNegative = 0;
-
-        for (int i=0; i< input.length; i++) {
-            if ( input.length != 0 && input[i]>0) {
-                countOfPositive ++;
-            } else  if (input.length != 0 && input[i] < 0) {
-                sumOfNegative = sumOfNegative + input[i];
-            }
-        }
-        int result [] = new int[] {countOfPositive, sumOfNegative};
-        return result; //return an array with count of positives and sum of negatives
+        return new int[0];
     }
 
     public int stringToNumber(String str) {
-        return 0;
+        // Convert str to a number
+        return  Integer.parseInt(str);
+
     }
 
     public double TwoDecimalPlaces(double number) {
