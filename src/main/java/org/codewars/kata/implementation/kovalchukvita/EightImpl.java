@@ -22,13 +22,11 @@ public class EightImpl implements Eight {
     }
 
     public int stringToNumber(String str) {
-        // Convert str to a number
-        return  Integer.parseInt(str);
-
+        return 0;
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number*100d)/100d;
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
