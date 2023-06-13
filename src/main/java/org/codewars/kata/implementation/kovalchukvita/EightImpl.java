@@ -14,19 +14,26 @@ public class EightImpl implements Eight {
     }
 
     public int[] squareOrSquareRoot(int[] array) {
-    int [] result = new int [array.length];
-       for (int i = 0; i<array.length; i++) {
-        int squareRoot = (int) Math.sqrt(array[i]); //корінь квадратний
-        if (squareRoot * squareRoot == array[i]) {
-            result[i] = squareRoot;
-        } else {
-            result[i] = array[i] * array[i];
-        }
-    }
-       return result;
-}
-    public int[] countPositivesSumNegatives(int[] input) {
         return new int[0];
+    }
+
+    public int[] countPositivesSumNegatives(int[] input) {
+        if (input == null || input.length == 0) {
+            int[] emptyArray = {};
+            return emptyArray;
+        }
+        int countOfPositive = 0;
+        int sumOfNegative = 0;
+
+        for (int i=0; i< input.length; i++) {
+            if ( input.length != 0 && input[i]>0) {
+                countOfPositive ++;
+            } else  if (input.length != 0 && input[i] < 0) {
+                sumOfNegative = sumOfNegative + input[i];
+            }
+        }
+        int result [] = new int[] {countOfPositive, sumOfNegative};
+        return result; //return an array with count of positives and sum of negatives
     }
 
     public int stringToNumber(String str) {
