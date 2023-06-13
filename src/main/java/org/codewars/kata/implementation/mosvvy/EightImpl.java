@@ -2,6 +2,9 @@ package org.codewars.kata.implementation.mosvvy;
 
 import org.codewars.kata.Eight;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return 0;
@@ -37,6 +40,11 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        if (n <= 1) return false;
+        BigDecimal f = BigDecimal.ONE;
+        for (int i = 2; i <= n-1; i++)
+            f = f.multiply(BigDecimal.valueOf(i));
+        f = f.add(BigDecimal.ONE).divide(BigDecimal.valueOf((long) (n*n)), 10, RoundingMode.HALF_DOWN).remainder(BigDecimal.ONE);
+        return f.equals(f.negate());
     }
 }
