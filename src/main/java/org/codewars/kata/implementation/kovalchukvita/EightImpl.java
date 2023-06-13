@@ -6,12 +6,11 @@ public class EightImpl implements Eight {
     public int liters(double time) {return 0;}
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length*width*height;
     }
 
     public float mpgToKPM(float mpg) {
-        double kpl = (mpg / 4.54609188) * 1.609344;
-        return Math.round(kpl*100.0)/100.0f;
+        return 0;
     }
 
     public int[] squareOrSquareRoot(int[] array) {
