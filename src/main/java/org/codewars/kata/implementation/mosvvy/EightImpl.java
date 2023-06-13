@@ -2,6 +2,9 @@ package org.codewars.kata.implementation.mosvvy;
 
 import org.codewars.kata.Eight;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return 0;
@@ -32,6 +35,11 @@ public class EightImpl implements Eight {
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        List<Integer> result = new ArrayList<>();
+
+        for (int number: numbers) {
+            if (number % divider == 0) result.add(number);
+        }
+        return result.stream().mapToInt(Integer::intValue).toArray();
     }
 }
