@@ -6,7 +6,7 @@ public class EightImpl implements Eight {
     public int liters(double time) {return 0;}
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return length*width*height;
+        return 0;
     }
 
     public float mpgToKPM(float mpg) {
@@ -14,9 +14,17 @@ public class EightImpl implements Eight {
     }
 
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+    int [] result = new int [array.length];
+       for (int i = 0; i<array.length; i++) {
+        int squareRoot = (int) Math.sqrt(array[i]); //корінь квадратний
+        if (squareRoot * squareRoot == array[i]) {
+            result[i] = squareRoot;
+        } else {
+            result[i] = array[i] * array[i];
+        }
     }
-
+       return result;
+}
     public int[] countPositivesSumNegatives(int[] input) {
         return new int[0];
     }
