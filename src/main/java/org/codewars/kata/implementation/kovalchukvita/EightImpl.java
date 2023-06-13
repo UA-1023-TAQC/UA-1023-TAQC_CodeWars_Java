@@ -77,4 +77,9 @@ public class EightImpl implements Eight {
         }
         return result;
     }
+
+    @Override
+    public boolean am_i_wilson(double n) {
+        return false;
+    }
 }

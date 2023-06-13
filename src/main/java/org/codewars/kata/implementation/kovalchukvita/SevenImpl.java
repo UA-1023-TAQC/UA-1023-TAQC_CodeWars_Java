@@ -23,4 +23,9 @@ public class SevenImpl implements Seven {
             sum += 1d / (1 + 3 * i);
         return String.format("%.2f", sum);
     }
+
+    @Override
+    public int whereIsHe(int p, int bef, int aft) {
+        return 0;
+    }
 }
