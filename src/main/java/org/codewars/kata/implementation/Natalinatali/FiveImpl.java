@@ -24,4 +24,9 @@ public class FiveImpl implements Five {
     public long[] smallest(long n) {
         return new long[0];
     }
+
+    @Override
+    public int artificialRain(int[] v) {
+        return 0;
+    }
 }

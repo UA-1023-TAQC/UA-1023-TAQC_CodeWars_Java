@@ -112,4 +112,9 @@ public class FiveImpl implements Five {
         long minNum = Long.parseLong(minNumStr);
         return new long[]{minNum, minIndex, insertIndex};
     }
+
+    @Override
+    public int artificialRain(int[] v) {
+        return 0;
+    }
 }

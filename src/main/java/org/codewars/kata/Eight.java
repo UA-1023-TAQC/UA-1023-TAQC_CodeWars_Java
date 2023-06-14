@@ -16,4 +16,5 @@ public interface Eight {
     double TwoDecimalPlaces(double number);
 
     int[] divisibleBy(int[] numbers, int divider);
+    boolean am_i_wilson(double n);
 }

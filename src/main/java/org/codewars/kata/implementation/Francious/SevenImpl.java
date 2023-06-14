@@ -36,4 +36,9 @@ public class SevenImpl implements Seven {
         String resultString = String.format("%.2f", result / 100);
         return resultString;
     }
+
+    @Override
+    public int whereIsHe(int p, int bef, int aft) {
+        return 0;
+    }
 }
