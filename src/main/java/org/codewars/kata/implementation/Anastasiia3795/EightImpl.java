@@ -35,7 +35,6 @@ public class EightImpl implements Eight {
         return new int[0];
     }
 
-    @Override
     public boolean am_i_wilson(double n) {
         return false;
     }
