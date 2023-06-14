@@ -1,5 +1,6 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
+import java.text.DecimalFormat;
 import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
@@ -11,8 +12,14 @@ public class EightImpl implements Eight {
         return 0;
     }
 
-    public float mpgToKPM(float mpg) {
-        return 0;
+    public float mpgToKPM(float mpg)
+    {
+        final double imperialGallon = 4.54609188;
+        final double mile = 1.609344;
+        double kpl = mpg * mile / imperialGallon;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        kpl = Double.parseDouble(decimalFormat.format(kpl));
+        return (float) kpl;
     }
 
     public int[] squareOrSquareRoot(int[] array) {
