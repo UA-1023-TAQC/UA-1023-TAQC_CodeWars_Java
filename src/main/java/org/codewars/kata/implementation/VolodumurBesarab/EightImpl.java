@@ -1,5 +1,6 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
+import java.text.DecimalFormat;
 import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
@@ -27,8 +28,10 @@ public class EightImpl implements Eight {
         return 0;
     }
 
-    public double TwoDecimalPlaces(double number) {
-        return 0;
+    public double TwoDecimalPlaces(double number)
+    {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return Double.parseDouble(decimalFormat.format(number));
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
