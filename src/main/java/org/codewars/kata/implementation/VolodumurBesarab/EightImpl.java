@@ -8,7 +8,8 @@ public class EightImpl implements Eight {
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        double result = length * width * height;
+        return result;
     }
 
     public float mpgToKPM(float mpg) {
