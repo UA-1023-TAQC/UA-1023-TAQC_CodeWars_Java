@@ -23,8 +23,17 @@ public class EightImpl implements Eight {
         return new int[0];
     }
 
-    public int stringToNumber(String str) {
-        return 0;
+    public int stringToNumber(String str)
+    {
+        int number = 0;
+        try{
+            number = Integer.parseInt(str);
+            System.out.println(number);
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+        }
+        return number;
     }
 
     public double TwoDecimalPlaces(double number) {
