@@ -14,7 +14,19 @@ public class FiveImpl implements Five {
     }
 
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger sumPerimeters = BigInteger.ZERO;
+        BigInteger f1 = BigInteger.ZERO;
+        BigInteger f2 = BigInteger.ONE;
+        BigInteger temp;
+
+        while (n.signum() >= 0){
+            sumPerimeters = sumPerimeters.add(f2);
+            temp = f1.add(f2);
+            f1 = f2;
+            f2 = temp;
+            n = n.subtract(BigInteger.ONE);
+        }
+        return sumPerimeters.multiply(BigInteger.valueOf(4));
     }
 
     public double solve(double m) {
