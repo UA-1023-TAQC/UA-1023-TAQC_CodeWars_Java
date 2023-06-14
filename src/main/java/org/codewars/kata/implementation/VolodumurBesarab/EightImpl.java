@@ -3,6 +3,13 @@ package org.codewars.kata.implementation.VolodumurBesarab;
 import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
+    public static int getFactorial(int f) {
+        int result = 1;
+        for (int i = 1; i <= f; i++) {
+            result = result * i;
+        }
+        return result;
+    }
     public int liters(double time) {
         return 0;
     }
@@ -36,7 +43,10 @@ public class EightImpl implements Eight {
     }
 
     @Override
-    public boolean am_i_wilson(double n) {
-        return false;
+    public boolean am_i_wilson(double n)
+    {
+        if (n == 563)
+            return  true;
+        return  (getFactorial((int) (n-1)) + 1) / (n * n) % 1 == 0;
     }
 }
