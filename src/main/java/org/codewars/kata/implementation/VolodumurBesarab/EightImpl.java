@@ -1,5 +1,6 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
+import java.util.ArrayList;
 import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
@@ -31,8 +32,21 @@ public class EightImpl implements Eight {
         return 0;
     }
 
-    public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+    public int[] divisibleBy(int[] numbers, int divider)
+    {
+        if (numbers == null || numbers.length == 0)
+            return new int[0];
+
+        ArrayList<Integer> listResult = new ArrayList<Integer>();
+        for (int number:numbers
+        ) {
+            if (number % divider == 0)
+                listResult.add(number);
+        }
+        int[] result = new int[listResult.size()];
+        for(int i = 0; i < listResult.size(); i++)
+            result[i] = listResult.get(i);
+        return result;
     }
 
     @Override
