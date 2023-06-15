@@ -6,7 +6,6 @@ public class SixImpl implements Six {
     public long findNb(long m) {
         return 0;
     }
-
     public String balance(String book) {
         return null;
     }
