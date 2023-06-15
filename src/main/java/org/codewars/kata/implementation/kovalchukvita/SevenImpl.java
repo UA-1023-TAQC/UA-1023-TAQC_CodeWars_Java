@@ -11,7 +11,16 @@ public class SevenImpl implements Seven {
         return null;
     }
         public int whereIsHe(int p, int bef, int aft) {
-            return 0;
+            int count = 0;
+
+            for (int i = 1; i <= p; i++) {
+                int before = i - 1;
+                int after = p - i;
+                if (before>=bef && after <= aft) {
+                    count++;
+                }
+            }
+            return count;
         }
     }
 
