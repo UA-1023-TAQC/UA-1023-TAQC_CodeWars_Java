@@ -8,7 +8,16 @@ public class SevenImpl implements Seven {
     }
 
     public String seriesSum(int n) {
-        return null;
+        double res =1.0;
+        double dev =1.0;
+        if (n <= 0) res = 0;
+        else {
+            for (int i = 1; i < n; i++) {
+                dev += 3;
+                res += (1 / dev);
+            }
+        }
+        return String.format("%.2f", res);
     }
 
     @Override
