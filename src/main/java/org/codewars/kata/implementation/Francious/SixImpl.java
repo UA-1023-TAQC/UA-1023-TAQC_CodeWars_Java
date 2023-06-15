@@ -15,8 +15,22 @@ public class SixImpl implements Six {
         return 0;
     }
 
-    public double mean(String town, String strng) {
-        return 0;
+    public static double mean(String town, String strng) {
+        String[] towns = strng.split("\n");
+        for (String townData : towns) {
+            if (townData.startsWith(town + ":")) {
+                String[] months = townData.split(",");
+                double total = 0;
+                int count = 0;
+                for (String month : months) {
+                    String[] data = month.split(" ");
+                    total += Double.parseDouble(data[1]);
+                    count++;
+                }
+                return total / count;
+            }
+        }
+        return -1;
     }
 
     public double variance(String town, String strng) {
