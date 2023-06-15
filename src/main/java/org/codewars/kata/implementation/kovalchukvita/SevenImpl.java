@@ -18,13 +18,8 @@ public class SevenImpl implements Seven {
     }
 
     public String seriesSum(int n) {
-        double sum = 0d;
-        for (int i = 0; i < n; i++)
-            sum += 1d / (1 + 3 * i);
-        return String.format("%.2f", sum);
+        return null;
     }
-
-    @Override
     public int whereIsHe(int p, int bef, int aft) {
         return 0;
     }
