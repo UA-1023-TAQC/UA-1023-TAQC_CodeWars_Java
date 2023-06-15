@@ -2,6 +2,8 @@ package org.codewars.kata.implementation.DappY127;
 
 import org.codewars.kata.Eight;
 
+import java.text.DecimalFormat;
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return (int) (time * 0.5);
@@ -28,7 +30,9 @@ public class EightImpl implements Eight {
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String formattedNumber = decimalFormat.format(number);
+        return Double.parseDouble(formattedNumber);
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
