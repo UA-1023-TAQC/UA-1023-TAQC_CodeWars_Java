@@ -15,12 +15,42 @@ public class SixImpl implements Six {
         return 0;
     }
 
-    public double mean(String town, String strng) {
-        return 0;
+    public static double mean(String town, String strng) {
+        String[] towns = strng.split("\n");
+        for (String townData : towns) {
+            if (townData.startsWith(town + ":")) {
+                String[] months = townData.split(",");
+                double total = 0;
+                int count = 0;
+                for (String month : months) {
+                    String[] data = month.split(" ");
+                    total += Double.parseDouble(data[1]);
+                    count++;
+                }
+                return total / count;
+            }
+        }
+        return -1;
     }
 
-    public double variance(String town, String strng) {
-        return 0;
+    public static double variance(String town, String strng) {
+        String[] towns = strng.split("\n");
+        for (String townData : towns) {
+            if (townData.startsWith(town + ":")) {
+                String[] months = townData.split(",");
+                double mean = mean(town, strng);
+                double squaredDiffSum = 0;
+                int count = 0;
+                for (String month : months) {
+                    String[] data = month.split(" ");
+                    double rainfall = Double.parseDouble(data[1]);
+                    squaredDiffSum += Math.pow(rainfall - mean, 2);
+                    count++;
+                }
+                return squaredDiffSum / count;
+            }
+        }
+        return -1;
     }
 
     public String nbaCup(String resultSheet, String toFind) {
