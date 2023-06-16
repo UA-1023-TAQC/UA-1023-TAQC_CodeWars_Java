@@ -28,14 +28,13 @@ public class FiveImpl implements Five {
     }
 
     public double solve(double m) {
-        return 0;
+        return 1 + (1 - Math.sqrt(1+4*m)) / (2*m);
     }
 
     public long[] smallest(long n) {
         return new long[0];
     }
 
-    @Override
     public int artificialRain(int[] v) {
         return 0;
     }
