@@ -1,6 +1,7 @@
 package org.codewars.kata.implementation.DappY127;
 
 import org.codewars.kata.Eight;
+import java.util.Arrays;
 
 public class EightImpl implements Eight {
     public int liters(double time) {
@@ -17,7 +18,12 @@ public class EightImpl implements Eight {
     }
 
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        return Arrays.stream(array)
+                .map(num -> {
+                    double sqrt = Math.sqrt(num);
+                    return sqrt == (int) sqrt ? (int) sqrt : num * num;
+                })
+                .toArray();
     }
 
     public int[] countPositivesSumNegatives(int[] input) {
