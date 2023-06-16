@@ -4,15 +4,16 @@ import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
     public int liters(double time) {
-        return 0;
+
+        return (int) Math.floor(time/0.5);
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     public float mpgToKPM(float mpg) {
-        return 0;
+        return (float) ((float) Math.round((mpg * 1.609344/4.54609188*100))/100D);
     }
 
     public int[] squareOrSquareRoot(int[] array) {
@@ -33,5 +34,10 @@ public class EightImpl implements Eight {
 
     public int[] divisibleBy(int[] numbers, int divider) {
         return new int[0];
+    }
+
+    @Override
+    public boolean am_i_wilson(double n) {
+        return false;
     }
 }

@@ -10,7 +10,15 @@ public class FiveImpl implements Five {
     }
 
     public int zeros(int n) {
-        return 0;
+        int result = 0;
+
+        int n5 = 5;
+        while (n5 <= n) {
+            result += n / n5;
+            n5 *= 5;
+        }
+
+        return result;
     }
 
     public BigInteger perimeter(BigInteger n) {
@@ -22,6 +30,29 @@ public class FiveImpl implements Five {
     }
 
     public long[] smallest(long n) {
-        return new long[0];
+        String num = Long.toString(n);
+        String result = num;
+        int resi = 0;
+        int resj = 0;
+        for (int i = 0; i < num.length(); i++) {
+            for (int j = 0; j < num.length(); j++) {
+                if (i == j) continue;
+                StringBuilder tmp = new StringBuilder(num);
+                String ch = tmp.substring(i, i+1);
+                tmp.delete(i, i+1);
+                tmp.insert(j, ch);
+                if (result.compareTo(String.valueOf(tmp)) > 0) {
+                    result = String.valueOf(tmp);
+                    resi = i;
+                    resj = j;
+                }
+            }
+        }
+        return new long[] {Long.parseLong(result), resi, resj};
+    }
+
+    @Override
+    public int artificialRain(int[] v) {
+        return 0;
     }
 }
