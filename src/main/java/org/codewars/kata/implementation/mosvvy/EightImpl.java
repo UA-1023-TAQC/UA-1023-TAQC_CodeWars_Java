@@ -17,7 +17,9 @@ public class EightImpl implements Eight {
     }
 
     public float mpgToKPM(float mpg) {
-        return 0;
+        float coef =  1.609344f / 4.54609188f;
+        BigDecimal bd = BigDecimal.valueOf(mpg * coef).setScale(2, RoundingMode.HALF_UP);
+        return bd.floatValue();
     }
 
     public int[] squareOrSquareRoot(int[] array) {
