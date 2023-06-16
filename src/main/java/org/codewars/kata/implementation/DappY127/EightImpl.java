@@ -12,7 +12,8 @@ public class EightImpl implements Eight {
     }
 
     public float mpgToKPM(float mpg) {
-        return 0;
+        float kpm = (mpg * 1.609344f) / 4.54609188f;
+        return Math.round(kpm * 100.0f) / 100.0f;
     }
 
     public int[] squareOrSquareRoot(int[] array) {
