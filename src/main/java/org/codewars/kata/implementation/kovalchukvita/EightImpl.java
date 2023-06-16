@@ -3,9 +3,7 @@ package org.codewars.kata.implementation.kovalchukvita;
 import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
-    public int liters(double time) {
-        return 0;
-    }
+    public int liters(double time) {return 0;}
 
     public double getVolumeOfCuboid(double length, double width, double height) {
         return 0;
@@ -32,7 +30,21 @@ public class EightImpl implements Eight {
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int counter = 0; // how many numbers divide for divider
+        for (int i = 0; i<numbers.length; i++) {
+            if (divider != 0 && numbers[i] % divider == 0 ) { //if condition true counter ++
+                counter++;
+            }
+        }
+        int[] result = new int[counter];
+        int index = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
+                result[index] = numbers[i];
+                index++;
+            }
+        }
+        return result;
     }
 
     @Override
