@@ -14,7 +14,23 @@ public class FiveImpl implements Five {
     }
 
     public BigInteger perimeter(BigInteger n) {
-        return null;
+
+        n = n.add(BigInteger.ONE);
+        Long longValue = n.longValue();
+        Integer intValue = longValue.intValue()+1;
+        BigInteger count = BigInteger.ONE;
+        BigInteger[] fibonacci = new BigInteger[intValue];
+        fibonacci[0] = BigInteger.valueOf(0); fibonacci[1] = BigInteger.valueOf(1);
+        BigInteger sum = BigInteger.ONE;
+        for(BigInteger i = BigInteger.TWO; i.compareTo(n) < 0; i = i.add(BigInteger.ONE)){
+            fibonacci[i.intValue()] = fibonacci[i.subtract(BigInteger.ONE).intValue()].add(fibonacci[i.subtract(BigInteger.TWO).intValue()]);
+            sum = sum.add(fibonacci[i.intValue()]);
+            System.out.println(fibonacci[i.intValue()]);
+        }
+        fibonacci[n.intValue()] = fibonacci[n.subtract(BigInteger.ONE).intValue()].add(fibonacci[n.subtract(BigInteger.TWO).intValue()]);
+        sum = sum.add(fibonacci[n.intValue()]);
+        System.out.println(sum);
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     public double solve(double m) {
