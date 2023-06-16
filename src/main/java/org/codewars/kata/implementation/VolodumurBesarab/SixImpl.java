@@ -3,8 +3,21 @@ package org.codewars.kata.implementation.VolodumurBesarab;
 import org.codewars.kata.Six;
 
 public class SixImpl implements Six {
-    public long findNb(long m) {
-        return 0;
+    public long findNb(long m)
+    {
+        long n = 1;
+        long sum = 0;
+
+        while(sum < m){
+            sum += n * n * n;
+
+            if(sum == m){
+                return n;
+            }
+
+            n++;
+        }
+        return -1;
     }
 
     public String balance(String book) {
