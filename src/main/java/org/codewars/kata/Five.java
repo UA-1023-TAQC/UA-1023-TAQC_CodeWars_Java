@@ -12,4 +12,6 @@ public interface Five {
     double solve(double m);
 
     long[] smallest(long n);
+
+    int artificialRain(final int[] v);
 }
