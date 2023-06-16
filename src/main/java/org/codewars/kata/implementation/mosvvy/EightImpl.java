@@ -59,6 +59,11 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        if (n <= 1) return false;
+        BigDecimal f = BigDecimal.ONE;
+        for (int i = 2; i <= n-1; i++)
+            f = f.multiply(BigDecimal.valueOf(i));
+        f = f.add(BigDecimal.ONE).divide(BigDecimal.valueOf((long) (n*n)), 10, RoundingMode.HALF_DOWN).remainder(BigDecimal.ONE);
+        return f.equals(f.negate());
     }
 }
