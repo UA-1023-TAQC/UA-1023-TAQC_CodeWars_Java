@@ -32,7 +32,25 @@ public class FiveImpl implements Five {
     }
 
     public long[] smallest(long n) {
-        return new long[0];
+        long[] arr = new long[3];
+        long min = n;
+        String str = String.valueOf(n);
+        for(int i = 0; i< str.length();i++) {
+            for(int j=0; j<str.length(); j++) {
+                StringBuffer sb = new StringBuffer(str);
+                char ch = sb.charAt(i);
+                sb.deleteCharAt(i);
+                sb.insert(j, ch);
+                long num = Long.valueOf(sb.toString());
+                if(num<min) {
+                    min = num;
+                    arr[0] = min;
+                    arr[1] = i;
+                    arr[2] = j;
+                }
+            }
+        }
+        return arr;
     }
 
     @Override
