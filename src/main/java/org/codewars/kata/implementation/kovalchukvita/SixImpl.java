@@ -4,7 +4,17 @@ import org.codewars.kata.Six;
 
 public class SixImpl implements Six {
     public long findNb(long m) {
-        return 0;
+        long count = 0; //count of cubes
+        for (int i = 1; i<m-1; i++) { //i - lelgth of cubes
+            long volume = (long) Math.pow(i,3);
+            m = m - volume; //remaining volume
+            count++;
+        }
+        if (m != 0) {
+            return -1; // is not possible to construct a sum of cubes
+        }
+
+        return count;
     }
 
     public String balance(String book) {
