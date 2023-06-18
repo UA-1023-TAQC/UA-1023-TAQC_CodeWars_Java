@@ -3,9 +3,8 @@ package org.codewars.kata.implementation.kovalchukvita;
 import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
-        public int liters(double time) {
-            return 0;
-        }
+
+    public int liters(double time) {return 0;}
 
         public double getVolumeOfCuboid(double length, double width, double height) {
             return 0;
@@ -31,11 +30,6 @@ public class EightImpl implements Eight {
             return 0;
         }
 
-        public int[] divisibleBy(int[] numbers, int divider) {
-            return new int[0];
-        }
-
-        @Override
         public boolean am_i_wilson(double n) {
             return false;
         }

@@ -4,7 +4,17 @@ import org.codewars.kata.Six;
 
 public class SixImpl implements Six {
     public long findNb(long m) {
-        return 0;
+        int counter = 0;
+        while (m > 0){
+            counter++;
+            double cub = Math.pow(counter, 3);
+            m -= cub;
+        }
+        if(m < 0){
+            return -1;
+        }
+
+        return counter;
     }
 
     public String balance(String book) {
