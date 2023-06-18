@@ -10,11 +10,21 @@ public class FiveImpl implements Five {
     }
 
     public int zeros(int n) {
-        return 0;
+        int res = 0;
+        for (int i = 5; i <= n; i *= 5)
+            res += n / i;
+        return res;
     }
 
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger perimeter = new BigInteger("0");
+        BigInteger[] squareSize = new BigInteger[n.intValue() + 1];
+        for (int i = 0; i < squareSize.length; i++) {
+            if(i == 0 || i == 1) squareSize[i] = BigInteger.valueOf(1);
+            else squareSize[i] = squareSize[i-1].add(squareSize[i-2]);
+            perimeter = perimeter.add(squareSize[i].multiply(BigInteger.valueOf(4)));
+        }
+        return perimeter;
     }
 
     public double solve(double m) {
@@ -22,7 +32,25 @@ public class FiveImpl implements Five {
     }
 
     public long[] smallest(long n) {
-        return new long[0];
+        long[] arr = new long[3];
+        long min = n;
+        String str = String.valueOf(n);
+        for(int i = 0; i< str.length();i++) {
+            for(int j=0; j<str.length(); j++) {
+                StringBuffer sb = new StringBuffer(str);
+                char ch = sb.charAt(i);
+                sb.deleteCharAt(i);
+                sb.insert(j, ch);
+                long num = Long.valueOf(sb.toString());
+                if(num<min) {
+                    min = num;
+                    arr[0] = min;
+                    arr[1] = i;
+                    arr[2] = j;
+                }
+            }
+        }
+        return arr;
     }
 
     @Override
