@@ -50,7 +50,21 @@ public class SixImpl implements Six {
     }
 
     public double mean(String town, String strng) {
-        return 0;
+        String[] dataTowns = strng.split("\n");
+        double rainForYear = 0;
+        double average = 0;
+        for (String dataTown : dataTowns) {
+            if (dataTown.startsWith(town + ":")) {
+                String[] rainfallRecords = dataTown.split(",");
+                for (String rainfallRecord : rainfallRecords) {
+                    String[] data = rainfallRecord.split(" ");
+                    rainForYear += Double.parseDouble(data[1]);
+                }
+                average = rainForYear / 12;
+                return average;
+            }
+        }
+        return -1;
     }
 
     public double variance(String town, String strng) {
