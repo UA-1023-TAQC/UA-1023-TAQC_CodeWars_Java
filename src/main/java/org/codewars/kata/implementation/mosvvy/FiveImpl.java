@@ -6,7 +6,30 @@ import java.math.BigInteger;
 
 public class FiveImpl implements Five {
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long prevPrime = 0;
+        for (long i = m; i <= n; i++) {
+            if (!isPrime(i)) continue;
+            if (prevPrime == 0) {
+                prevPrime = i;
+                continue;
+            }
+            if (i - prevPrime == g) return new long[]{prevPrime, i};
+            prevPrime = i;
+        }
+        return null;
+    }
+
+    private boolean isPrime(long number) {
+        if (number <= 1) return false;
+
+        long i = 2;
+        while (i < number - 1) {
+            if (number % i == 0) {
+                return false;
+            }
+            i++;
+        }
+        return true;
     }
 
     public int zeros(int n) {
@@ -51,8 +74,8 @@ public class FiveImpl implements Five {
             for (int j = 0; j < num.length(); j++) {
                 if (i == j) continue;
                 StringBuilder tmp = new StringBuilder(num);
-                String ch = tmp.substring(i, i+1);
-                tmp.delete(i, i+1);
+                String ch = tmp.substring(i, i + 1);
+                tmp.delete(i, i + 1);
                 tmp.insert(j, ch);
                 if (result.compareTo(String.valueOf(tmp)) > 0) {
                     result = String.valueOf(tmp);
@@ -61,7 +84,7 @@ public class FiveImpl implements Five {
                 }
             }
         }
-        return new long[] {Long.parseLong(result), resi, resj};
+        return new long[]{Long.parseLong(result), resi, resj};
     }
 
     @Override
