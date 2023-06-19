@@ -87,6 +87,11 @@ public enum Users {
     public static Users getById(int id) {
         return Users.getById(0);
     }
+    @Override
+    public String toString() {
+        return String.format("Users:id=%d, name='%s, nickname='%s', eightImpl=%s, " +
+    "sevenImpl=%s, sixImpl=%s, fiveImpl=%s", id, name, nickname, eightImpl, sevenImpl, sixImpl, fiveImpl);
+    }
 
     public int getId() {
         return id;
