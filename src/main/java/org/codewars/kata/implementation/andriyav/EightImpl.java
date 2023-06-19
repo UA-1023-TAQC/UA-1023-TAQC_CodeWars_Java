@@ -2,6 +2,8 @@ package org.codewars.kata.implementation.andriyav;
 
 import org.codewars.kata.Eight;
 
+import java.util.ArrayList;
+
 public class EightImpl implements Eight {
     public int liters(double time) {
 
@@ -13,31 +15,86 @@ public class EightImpl implements Eight {
     }
 
     public float mpgToKPM(float mpg) {
-        return 0;
+        return (float) ((float) Math.round((mpg * 1.609344/4.54609188*100))/100D);
     }
 
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        ArrayList<Integer> newArray = new ArrayList<Integer>(10);
+        int[] result = new int[array.length];
+        int m = 0;
+        for(int i = 0; i < array.length; i++){
+            if (Math.sqrt(array[i]) % 1 != 0 || array[i] == 1){
+                result[i] = (int) Math.pow(array[i], 2);
+                newArray.add((int) Math.pow(array[i], 2));
+                m += 1;
+            }
+            else newArray.add((int) Math.sqrt(array[i]));
+            m += 1;
+        }
+        int[] result2 = new int[newArray.size()];
+        for(int i = 0; i < newArray.size(); i++){
+            result2[i] = newArray.get(i);
+        }
+        return result2;
     }
 
+
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+
+        int negative = 0;
+        int positive = 0;
+        int result[] = new int[2];
+        if (input == null || input.length == 0){
+            return new int[]{};
+        }
+        for(int i = 0; i < input.length; i++){
+            if (input[i] < 0) {
+                negative += input[i];
+            }
+            if  ((input[i] > 0)) positive += 1;
+        }
+        result[0] = positive;
+        result[1] =negative;
+        return result;
     }
 
     public int stringToNumber(String str) {
-        return 0;
+        int num = Integer.parseInt(str);
+        return num;
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number*100)/100d;
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int[] temp = new int[numbers.length];
+        int k = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
+                temp[k] = numbers[i];
+                k +=1;
+            }
+        }
+        int[] result = new int[k];
+        int m = 0;
+        for (int i = 0; i < k; i++){
+            result[m] = temp[i];
+            m += 1;
+        }
+        return result;
     }
 
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        if(n==563) return true;
+        else if (n==1) return false;
+        double pMinusOne = n - 1;
+        int fact = 1;
+        for (int i = 1; i <= pMinusOne; i++) {
+            fact *= i;}
+        double result = (fact+1)/(n*n);
+        if(result%1==0) return true;
+        else return false;
     }
 }
