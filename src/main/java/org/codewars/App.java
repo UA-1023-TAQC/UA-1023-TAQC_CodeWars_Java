@@ -1,5 +1,6 @@
 package org.codewars;
 
+import org.codewars.utils.TaskRunner;
 import org.codewars.utils.Tasks;
 
 /**
@@ -8,6 +9,7 @@ import org.codewars.utils.Tasks;
 public class App {
     public static void main(String[] args) {
         System.out.println(Tasks.TASK_7_3.getDescription());
+        System.out.println(TaskRunner.runBalance());
         System.out.println("Hello World!");
     }
 }
