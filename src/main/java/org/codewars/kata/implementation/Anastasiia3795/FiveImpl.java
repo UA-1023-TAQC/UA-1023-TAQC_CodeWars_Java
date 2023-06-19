@@ -74,7 +74,6 @@ public class FiveImpl implements Five {
         return arr;
     }
 
-    @Override
     public int artificialRain(int[] v) {
         return 0;
     }
