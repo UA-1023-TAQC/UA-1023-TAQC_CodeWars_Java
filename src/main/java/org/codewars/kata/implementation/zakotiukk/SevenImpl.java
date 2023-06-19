@@ -16,7 +16,15 @@ public class SevenImpl implements Seven {
     }
 
     public String seriesSum(int n) {
-        return null;
+        double sum=0;
+        if (n == 0) {
+            return Double.toString(0);
+        }
+        else
+            for (int i=0; i<n; i++){
+                sum +=1.0/(1+i*3);
+            }
+        return String.format("%.2f",Math.round(sum * 100.0) / 100.0);
     }
 
     @Override
