@@ -1,16 +1,17 @@
 package org.codewars.kata.implementation.Francious;
 
 import org.codewars.kata.Seven;
+
 import java.text.DecimalFormat;
 
 public class SevenImpl implements Seven {
     public long newAvg(double[] arr, double navg) {
         double result = 0;
-        for (double donation : arr){
+        for (double donation : arr) {
             result += donation;
         }
         double length = arr.length;
-        double exptResult = ((length + 1) *  navg - result);
+        double exptResult = ((length + 1) * navg - result);
 
         if (exptResult <= 0) {
             throw new IllegalArgumentException();
@@ -22,8 +23,8 @@ public class SevenImpl implements Seven {
     public String seriesSum(int n) {
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
-        if(n <= 0) {
-            return new String("0.00");
+        if (n <= 0) {
+            return "0.00";
         }
 
         double result = 0;

@@ -9,14 +9,14 @@ public class SevenImpl implements Seven {
 
     public String seriesSum(int n) {
         double res = 0;
-        for(int i = 0; i < n; i++)
-            res += 1.0/(1+3*i);
+        for (int i = 0; i < n; i++)
+            res += 1.0 / (1 + 3 * i);
         return String.format("%.2f", res);
     }
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        if(bef + aft >= p) return p - bef;
+        if (bef + aft >= p) return p - bef;
         else return aft + 1;
     }
 }

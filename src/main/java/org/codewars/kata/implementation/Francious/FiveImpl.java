@@ -5,22 +5,6 @@ import org.codewars.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
-    public long[] gap(int g, long m, long n) {
-        long temp = 0;
-        for (long i = m; i < n; i++){
-            if (isPrime(i)){
-                if(i - temp == g) {
-                    long[] result = new long[2];
-                    result[0] = temp;
-                    result[1] = i;
-                    return result;
-                } else {
-                    temp = i;
-                }
-            }
-        }
-        return null;
-    }
     private static boolean isPrime(long number) {
         if (number < 2) {
             return false;
@@ -31,6 +15,23 @@ public class FiveImpl implements Five {
             }
         }
         return true;
+    }
+
+    public long[] gap(int g, long m, long n) {
+        long temp = 0;
+        for (long i = m; i < n; i++) {
+            if (isPrime(i)) {
+                if (i - temp == g) {
+                    long[] result = new long[2];
+                    result[0] = temp;
+                    result[1] = i;
+                    return result;
+                } else {
+                    temp = i;
+                }
+            }
+        }
+        return null;
     }
 
     public int zeros(int n) {
@@ -49,7 +50,7 @@ public class FiveImpl implements Five {
         BigInteger f2 = BigInteger.ONE;
         BigInteger temp;
 
-        while (n.signum() >= 0){
+        while (n.signum() >= 0) {
             sumPerimeters = sumPerimeters.add(f2);
             temp = f1.add(f2);
             f1 = f2;

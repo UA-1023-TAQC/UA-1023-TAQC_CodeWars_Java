@@ -11,6 +11,7 @@ public class SevenImpl implements Seven {
     public String seriesSum(int n) {
         return null;
     }
+
     public int whereIsHe(int p, int bef, int aft) {
         return 0;
     }

@@ -1,12 +1,9 @@
 package org.codewars.kata.implementation.DappY127;
 
 import org.codewars.kata.Eight;
-import java.util.Arrays;
-
-import java.util.ArrayList;
 
 import java.text.DecimalFormat;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class EightImpl implements Eight {
@@ -41,12 +38,11 @@ public class EightImpl implements Eight {
         for (int num : input) {
             if (num > 0) {
                 positiveCount++;
-            }
-            else if (num < 0) {
+            } else if (num < 0) {
                 negativeSum += num;
             }
         }
-        return new int[] {positiveCount, negativeSum};
+        return new int[]{positiveCount, negativeSum};
     }
 
     public int stringToNumber(String str) {
