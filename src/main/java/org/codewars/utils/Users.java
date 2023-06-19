@@ -85,8 +85,14 @@ public enum Users {
     public static void showUsers() {
     }
     public static Users getById(int id) {
-        return Users.getById(0);
+        for (Users user : values()){
+            if (user.id == id) {
+                return user;
+            }
+        }
+        return null;
     }
+
 
     public int getId() {
         return id;
