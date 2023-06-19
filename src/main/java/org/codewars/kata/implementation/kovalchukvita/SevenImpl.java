@@ -3,6 +3,7 @@ package org.codewars.kata.implementation.kovalchukvita;
 import org.codewars.kata.Seven;
 
 public class SevenImpl implements Seven {
+
         public long newAvg(double[] arr, double navg) {
             return 0;
         }
@@ -11,8 +12,7 @@ public class SevenImpl implements Seven {
             return null;
         }
 
-        @Override
-        public int whereIsHe(int p, int bef, int aft) {
-            return 0;
-        }
+    public int whereIsHe(int p, int bef, int aft) {
+        return 0;
     }
+}

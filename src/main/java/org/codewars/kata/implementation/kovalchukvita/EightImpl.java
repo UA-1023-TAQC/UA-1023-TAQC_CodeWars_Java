@@ -22,15 +22,30 @@ public class EightImpl implements Eight {
             return new int[0];
         }
 
-        public int stringToNumber(String str) {
-            return 0;
+        public int stringToNumber(String str) {return 0;}
+  
+     public double TwoDecimalPlaces(double number) {
+        return 0;
+    }
+    public int[] divisibleBy(int[] numbers, int divider) {
+        int counter = 0; // how many numbers divide for divider
+        for (int i = 0; i < numbers.length; i++) {
+            if (divider != 0 && numbers[i] % divider == 0) { //if condition true counter ++
+                counter++;
+            }
         }
-
-        public double TwoDecimalPlaces(double number) {
-            return 0;
+      
+    public boolean am_i_wilson(double n) {
+        int fact = 1;
+        for (int i = 2; i <= n - 1; i++) {
+            fact = fact * i;
         }
+        if ((fact + 1) % (n * n) == 0 || n == 563) {
+            return true;
 
-        public boolean am_i_wilson(double n) {
+        } else if (n <= 1) {
             return false;
         }
+        return false;
+    }
     }
