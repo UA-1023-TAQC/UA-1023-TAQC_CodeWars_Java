@@ -1,6 +1,9 @@
 package org.codewars.kata.implementation.DappY127;
 
 import org.codewars.kata.Eight;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class EightImpl implements Eight {
@@ -35,12 +38,11 @@ public class EightImpl implements Eight {
         for (int num : input) {
             if (num > 0) {
                 positiveCount++;
-            }
-            else if (num < 0) {
+            } else if (num < 0) {
                 negativeSum += num;
             }
         }
-        return new int[] {positiveCount, negativeSum};
+        return new int[]{positiveCount, negativeSum};
     }
 
     public int stringToNumber(String str) {
@@ -48,15 +50,23 @@ public class EightImpl implements Eight {
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String formattedNumber = decimalFormat.format(number);
+        return Double.parseDouble(formattedNumber);
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        return Arrays.stream(numbers)
+                .filter(i -> (i % divider) == 0)
+                .toArray();
     }
 
-    @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        ArrayList<Double> wilsonPrimes = new ArrayList<Double>();
+        wilsonPrimes.add(5d);
+        wilsonPrimes.add(13d);
+        wilsonPrimes.add(563d);
+
+        return wilsonPrimes.contains(n);
     }
 }
