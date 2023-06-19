@@ -2,7 +2,6 @@ package org.codewars.kata.implementation.Anastasiia3795;
 
 import org.codewars.kata.Six;
 
-import static java.lang.String.format;
 
 public class SixImpl implements Six {
     public long findNb(long m) {
@@ -17,7 +16,7 @@ public class SixImpl implements Six {
 
         double totalExpense = 0;
         double balance = Double.parseDouble(bookingElems[0]);
-        String result = "Original Balance: " + format("%.2f", balance) + "\\r\\n";
+        String result = "Original Balance: " + String.format("%.2f", balance) + "\\r\\n";
 
         int count = 0;
         for(int i = 1; i < bookingElems.length; i += 3) {
@@ -25,12 +24,12 @@ public class SixImpl implements Six {
             totalExpense += Double.parseDouble(bookingElems[i+2]);
             result += bookingElems[i] + " " + bookingElems[i+1] + " "
                     + bookingElems[i+2] + " Balance "
-                    + format("%.2f", (balance)) + "\\r\\n";
+                    + String.format("%.2f", (balance)) + "\\r\\n";
             count ++;
         }
 
-        result += "Total expense  " + format("%.2f", totalExpense) + "\\r\\n";
-        result += "Average expense  " + format("%.2f", totalExpense/count);
+        result += "Total expense  " + String.format("%.2f", totalExpense) + "\\r\\n";
+        result += "Average expense  " + String.format("%.2f", totalExpense/count);
         return result.replaceAll(",", ".");
     }
 
