@@ -14,6 +14,7 @@ public class SevenImpl implements Seven {
         return String.format("%.2f", res);
     }
 
+    @Override
     public int whereIsHe(int p, int bef, int aft) {
         return 0;
     }
