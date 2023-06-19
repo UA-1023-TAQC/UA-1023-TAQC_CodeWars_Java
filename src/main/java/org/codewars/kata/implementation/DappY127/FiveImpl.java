@@ -25,8 +25,26 @@ public class FiveImpl implements Five {
         return new long[0];
     }
 
-    @Override
     public int artificialRain(int[] v) {
-        return 0;
+        int maxLength = 0;
+
+        for (int i = 0; i < v.length; i++) {
+            int length = 1;
+            int j = i - 1;
+            while (j >= 0 && v[j] <= v[j + 1]) {
+                length++;
+                j--;
+            }
+
+            j = i + 1;
+            while (j < v.length && v[j] <= v[j - 1]) {
+                length++;
+                j++;
+            }
+
+            maxLength = Math.max(maxLength, length);
+        }
+
+        return maxLength;
     }
 }
