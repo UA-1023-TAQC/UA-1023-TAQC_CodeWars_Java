@@ -1,7 +1,8 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
-import java.util.ArrayList;
 import org.codewars.kata.Eight;
+
+import java.util.ArrayList;
 
 public class EightImpl implements Eight {
     public int liters(double time) {
@@ -16,9 +17,8 @@ public class EightImpl implements Eight {
         return 0;
     }
 
-    public int[] squareOrSquareRoot(int[] array)
-    {
-        for(int i = 0; i < array.length; i++) {
+    public int[] squareOrSquareRoot(int[] array) {
+        for (int i = 0; i < array.length; i++) {
             if (Math.sqrt(array[i]) % 1 == 0)
                 array[i] = (int) Math.sqrt(array[i]);
             else
@@ -27,18 +27,15 @@ public class EightImpl implements Eight {
         return array;
     }
 
-    public int[] countPositivesSumNegatives(int[] input)
-    {
+    public int[] countPositivesSumNegatives(int[] input) {
         if (input == null || input.length == 0)
             return new int[]{};
         int counter = 0;
         int negative = 0;
-        for (int i = 0; i < input.length; i++)
-        {
+        for (int i = 0; i < input.length; i++) {
             if (input[i] > 0) {
                 counter++;
-            }
-            else {
+            } else {
                 negative += input[i];
             }
         }
@@ -46,14 +43,12 @@ public class EightImpl implements Eight {
         return result;
     }
 
-    public int stringToNumber(String str)
-    {
+    public int stringToNumber(String str) {
         int number = 0;
-        try{
+        try {
             number = Integer.parseInt(str);
             System.out.println(number);
-        }
-        catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
         return number;
@@ -63,19 +58,18 @@ public class EightImpl implements Eight {
         return 0;
     }
 
-    public int[] divisibleBy(int[] numbers, int divider)
-    {
+    public int[] divisibleBy(int[] numbers, int divider) {
         if (numbers == null || numbers.length == 0)
             return new int[0];
 
         ArrayList<Integer> listResult = new ArrayList<Integer>();
-        for (int number:numbers
+        for (int number : numbers
         ) {
             if (number % divider == 0)
                 listResult.add(number);
         }
         int[] result = new int[listResult.size()];
-        for(int i = 0; i < listResult.size(); i++)
+        for (int i = 0; i < listResult.size(); i++)
             result[i] = listResult.get(i);
         return result;
     }
