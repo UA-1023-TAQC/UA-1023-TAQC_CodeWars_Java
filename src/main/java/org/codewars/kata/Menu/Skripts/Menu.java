@@ -51,10 +51,6 @@ public class Menu implements IRunTask, IStartProgram, ITaskInfoShow, IUserInfoSh
 
     }
 
-    public void runTask() {
-
-    }
-
     public void run() {
 
     }
