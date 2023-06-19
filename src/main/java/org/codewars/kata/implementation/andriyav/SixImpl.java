@@ -1,7 +1,7 @@
 package org.codewars.kata.implementation.andriyav;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.Arrays
+import java.util.Arrays;
 
 
 import org.codewars.kata.Six;
