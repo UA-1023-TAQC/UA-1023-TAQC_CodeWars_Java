@@ -13,11 +13,13 @@ public class SevenImpl implements Seven {
         double length = arr.length;
         double exptResult = ((length + 1) * navg - result);
 
+        if (exptResult <= 0) {
+            throw new IllegalArgumentException();
+        }
 
-public class SevenImpl implements Seven {
-    public long newAvg(double[] arr, double navg) {
-        return 0;
+        return (long) Math.ceil(exptResult);
     }
+
 
     public String seriesSum(int n) {
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
