@@ -3,6 +3,8 @@ package org.codewars.kata.implementation.DappY127;
 import org.codewars.kata.Eight;
 import java.util.Arrays;
 
+import java.util.ArrayList;
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return (int) (time * 0.5);
@@ -55,8 +57,12 @@ public class EightImpl implements Eight {
         return new int[0];
     }
 
-    @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        ArrayList<Double> wilsonPrimes = new ArrayList<Double>();
+        wilsonPrimes.add(5d);
+        wilsonPrimes.add(13d);
+        wilsonPrimes.add(563d);
+
+        return wilsonPrimes.contains(n);
     }
 }
