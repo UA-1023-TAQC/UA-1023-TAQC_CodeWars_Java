@@ -34,7 +34,13 @@ public class FiveImpl implements Five {
     }
 
     public int zeros(int n) {
-        return 0;
+        int count = 0;
+
+        while (n > 0) {
+            n /= 5;
+            count += n;
+        }
+        return count;
     }
 
     public BigInteger perimeter(BigInteger n) {
