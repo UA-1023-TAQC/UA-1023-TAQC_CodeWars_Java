@@ -60,7 +60,30 @@ public class FiveImpl implements Five {
     }
 
     public double solve(double m) {
-        return 0;
+        double lowerBound = 0.0;
+        double upperBound = 1.0;
+        double precision = 1e-12;
+
+        while (upperBound - lowerBound > precision) {
+            double midpoint = (lowerBound + upperBound) / 2;
+            double result = 0.0;
+            double term = midpoint;
+
+            for (int n = 2; term >= 1e-15; n++) {
+                result += term;
+                term *= midpoint * n / (n - 1);
+            }
+
+            if (Math.abs(result - m) < precision) {
+                return midpoint;
+            } else if (result < m) {
+                lowerBound = midpoint;
+            } else {
+                upperBound = midpoint;
+            }
+        }
+
+        return lowerBound;
     }
 
     public long[] smallest(long n) {
