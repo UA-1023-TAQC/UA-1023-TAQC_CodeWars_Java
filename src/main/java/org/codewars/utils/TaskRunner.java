@@ -3,7 +3,6 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    private static final Reader reader = new Reader();
     private Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
@@ -91,9 +90,9 @@ public class TaskRunner {
     public void runDivisibleBy(){
         System.out.println("Run task divisibleBy\n" +
                 "Enter the array of integers:");
-        int[] numbers = reader.readArrInt();
+        int[] numbers = Reader.readArrInt();
         System.out.println("Enter the divisor: ");
-        int divider = reader.readInt();
+        int divider = Reader.readInt();
         int [] resultArr = user.getEightImpl().divisibleBy(numbers, divider);
         System.out.println("There are the numbers which are divisible by the given divisor:\n" + resultArr);
     }
