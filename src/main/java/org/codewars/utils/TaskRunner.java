@@ -3,6 +3,7 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
+    private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
@@ -34,8 +35,12 @@ public class TaskRunner {
         return 0;
     }
 
-    public static String runBalance(){
-        return null;
+    public static void runBalance(){
+        System.out.println("Run task Easy Balance Checking");
+        System.out.println("Input data of check book");
+        String x = Reader.readString();
+        String result = user.getFiveImpl().gap(x);
+        System.out.println("Check book" + result);
     }
 
     public static String runNbaCup(){
