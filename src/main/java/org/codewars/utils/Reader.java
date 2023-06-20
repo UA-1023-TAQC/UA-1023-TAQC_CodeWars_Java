@@ -1,13 +1,22 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Reader {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static int readInt() {
         return 0;
     }
     public static BigInteger readBigInteger() {
-        return BigInteger.ZERO;
+        while (true) {
+            try {
+                return new BigInteger(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Введено некоректне ціле число. Спробуйте ще раз:");
+            }
+        }
     }
     public static Double readDouble() {
         return 0.0;
