@@ -4,9 +4,11 @@ import java.math.BigInteger;
 
 public class TaskRunner {
     private final Users user;
+    private final Reader reader;
 
     public TaskRunner(int userId) {
         user = Users.getById(userId);
+        reader = new Reader();
     }
 
 
