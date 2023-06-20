@@ -4,7 +4,6 @@ import java.math.BigInteger;
 
 public class TaskRunner {
 
-    private final Reader reader = new Reader();
     private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
@@ -17,11 +16,11 @@ public class TaskRunner {
 //        return new BigInteger("0");
 //    }
 public static void runPerimeter() {
-    System.out.println("Run task perimeter");
+    System.out.println("Run task Perimeter of squares in a rectangle");
     System.out.println("Input the number of squares in the rectangle ");
-    BigInteger x = reader.readBigInteger();
+    BigInteger x = Reader.readBigInteger();
     BigInteger result = user.getFiveImpl().perimeter(x);
-    System.out.println(result);
+    System.out.println("Sum of the perimeters of all the squares is :" + result);
 }
     public static int runZeros(){
        return 0;
