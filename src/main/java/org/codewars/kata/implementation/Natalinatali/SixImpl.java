@@ -111,10 +111,8 @@ public class SixImpl implements Six {
                     res += Integer.parseInt(stock[1]);
                 }
                 list = "(" + lstOf1stLetter[i] + " : " + res + ")";
-
             }
             listOfBook += " - " + list;
-
         }
         listOfBook = listOfBook.replaceFirst(" - ", "");
         return listOfBook;
