@@ -1,10 +1,19 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.Scanner;
+
 
 public class Reader {
+    private static final Scanner scanner = new Scanner(System.in);
     public static int readInt() {
-        return 0;
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Введено некоректне ціле число. Спробуйте ще раз:");
+            }
+        }
     }
     public static BigInteger readBigInteger() {
         return BigInteger.ZERO;
