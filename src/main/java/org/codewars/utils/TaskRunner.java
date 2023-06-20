@@ -109,6 +109,13 @@ public class TaskRunner {
         System.out.println(result);
     }
 
+    public void runLiters() {
+        System.out.println("Run task liters\n" +
+                "Enter the time in hours to count the number of liters Nathan will drink:");
+        double time = reader.readDouble();
+        int result = user.getEightImpl().liters(time);
+        System.out.println("Nathan will drink " + result + " liters");
+    }
     public void runTwoDecimalPlaces() {
         System.out.println("Run task Formatting decimal places");
         System.out.println("Input a number of the double type to format");
