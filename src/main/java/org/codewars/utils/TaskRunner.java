@@ -74,8 +74,12 @@ public class TaskRunner {
         return new int[0];
     }
 
-    public static float runMpgToKPM(){
-        return 0.0f;
+    public static void runMpgToKPM(){
+        System.out.println("Run task MpgToKPM");
+        System.out.println("Input mpg value");
+        float mpg = reader.readFloat();
+        float result = user.getFiveImlp().mpgToKPM(mpg);
+        System.out.println(result);
     }
 
     public static double runTwoDecimalPlaces(){
