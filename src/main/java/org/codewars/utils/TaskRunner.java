@@ -107,7 +107,7 @@ public class TaskRunner {
           System.out.println("Input a positive number");
           long x = Reader.readLong();
           long[] result = user.getFiveImpl().smallest(x);
-          System.out.println("The smallest number is gotten : " + result);
+          System.out.println("The smallest number obtained is : " + result);
       }
 
 
