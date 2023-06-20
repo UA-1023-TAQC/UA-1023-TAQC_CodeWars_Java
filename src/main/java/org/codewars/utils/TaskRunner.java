@@ -3,7 +3,6 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    private final Reader reader = new Reader();
     private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
@@ -106,9 +105,9 @@ public class TaskRunner {
       public static void runSmallest(){
           System.out.println("Run task runSmallest");
           System.out.println("Input a positive number");
-          long x = reader.readArrInt;
+          long x = Reader.readLong();
           long[] result = user.getFiveImpl().smallest(x);
-          System.out.println(result);
+          System.out.println("The smallest number is gotten : " + result);
       }
 
 
