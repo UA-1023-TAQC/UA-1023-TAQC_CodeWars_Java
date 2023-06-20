@@ -1,8 +1,11 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Reader {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static int readInt() {
         return 0;
     }
@@ -10,7 +13,14 @@ public class Reader {
         return BigInteger.ZERO;
     }
     public static Double readDouble() {
-        return 0.0;
+        while(true) {
+            try{
+                return scanner.nextDouble();
+            } catch(Exception e) {
+                System.out.println("Your value is invalid. Try again");
+                scanner.nextLine();
+            }
+        }
     }
     public static float readFloat() {
         return 0.0f;
