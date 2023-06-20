@@ -3,10 +3,13 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    private Users user;
-    public void setUser(int userId){
-        this.user = Users.getById(userId);
+    private final Users user;
+
+    public TaskRunner(int userId) {
+        user = Users.getById(userId);
     }
+
+
     public static long[] runGap() {
         return new long[0];
     }
