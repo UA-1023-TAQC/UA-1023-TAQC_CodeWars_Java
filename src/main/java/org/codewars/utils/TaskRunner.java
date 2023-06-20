@@ -3,8 +3,9 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    public static void setUser(int id){
-        // TODO: Implement setUser() method
+    private Users user;
+    public void setUser(int userId){
+        this.user = Users.getById(userId);
     }
     public static long[] runGap() {
         return new long[0];
@@ -14,9 +15,7 @@ public class TaskRunner {
         return new BigInteger("0");
     }
 
-    public static int runZeros(){
-       return 0;
-    }
+    public static int runZeros(){ return 0; }
 
     public static double runF(){
         return 0.0;
