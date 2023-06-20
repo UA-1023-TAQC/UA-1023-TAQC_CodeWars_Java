@@ -49,8 +49,16 @@ public class Reader {
     public long[] readArrLong() {
         return new long[0];
     }
-
     public Boolean readBoolean() {
-        return true;
+        while (true) {
+            String input = scanner.nextLine().toLowerCase();
+            if (input.equals("true") || input.equals("t")) {
+                return true;
+            } else if (input.equals("false") || input.equals("f")) {
+                return false;
+            } else {
+                System.out.println("An invalid value was entered. Enter 'true' or 'false':");
+            }
+        }
     }
 }
