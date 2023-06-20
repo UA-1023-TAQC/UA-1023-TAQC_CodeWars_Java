@@ -98,7 +98,7 @@ public class TaskRunner {
     public static void runSquareOrSquareRoot() {
         System.out.println("Run task runSquareOrSquareRoot");
         System.out.println("Input an array of integers");
-        int x = reader.readArrInt;
+        int[] x = reader.readArrInt;
         int[] result = user.getEightImpl().squareOrSquareRoot(x);
         System.out.println(result);
     }
