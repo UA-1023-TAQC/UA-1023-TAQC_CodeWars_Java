@@ -1,8 +1,11 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Reader {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static int readInt() {
         return 0;
     }
@@ -19,7 +22,7 @@ public class Reader {
         return 0;
     }
     public static String readString() {
-        return "";
+        return scanner.nextLine();
     }
     public static int[] readArrInt() {
         return new int[0];
