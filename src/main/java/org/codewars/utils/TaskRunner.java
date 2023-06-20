@@ -3,7 +3,6 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    private static final Reader reader = new Reader();
     private Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
@@ -97,8 +96,8 @@ public class TaskRunner {
     }
 
     public void runSolve(){
-        System.out.println("Run task solve\nEnter the sum:");
-        double m = reader.readDouble();
+        System.out.println("Run task Which x for that sum?\nEnter the sum:");
+        double m = Reader.readDouble();
         double x = user.getFiveImpl().solve(m);
         System.out.println("For the given sum x is " + x);
     }
