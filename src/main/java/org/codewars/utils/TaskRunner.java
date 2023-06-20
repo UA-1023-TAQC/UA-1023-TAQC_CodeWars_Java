@@ -3,6 +3,8 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
+    private final Reader reader = new Reader();
+    private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
@@ -90,8 +92,15 @@ public class TaskRunner {
         return new int[0];
     }
 
-    public static int[] runSquareOrSquareRoot(){
-        return new int[0];
+//    public static int[] runSquareOrSquareRoot(){
+//        return new int[0];
+//    }
+    public static void runSquareOrSquareRoot() {
+        System.out.println("Run task runSquareOrSquareRoot");
+        System.out.println("Input an array of integers");
+        int x = reader.readArrInt;
+        int[] result = user.getEightImpl().squareOrSquareRoot(x);
+        System.out.println(result);
     }
 
     public static double runSolve(){
