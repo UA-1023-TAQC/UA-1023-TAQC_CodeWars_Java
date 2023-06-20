@@ -4,7 +4,15 @@ import org.codewars.kata.Six;
 
 public class SixImpl implements Six {
     public long findNb(long m) {
-        return 0;
+        long n;
+        long sum = 0;
+        for(n = 1; sum < m; n++){
+            sum += n * n * n;
+            if (sum == m){
+                return n;
+            }
+        }
+        return -1;
     }
 
     public String balance(String book) {
