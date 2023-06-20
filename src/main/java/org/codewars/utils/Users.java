@@ -86,7 +86,6 @@ public enum Users {
         for (Users user : values()){
             System.out.println(String.format("%s.%s, Git: %s", user.id, user.name, user.nickname));
         }
-
     }
     public static Users getById(int id) {
         for (Users user : values()){
