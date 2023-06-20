@@ -3,6 +3,9 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
+
+    private final Reader reader = new Reader();
+    private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
@@ -10,10 +13,16 @@ public class TaskRunner {
         return new long[0];
     }
 
-    public static BigInteger runPerimeter(){
-        return new BigInteger("0");
-    }
-
+//    public static BigInteger runPerimeter(){
+//        return new BigInteger("0");
+//    }
+public static void runPerimeter() {
+    System.out.println("Run task perimeter");
+    System.out.println("Input the number of squares in the rectangle ");
+    BigInteger x = reader.readBigInteger();
+    BigInteger result = user.getFiveImpl().perimeter(x);
+    System.out.println(result);
+}
     public static int runZeros(){
        return 0;
     }
