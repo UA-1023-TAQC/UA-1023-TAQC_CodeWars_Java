@@ -112,6 +112,7 @@ public class SixImpl implements Six {
                 }
                 list = "(" + lstOf1stLetter[i] + " : " + res + ")";
             }
+            
             listOfBook += " - " + list;
         }
         listOfBook = listOfBook.replaceFirst(" - ", "");
