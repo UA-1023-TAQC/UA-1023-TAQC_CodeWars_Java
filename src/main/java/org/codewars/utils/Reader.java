@@ -1,8 +1,11 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Reader {
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static int readInt() {
         return 0;
     }
@@ -34,6 +37,15 @@ public class Reader {
         return new long[0];
     }
     public static Boolean readBoolean() {
-        return true;
+        while (true) {
+            String input = scanner.nextLine().toLowerCase();
+            if (input.equals("true") || input.equals("t")) {
+                return true;
+            } else if (input.equals("false") || input.equals("f")) {
+                return false;
+            } else {
+                System.out.println("Введено некоректне значення. Введіть 'true', 't' або 'false', 'f':");
+            }
+        }
     }
 }
