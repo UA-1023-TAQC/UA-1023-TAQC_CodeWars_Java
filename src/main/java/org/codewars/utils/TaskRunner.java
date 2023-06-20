@@ -3,7 +3,6 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    private final Reader reader = new Reader();
     private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
@@ -17,9 +16,11 @@ public class TaskRunner {
     }
 
     public static void runZeros(){
-        int x = reader.readInt();
+        System.out.println("Run task Number of trailing zeros of N!");
+        System.out.println("Input number to calculate the number of trailing zeros");
+        int x = Reader.readInt();
         int result = user.getFiveImpl().zeros(x);
-        System.out.println(result);
+        System.out.println("The number of trailing zeros is" + result);
     }
 
     public static double runF(){
