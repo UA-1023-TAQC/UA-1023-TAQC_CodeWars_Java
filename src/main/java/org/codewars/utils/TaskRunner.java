@@ -3,7 +3,7 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    private Users user;
+    private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
