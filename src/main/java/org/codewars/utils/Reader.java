@@ -14,7 +14,7 @@ public class Reader {
             try {
                 return new BigInteger(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Введено некоректне ціле число. Спробуйте ще раз:");
+                System.out.println("An invalid BigInteger was entered. Attempt again:");
             }
         }
     }
