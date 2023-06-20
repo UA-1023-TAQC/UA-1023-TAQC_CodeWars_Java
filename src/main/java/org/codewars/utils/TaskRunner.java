@@ -77,7 +77,7 @@ public class TaskRunner {
     public static void runMpgToKPM(){
         System.out.println("Run task MpgToKPM");
         System.out.println("Input mpg value");
-        float mpg = reader.readFloat();
+        float mpg = Reader.readFloat();
         float result = user.getFiveImlp().mpgToKPM(mpg);
         System.out.println(result);
     }
