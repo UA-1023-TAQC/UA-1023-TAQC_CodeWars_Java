@@ -3,6 +3,8 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
+
+    private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
@@ -26,8 +28,14 @@ public class TaskRunner {
         return 0;
     }
 
-    public static double runMean(){
-        return 0;
+    public static void runMean(){
+        System.out.println("Run task Rainfall");
+        System.out.println("Input the name of the city");
+        String town = Reader.readString();
+        System.out.println("Input string with rainfall records");
+        String str = Reader.readString();
+        String result = user.getSixImpl().mean(town, str);
+        System.out.println("The average of rainfall for the city" + town + "is: " + result);
     }
 
     public static double runVariance(){
