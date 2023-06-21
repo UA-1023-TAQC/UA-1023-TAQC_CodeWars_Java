@@ -45,7 +45,7 @@ public class TaskRunner {
         System.out.println("Run task 'Ranking NBA teams'");
         System.out.println("Input string with results of NBA teams");
         String resultSheet = Reader.readString();
-        System.out.println("Input string of results and the name of a team ");
+        System.out.println("Input string of the name of a team ");
         String toFind = Reader.readString();
         String result = user.getSixImpl().nbaCup(resultSheet, toFind);
         System.out.println(result);
