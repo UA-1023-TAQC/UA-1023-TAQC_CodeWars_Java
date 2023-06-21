@@ -35,11 +35,11 @@ public class TaskRunner {
         return 0;
     }
 
-    public static void runBalance(){
+    public void runBalance(){
         System.out.println("Run task Easy Balance Checking");
         System.out.println("Input data of check book");
         String x = Reader.readString();
-        String result = user.getFiveImpl().gap(x);
+        String result = user.getSixImpl().balance(x);
         System.out.println("Check book" + result);
     }
 
