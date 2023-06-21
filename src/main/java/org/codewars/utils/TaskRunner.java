@@ -12,9 +12,7 @@ public class TaskRunner {
         return new long[0];
     }
 
-//    public static BigInteger runPerimeter(){
-//        return new BigInteger("0");
-//    }
+
 public void runPerimeter() {
     System.out.println("Run task Perimeter of squares in a rectangle");
     System.out.println("Input the number of squares in the rectangle");
