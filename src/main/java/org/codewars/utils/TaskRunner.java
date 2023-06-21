@@ -15,7 +15,7 @@ public class TaskRunner {
         return new BigInteger("0");
     }
 
-    public static void runZeros(){
+    public void runZeros(){
         System.out.println("Run task Number of trailing zeros of N!");
         System.out.println("Input number to calculate the number of trailing zeros");
         int x = Reader.readInt();
