@@ -102,7 +102,7 @@ public class TaskRunner {
 //    public static long[] runSmallest(){
 //        return new long[0];
 //    }
-      public static void runSmallest(){
+      public void runSmallest(){
           System.out.println("Run task runSmallest");
           System.out.println("Input a positive number");
           long x = Reader.readLong();
