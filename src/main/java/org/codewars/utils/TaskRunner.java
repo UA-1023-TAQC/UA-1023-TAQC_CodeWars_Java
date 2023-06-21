@@ -6,6 +6,7 @@ public class TaskRunner {
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
+
     public static long[] runGap() {
         return new long[0];
     }
@@ -46,8 +47,18 @@ public class TaskRunner {
         return null;
     }
 
-    public static double runGetVolumeOfCuboid(){
-        return 0.0;
+    public void runGetVolumeOfCuboid(){
+
+        System.out.println("Run task GetVolumeOfCuboid");
+        System.out.println("Input length of the cuboid ");
+        double length = Reader.readDouble();
+        System.out.println("Input width of the cuboid ");
+        double width = Reader.readDouble();
+        System.out.println("Input height of the cuboid");
+        double height = Reader.readDouble();
+        double result =  user.getEightImpl().getVolumeOfCuboid(length, width, height);
+        System.out.println(String.format("Result: %f", result));
+
     }
 
     public static int runLiters(){
