@@ -92,7 +92,7 @@ public class TaskRunner {
     }
 
 
-    public static void runSquareOrSquareRoot() {
+    public void runSquareOrSquareRoot() {
         System.out.println("Run task To square(root) or not to square(root)");
         System.out.println("Input an array of integers");
         int[] x = Reader.readArrInt();
