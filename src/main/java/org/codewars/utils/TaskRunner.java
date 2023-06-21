@@ -69,7 +69,7 @@ public class TaskRunner {
         System.out.println("Input the number");
         int number = Reader.readInt();
         String result = user.getSevenImpl().seriesSum(number);
-        System.out.println("Sum of following series upto number " + number + "is: " + result);
+        System.out.println("Sum of following series up to number " + number + "is: " + result);
     }
 
     public static int runStringToNumber(){
