@@ -15,7 +15,7 @@ public class TaskRunner {
 //    public static BigInteger runPerimeter(){
 //        return new BigInteger("0");
 //    }
-public static void runPerimeter() {
+public void runPerimeter() {
     System.out.println("Run task Perimeter of squares in a rectangle");
     System.out.println("Input the number of squares in the rectangle ");
     BigInteger x = Reader.readBigInteger();
