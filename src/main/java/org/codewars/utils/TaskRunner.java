@@ -67,7 +67,7 @@ public class TaskRunner {
     }
 
     public void runStringToNumber(){
-        System.out.println("Run task StringToNumber");
+        System.out.println("Run task Convert a String to a Number!\n");
         System.out.println("Input the string that you want to convert to integer type:");
         String str = Reader.readString();
         int res = user.getEightImpl().stringToNumber(str);
