@@ -33,7 +33,7 @@ public class TaskRunner {
     }
 
     public static void runVariance(){
-        System.out.println("Run task Rainfall");
+        System.out.println("Run task Rainfall: variance method");
         System.out.println("Input the name of the city");
         String town = Reader.readString();
         System.out.println("Input string with rainfall records");
