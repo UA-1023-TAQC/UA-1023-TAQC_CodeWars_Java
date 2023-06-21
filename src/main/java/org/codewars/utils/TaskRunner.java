@@ -3,6 +3,7 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
+    private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
@@ -70,8 +71,12 @@ public class TaskRunner {
         return 0;
     }
 
-    public static int[] runcountPositivesSumNegatives(){
-        return new int[0];
+    public void runCountPositivesSumNegatives(){
+        System.out.println("Run task Count of positives / sum of negatives");
+        int[] givenArr = Reader.readArrInt();
+        int[] result = user.getEightImpl().countPositivesSumNegatives(givenArr);
+        System.out.println("The count of positives numbers: " + result[0] +
+                "; sum of negative numbers: " + result[1]);
     }
 
     public static float runMpgToKPM(){
