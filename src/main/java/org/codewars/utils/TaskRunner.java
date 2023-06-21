@@ -38,7 +38,7 @@ public class TaskRunner {
         String town = Reader.readString();
         System.out.println("Input string with rainfall records");
         String str = Reader.readString();
-        String result = user.getSixImpl().mean(town, str);
+        String result = user.getSixImpl().variance(town, str);
         System.out.println("The variance of rainfall for the city" + town + "is: " + result);
     }
 
