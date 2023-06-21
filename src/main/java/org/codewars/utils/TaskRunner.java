@@ -28,7 +28,7 @@ public class TaskRunner {
         return 0;
     }
 
-    public static void runMean(){
+    public void runMean(){
         System.out.println("Run task Rainfall: mean method");
         System.out.println("Input the name of the city");
         String town = Reader.readString();
