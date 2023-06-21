@@ -1,22 +1,17 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
-import org.codewars.utils.Reader
 
 public class TaskRunner {
-    private final Reader reader = new Reader();
     private final Users user;
-    public static void setUser(int id){
-        // TODO: Implement setUser() method
-    }
-    public static void runGap() {
+    public void runGap() {
         System.out.println("Run task gap");
         System.out.println("Input number which indicated gap we are looking for");
-        int g = reader.readInt();
+        int g = Reader.readInt();
         System.out.println("Input number which gives the start of the search");
-        int m = reader.readLong();
+        long m = Reader.readLong();
         System.out.println("Input number which gives the end of the search");
-        int n= reader.readLong();
+        long n = Reader.readLong();
         long[] result = user.getFiveImpl().gap(g, m, n);
         System.out.println(result);
     }
