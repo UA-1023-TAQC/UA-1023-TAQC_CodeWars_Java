@@ -39,9 +39,6 @@ public class TaskRunner {
         System.out.println("Input string with rainfall records");
         String str = Reader.readString();
         double result = user.getSixImpl().variance(town, str);
-        if(town != null){
-
-        }
         System.out.println("The variance of rainfall for the city of" + town + "is: " + result);
     }
 
