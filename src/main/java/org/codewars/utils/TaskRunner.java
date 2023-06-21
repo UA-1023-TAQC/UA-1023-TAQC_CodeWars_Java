@@ -83,7 +83,7 @@ public class TaskRunner {
     }
 
 
-    public static void runTwoDecimalPlaces() {
+    public void runTwoDecimalPlaces() {
         System.out.println("Run task Formatting decimal places");
         System.out.println("Input a number to format");
         double number = Reader.readDouble();
