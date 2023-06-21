@@ -3,9 +3,12 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    public static void setUser(int id){
-        // TODO: Implement setUser() method
+    private final Users user;
+    public TaskRunner(int userId) {
+        user = Users.getById(userId);
     }
+
+
     public static long[] runGap() {
         return new long[0];
     }
@@ -38,8 +41,14 @@ public class TaskRunner {
         return null;
     }
 
-    public static String runNbaCup(){
-        return null;
+    public void runNbaCup(){
+        System.out.println("Run task 'Ranking NBA teams'");
+        System.out.println("Input string with results of NBA teams");
+        String resultSheet = Reader.readString();
+        System.out.println("Input string of results and the name of a team ");
+        String toFind = Reader.readString();
+        String result = user.getSixImpl().nbaCup(resultSheet, toFind);
+        System.out.println(result);
     }
 
     public static String runStockSummary(){
