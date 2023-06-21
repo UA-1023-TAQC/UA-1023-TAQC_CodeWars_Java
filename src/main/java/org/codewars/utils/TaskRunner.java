@@ -3,8 +3,10 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
-    public static void setUser(int id){
-        // TODO: Implement setUser() method
+    private final Users user;
+
+    public TaskRunner(int id) {
+        user = Users.getById(id);
     }
 
     public static long[] runGap() {
@@ -49,7 +51,7 @@ public class TaskRunner {
 
     public void runGetVolumeOfCuboid(){
 
-        System.out.println("Run task GetVolumeOfCuboid");
+        System.out.println("Run task Volume of a Cuboid");
         System.out.println("Input length of the cuboid ");
         double length = Reader.readDouble();
         System.out.println("Input width of the cuboid ");
