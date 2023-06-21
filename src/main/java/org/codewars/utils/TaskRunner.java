@@ -64,7 +64,7 @@ public class TaskRunner {
         return 0;
     }
 
-    public static void runSeriesSum(){
+    public void runSeriesSum(){
         System.out.println("Run task Sum of the first nth term of Series");
         System.out.println("Input the number");
         int number = Reader.readInt();
