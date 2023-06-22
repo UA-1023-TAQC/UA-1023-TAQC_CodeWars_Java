@@ -4,12 +4,10 @@ import java.math.BigInteger;
 
 public class TaskRunner {
     public TaskRunner(Users user) {
-        final Reader reader = new Reader();
         this.user = user;
     }
-
-    private final Reader reader = new Reader();
-    private final Users user;
+    private static final Reader reader = new Reader();
+    private static Users user;
 
     public static void setUser(int id){
         // TODO: Implement setUser() method
@@ -90,9 +88,9 @@ public class TaskRunner {
         return 0.0;
     }
 
-    public void runAmIWilson()
+    public static void runAmIWilson()
     {
-        System.out.println("Run task AmIWilson");
+        System.out.println("Run task Wilson primes");
         System.out.println("Input number");
         double number = reader.readDouble();
         boolean result = user.getEightImpl().am_i_wilson(number);
