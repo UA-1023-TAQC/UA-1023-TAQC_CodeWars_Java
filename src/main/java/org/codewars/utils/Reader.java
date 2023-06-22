@@ -1,6 +1,8 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Reader {
@@ -49,7 +51,16 @@ public class Reader {
     }
 
     public String[] readArrString() {
-        return new String[0];
+        List<String> strings = new ArrayList<>();
+        System.out.println("Enter new String for array from new line.\nEnter string with 2 spaces (\"  \") to finish input:");
+        while (true) {
+            String tmp = scanner.nextLine();
+            if (tmp.equals("  ")) {
+                break;
+            }
+            strings.add(tmp);
+        }
+        return strings.toArray(new String[0]);
     }
 
     public long[] readArrLong() {
