@@ -10,7 +10,15 @@ public class TaskRunner {
     }
 
     public void runGap() {
-
+        System.out.println("Run task gap");
+        System.out.println("Input number which indicated gap we are looking for");
+        int g = reader.readInt();
+        System.out.println("Input number which gives the start of the search");
+        long m = reader.readLong();
+        System.out.println("Input number which gives the end of the search");
+        long n = reader.readLong();
+        long[] result = user.getFiveImpl().gap(g, m, n);
+        System.out.println(result);
     }
 
     public void runPerimeter() {
