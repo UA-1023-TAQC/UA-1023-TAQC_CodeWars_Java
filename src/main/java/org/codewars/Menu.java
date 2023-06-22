@@ -22,8 +22,6 @@ public class Menu {
         for (int i = 1; i <= Users.values().length; i++){
             System.out.format("%2d | %s%n", i, Users.getById(i).getName());
         }
-
-        System.out.println("Choose the appropriate user");
     }
 
     public void showUserInfo(int id) {
