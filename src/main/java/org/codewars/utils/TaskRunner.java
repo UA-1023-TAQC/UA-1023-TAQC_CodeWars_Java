@@ -1,5 +1,8 @@
 package org.codewars.utils;
 
+import org.codewars.utils.Reader;
+import org.codewars.utils.Users;
+
 import java.math.BigInteger;
 
 public class TaskRunner {

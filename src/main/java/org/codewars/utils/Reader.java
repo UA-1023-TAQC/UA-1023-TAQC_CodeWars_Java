@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Reader {
     private final Scanner scanner;
 
-    Reader() {
+    public Reader() {
         scanner = new Scanner(System.in);
     }
 
