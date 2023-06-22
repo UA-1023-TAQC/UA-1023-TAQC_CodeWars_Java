@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class EightImpl implements Eight {
     public int liters(double time) {
-        return 0;
+        return (int) Math.floor(time * 0.5);
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     public float mpgToKPM(float mpg) {
@@ -51,7 +51,7 @@ public class EightImpl implements Eight {
     }
 
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str);
     }
 
     public double TwoDecimalPlaces(double number) {
