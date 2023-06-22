@@ -1,6 +1,7 @@
 package org.codewars;
 
 import org.codewars.utils.Reader;
+import org.codewars.utils.Tasks;
 import org.codewars.utils.Users;
 
 public class Menu {
@@ -25,7 +26,13 @@ public class Menu {
     }
 
     public void showTaskList() {
+        System.out.println("Available tasks:");
 
+        for (int i = 1; i <= Tasks.values().length; i++){
+            System.out.format("%2d | %s%n", i, Tasks.getTaskById(i).getTaskName());
+        }
+
+        System.out.println("Choose the appropriate task");
     }
 
     public void showTaskInfo(int id) {
