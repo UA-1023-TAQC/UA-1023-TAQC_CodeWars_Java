@@ -4,12 +4,23 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Reader {
-    private static final Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
-    public static int readInt() {
-        return 0;
+    public Reader() {
+        scanner = new Scanner(System.in);
     }
-    public static BigInteger readBigInteger() {
+
+    public int readInt() {
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("An invalid integer was entered. Attempt again:");
+            }
+        }
+    }
+
+    public BigInteger readBigInteger() {
         while (true) {
             try {
                 return new BigInteger(scanner.nextLine());
@@ -18,31 +29,48 @@ public class Reader {
             }
         }
     }
-    public static Double readDouble() {
+
+    public Double readDouble() {
         return 0.0;
     }
-    public static float readFloat() {
+
+    public float readFloat() {
         return 0.0f;
     }
-    public static long readLong() {
+
+    public long readLong() {
         return 0;
     }
-    public static String readString() {
+
+    public String readString() {
         return "";
     }
-    public static int[] readArrInt() {
+
+    public int[] readArrInt() {
         return new int[0];
     }
-    public static double[] readArrDouble() {
+
+    public double[] readArrDouble() {
         return new double[0];
     }
-    public static String[] readArrString() {
+
+    public String[] readArrString() {
         return new String[0];
     }
-    public static long[] readArrLong() {
+
+    public long[] readArrLong() {
         return new long[0];
     }
-    public static Boolean readBoolean() {
-        return true;
+    public Boolean readBoolean() {
+        while (true) {
+            String input = scanner.nextLine().toLowerCase();
+            if (input.equals("true") || input.equals("t")) {
+                return true;
+            } else if (input.equals("false") || input.equals("f")) {
+                return false;
+            } else {
+                System.out.println("An invalid value was entered. Enter 'true' or 'false':");
+            }
+        }
     }
 }
