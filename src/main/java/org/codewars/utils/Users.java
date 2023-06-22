@@ -83,6 +83,9 @@ public enum Users {
     }
 
     public static void showUsers() {
+        for (Users user : values()){
+            System.out.println(String.format("%2s. %30s, Git: %20s", user.id, user.name, user.nickname));
+        }
     }
     public static Users getById(int id) {
         for (Users user : values()){
