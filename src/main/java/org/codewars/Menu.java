@@ -37,17 +37,20 @@ public class Menu {
     }
 
     public void showMenu() {
-
+        System.out.println("Run!!!");
     }
 
     public void run() {
         Reader reader = new Reader();
         boolean isRun = true;
         while (isRun){
+            this.showMenu();
+            System.out.print("set command id: ");
             int commandId = reader.readInt();
             switch (commandId){
                 case 0: {
                     isRun = false;
+                    System.out.println("Bye!!!");
                     break;
                 }
             }

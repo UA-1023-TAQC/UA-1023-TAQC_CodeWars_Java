@@ -98,7 +98,7 @@ public class TaskRunner {
     public void runFindNb() {
         System.out.println("Build a pile of Cubes");
         System.out.println("Input the total volume of the building. ");
-        long m = Reader.readLong();
+        long m = reader.readLong();
         long result = user.getSixImpl().findNb(m);
         System.out.printf("Result: %s%n", result);
 
