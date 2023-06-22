@@ -36,8 +36,8 @@ public class TaskRunner {
     public void runBalance() {
 
     }
-
-    public void runNbaCup() {
+    
+    public void runGetVolumeOfCuboid() {
 
     }
 
