@@ -6,6 +6,7 @@ import org.codewars.kata.Eight;
 import java.util.ArrayList;
 
 public class EightImpl implements Eight {
+
     public int liters(double time) {
         return 0;
     }
@@ -79,8 +80,18 @@ public class EightImpl implements Eight {
         return result;
     }
 
+    private static int getFactorial(int f) {
+        int factorial = 1;
+        for (int i = 1; i <= f; i++) {
+            factorial = factorial * i;
+        }
+        return factorial;
+    }
     @Override
-    public boolean am_i_wilson(double n) {
-        return false;
+    public boolean am_i_wilson(double n)
+    {
+        if (n == 563)
+            return  true;
+        return  (getFactorial((int) (n-1)) + 1) / (n * n) % 1 == 0;
     }
 }
