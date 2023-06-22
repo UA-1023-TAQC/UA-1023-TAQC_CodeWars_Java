@@ -8,7 +8,20 @@ public class SixImpl implements Six {
     }
 
     public String balance(String book) {
-        return null;
+        String[] str = book.replaceAll("[^\\w\n. ]", "").split("\n");
+
+        StringBuilder report = new StringBuilder("Original Balance: " + str[0] + (book = "\\r\\n"));
+
+        double balance = Double.parseDouble(str[0]);
+        double sum = 0;
+
+        for (int i = 1; i < str.length; i++) {
+            sum += Double.parseDouble(str[i].split("\\s+")[2]);
+            report.append(str[i].trim().replaceAll("\\s+", " "))
+                    .append(String.format(" Balance %.2f", balance - sum)).append(book);
+        }
+
+        return report + String.format("Total expense %.2f%sAverage expense %.2f", sum, book, sum / (str.length - 1));
     }
 
     public double f(double x) {
