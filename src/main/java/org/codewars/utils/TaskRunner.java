@@ -1,7 +1,5 @@
 package org.codewars.utils;
 
-import java.math.BigInteger;
-
 public class TaskRunner {
     private final Reader reader;
     private Users user;
@@ -11,88 +9,88 @@ public class TaskRunner {
         reader = new Reader();
     }
 
-    public static long[] runGap() {
-        return new long[0];
+    public void runGap() {
+
     }
 
-    public static BigInteger runPerimeter() {
-        return new BigInteger("0");
+    public void runPerimeter() {
+
     }
 
-    public static int runZeros() {
-        return 0;
+    public void runZeros() {
+
     }
 
-    public static double runF() {
-        return 0.0;
+    public void runF() {
+
     }
 
-    public static double runMean() {
-        return 0;
+    public void runMean() {
+
     }
 
-    public static double runVariance() {
-        return 0;
+    public void runVariance() {
+
     }
 
-    public static String runBalance() {
-        return null;
+    public void runBalance() {
+
     }
 
-    public static String runNbaCup() {
-        return null;
+    public void runNbaCup() {
+
     }
 
-    public static double runGetVolumeOfCuboid() {
-        return 0.0;
+    public void runGetVolumeOfCuboid() {
+
     }
 
-    public static int runLiters() {
-        return 0;
+    public void runLiters() {
+
     }
 
-    public static int runWhereIsHe() {
-        return 0;
+    public void runWhereIsHe() {
+
     }
 
-    public static long runNewAvg() {
-        return 0;
+    public void runNewAvg() {
+
     }
 
-    public static int[] runcountPositivesSumNegatives() {
-        return new int[0];
+    public void runcountPositivesSumNegatives() {
+
     }
 
-    public static float runMpgToKPM() {
-        return 0.0f;
+    public void runMpgToKPM() {
+
     }
 
-    public static double runTwoDecimalPlaces() {
-        return 0.0;
+    public void runTwoDecimalPlaces() {
+
     }
 
-    public static boolean runAmIWilson() {
-        return false;
+    public void runAmIWilson() {
+
     }
 
-    public static int[] runDivisibleBy() {
-        return new int[0];
+    public void runDivisibleBy() {
+
     }
 
-    public static int[] runSquareOrSquareRoot() {
-        return new int[0];
+    public void runSquareOrSquareRoot() {
+
     }
 
-    public static double runSolve() {
-        return 0.0;
+    public void runSolve() {
+
     }
 
-    public static long[] runSmallest() {
-        return new long[0];
+    public void runSmallest() {
+
     }
 
-    public static int runArtificialRain() {
-        return 0;
+    public void runArtificialRain() {
+
     }
 
     public void runFindNb() {

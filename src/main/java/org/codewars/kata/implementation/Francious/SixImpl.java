@@ -38,7 +38,7 @@ public class SixImpl implements Six {
         return 0;
     }
 
-    public static double mean(String town, String strng) {
+    public double mean(String town, String strng) {
         String[] towns = strng.split("\n");
         for (String townData : towns) {
             if (townData.startsWith(town + ":")) {
@@ -56,7 +56,7 @@ public class SixImpl implements Six {
         return -1;
     }
 
-    public static double variance(String town, String strng) {
+    public double variance(String town, String strng) {
         String[] towns = strng.split("\n");
         for (String townData : towns) {
             if (townData.startsWith(town + ":")) {
