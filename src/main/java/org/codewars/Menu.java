@@ -31,8 +31,6 @@ public class Menu {
         for (int i = 1; i <= Tasks.values().length; i++){
             System.out.format("%2d | %s%n", i, Tasks.getTaskById(i).getTaskName());
         }
-
-        System.out.println("Choose the appropriate task");
     }
 
     public void showTaskInfo(int id) {
