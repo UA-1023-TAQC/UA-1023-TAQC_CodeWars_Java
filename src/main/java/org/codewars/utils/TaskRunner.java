@@ -73,8 +73,12 @@ public class TaskRunner {
         return null;
     }
 
-    public static int runStringToNumber(){
-        return 0;
+    public void runStringToNumber(){
+        System.out.println("Run task Convert a String to a Number!\n");
+        System.out.println("Input the string that you want to convert to integer type:");
+        String str = Reader.readString();
+        int res = user.getEightImpl().stringToNumber(str);
+        System.out.println("Converted string to int:" + res);
     }
 
     public static int[] runcountPositivesSumNegatives(){
