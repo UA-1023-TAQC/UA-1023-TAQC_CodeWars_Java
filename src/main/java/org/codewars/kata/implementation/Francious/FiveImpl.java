@@ -35,7 +35,13 @@ public class FiveImpl implements Five {
     }
 
     public int zeros(int n) {
-        return 0;
+        int count = 0;
+
+        while (n > 0) {
+            n /= 5;
+            count += n;
+        }
+        return count;
     }
 
     public BigInteger perimeter(BigInteger n) {
@@ -55,11 +61,57 @@ public class FiveImpl implements Five {
     }
 
     public double solve(double m) {
-        return 0;
+         double lowerBound = 0.0;
+        double upperBound = 1.0;
+        double precision = 1e-12;
+
+        while (upperBound - lowerBound > precision) {
+            double midpoint = (lowerBound + upperBound) / 2;
+            double result = 0.0;
+            double term = midpoint;
+
+            for (int n = 2; term >= 1e-15; n++) {
+                result += term;
+                term *= midpoint * n / (n - 1);
+            }
+
+            if (Math.abs(result - m) < precision) {
+                return midpoint;
+            } else if (result < m) {
+                lowerBound = midpoint;
+            } else {
+                upperBound = midpoint;
+            }
+        }
+
+        return lowerBound;
     }
 
     public long[] smallest(long n) {
-        return new long[0];
+        String numStr = String.valueOf(n);
+        String minNumStr = numStr;
+        int minIndex = -1;
+        int insertIndex = -1;
+
+        for (int i = 0; i < numStr.length(); i++) {
+            StringBuilder sb = new StringBuilder(numStr);
+            char digit = sb.charAt(i);
+            sb.deleteCharAt(i);
+
+            for (int j = 0; j <= sb.length(); j++) {
+                sb.insert(j, digit);
+                String currentNumStr = sb.toString();
+                if (currentNumStr.compareTo(minNumStr) < 0) {
+                    minNumStr = currentNumStr;
+                    minIndex = i;
+                    insertIndex = j;
+                }
+                sb.deleteCharAt(j);
+            }
+        }
+
+        long minNum = Long.parseLong(minNumStr);
+        return new long[]{minNum, minIndex, insertIndex};
     }
 
     @Override
