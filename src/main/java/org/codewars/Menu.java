@@ -4,6 +4,9 @@ import org.codewars.utils.Reader;
 import org.codewars.utils.Tasks;
 import org.codewars.utils.Users;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Menu {
     private Users user;
 
@@ -47,17 +50,17 @@ public class Menu {
 
     public void showMenu() {
         System.out.println("Menu:");
-        String[] menu = new String[] {
-                "Exit",
-                "Show Users",
-                "Show Tasks",
-                "Show User Info",
-                "Show Task Info",
-                "Set User",
-                "Run Task"
-        };
-        for (int i = 0; i < menu.length; i++) {
-            System.out.format("%2d | %s%n", i, menu[i]);
+        Map<Integer, String> menu = new HashMap<Integer, String>();
+        menu.put(0, "Exit");
+        menu.put(1, "Show Users");
+        menu.put(2, "Show Tasks");
+        menu.put(3, "Show User Info");
+        menu.put(4, "Show Task Info");
+        menu.put(5, "Set User");
+        menu.put(6, "Run Task");
+
+        for (Map.Entry<Integer, String> menuItem : menu.entrySet()) {
+            System.out.format("%2d | %s%n", menuItem.getKey(), menuItem.getValue());
         }
     }
 
