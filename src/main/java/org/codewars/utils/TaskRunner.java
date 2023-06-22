@@ -1,8 +1,5 @@
 package org.codewars.utils;
 
-import org.codewars.utils.Reader;
-import org.codewars.utils.Users;
-
 import java.math.BigInteger;
 
 public class TaskRunner {
@@ -28,10 +25,6 @@ public class TaskRunner {
 
     public static double runF() {
         return 0.0;
-    }
-
-    public static long runFindNb() {
-        return 0;
     }
 
     public static double runMean() {
@@ -100,6 +93,15 @@ public class TaskRunner {
 
     public static int runArtificialRain() {
         return 0;
+    }
+
+    public void runFindNb() {
+        System.out.println("Build a pile of Cubes");
+        System.out.println("Input the total volume of the building. ");
+        long m = Reader.readLong();
+        long result = user.getSixImpl().findNb(m);
+        System.out.printf("Result: %s%n", result);
+
     }
 
     public void setUser(Users user) {
