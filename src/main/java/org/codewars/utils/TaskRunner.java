@@ -15,7 +15,7 @@ public class TaskRunner {
     }
 
     public static int runZeros(){
-       return 0;
+        return 0;
     }
 
     public static double runF(){
@@ -42,9 +42,16 @@ public class TaskRunner {
         return null;
     }
 
-    public static String runStockSummary(){
-        return null;
+    public void runStockSummary(){
+        System.out.println("Build a pile of Cubes");
+        System.out.println("Input the stock list ");
+        String[] lstOfArt = Reader.readArrString();
+        System.out.println("Input the list of categories ");
+        String[] lstOf1stLetter = Reader.readArrString();
+        String result = user.getSixImpl().stockSummary(lstOfArt,lstOf1stLetter);
+        System.out.printf("Result: %s%n", result);
     }
+
 
     public static double runGetVolumeOfCuboid(){
         return 0.0;
