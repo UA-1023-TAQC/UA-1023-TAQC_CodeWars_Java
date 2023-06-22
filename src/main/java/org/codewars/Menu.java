@@ -80,7 +80,7 @@ public class Menu {
                     break;
                 }
                 case 6: {
-                    if (user == null) {
+                    while (user == null) {
                         System.out.println("For running task user should be set!");
                         showUsersList();
                         System.out.print("Enter user id (int from 1 to 11 included): ");
