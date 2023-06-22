@@ -33,7 +33,7 @@ public class TaskRunner {
 
     public void rainfall() {
         try {
-            System.out.println("Run task Rainfall: mean method");
+            System.out.println("Run task Rainfall");
             System.out.println("Input the name of the city");
             String town = Reader.readString();
             System.out.println("Input string with rainfall records. City entries should be separated by \\n." +
@@ -51,7 +51,7 @@ public class TaskRunner {
             System.out.println("Error! You entered incorrect data.");
         }
     }
-    
+
 
     public static String runBalance() {
         return null;
