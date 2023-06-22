@@ -1,7 +1,5 @@
 package org.codewars;
 
-import org.codewars.utils.Tasks;
-
 /**
  * Hello world!
  */

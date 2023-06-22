@@ -43,7 +43,7 @@ public class FiveImpl implements Five {
             }
         }
 
-        return new long[] {smallestNumber, indexI, indexJ};
+        return new long[]{smallestNumber, indexI, indexJ};
     }
 
     @Override

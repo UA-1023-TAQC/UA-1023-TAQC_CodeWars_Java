@@ -1,6 +1,8 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Reader {
@@ -21,7 +23,13 @@ public class Reader {
     }
 
     public BigInteger readBigInteger() {
-        return BigInteger.ZERO;
+        while (true) {
+            try {
+                return new BigInteger(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("An invalid BigInteger was entered. Attempt again:");
+            }
+        }
     }
 
     public Double readDouble() {
@@ -37,7 +45,7 @@ public class Reader {
     }
 
     public String readString() {
-        return "";
+        return scanner.nextLine();
     }
 
     public int[] readArrInt() {
@@ -49,12 +57,22 @@ public class Reader {
     }
 
     public String[] readArrString() {
-        return new String[0];
+        List<String> strings = new ArrayList<>();
+        System.out.println("Enter new String for array from new line.\nEnter string with 2 spaces (\"  \") to finish input:");
+        while (true) {
+            String tmp = scanner.nextLine();
+            if (tmp.equals("  ")) {
+                break;
+            }
+            strings.add(tmp);
+        }
+        return strings.toArray(new String[0]);
     }
 
     public long[] readArrLong() {
         return new long[0];
     }
+
     public Boolean readBoolean() {
         while (true) {
             String input = scanner.nextLine().toLowerCase();

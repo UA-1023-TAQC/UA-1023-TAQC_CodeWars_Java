@@ -1,5 +1,7 @@
 package org.codewars.utils;
 
+import java.util.Arrays;
+
 public class TaskRunner {
     private final Reader reader;
     private Users user;
@@ -10,7 +12,15 @@ public class TaskRunner {
     }
 
     public void runGap() {
-
+        System.out.println("Run task gap");
+        System.out.println("Input number which indicated gap we are looking for");
+        int g = reader.readInt();
+        System.out.println("Input number which gives the start of the search");
+        long m = reader.readLong();
+        System.out.println("Input number which gives the end of the search");
+        long n = reader.readLong();
+        long[] result = user.getFiveImpl().gap(g, m, n);
+        System.out.println(result);
     }
 
     public void runPerimeter() {
@@ -54,7 +64,13 @@ public class TaskRunner {
     }
 
     public void runNewAvg() {
-
+        System.out.println("Run task 'Looking for a benefactor'");
+        System.out.println("Input financial donations array");
+        double[] arr = reader.readArrDouble();
+        System.out.println("Input number which donations should reach an average");
+        double nav = reader.readDouble();
+        long result = user.getSevenImpl().newAvg(arr, nav);
+        System.out.println(result);
     }
 
     public void runcountPositivesSumNegatives() {
@@ -90,7 +106,24 @@ public class TaskRunner {
     }
 
     public void runArtificialRain() {
-
+        System.out.println("Artificial Rain");
+        int[] garden = {0};
+        int i = 1;
+        while (i == 1) {
+            System.out.println("Input the set of n rectangles of varying height as the representation of vertical garden ");
+            garden = reader.readArrInt();
+            System.out.println("The input data is: " + Arrays.toString(garden));
+            for (int element : garden) {
+                i = 0;
+                if (element <= 0) {
+                    System.out.println("Sorry, that input is invalid. Please enter a numbers greater than 0.");
+                    i = 1;
+                    break;
+                }
+            }
+        }
+        int result = user.getFiveImpl().artificialRain(garden);
+        System.out.printf("Result: %s", result);
     }
 
     public void runFindNb() {
