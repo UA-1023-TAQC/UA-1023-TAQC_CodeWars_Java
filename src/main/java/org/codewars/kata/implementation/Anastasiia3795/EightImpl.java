@@ -5,6 +5,14 @@ import org.codewars.kata.Eight;
 import java.util.Arrays;
 
 public class EightImpl implements Eight {
+    public static double factorial(double num) {
+        double result = 1;
+        for (int i = 1; i <= num; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
     public int liters(double time) {
         return (int) (time * 0.5);
     }
@@ -53,15 +61,6 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        if((factorial(n-1) % n) == (n-1) || n == 563)
-            return true;
-        else return false;
-    }
-    public static double factorial(double num) {
-        double result = 1;
-        for (int i = 1; i <= num; i++) {
-            result *= i;
-        }
-        return result;
+        return (factorial(n - 1) % n) == (n - 1) || n == 563;
     }
 }

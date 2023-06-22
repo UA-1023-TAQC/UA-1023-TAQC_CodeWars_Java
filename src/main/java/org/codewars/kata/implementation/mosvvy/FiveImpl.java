@@ -3,7 +3,6 @@ package org.codewars.kata.implementation.mosvvy;
 import org.codewars.kata.Five;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 public class FiveImpl implements Five {
     public long[] gap(int g, long m, long n) {
@@ -96,7 +95,7 @@ public class FiveImpl implements Five {
         int stableHeightLength = 0;
 
         for (int i = 1; i < v.length; i++) {
-            if (v[i-1] < v[i]) {
+            if (v[i - 1] < v[i]) {
                 if (!isGroving) {
                     if (maxWateredSectionLength < wateredSectionLength) maxWateredSectionLength = wateredSectionLength;
                     wateredSectionLength = 1 + stableHeightLength;
@@ -104,7 +103,7 @@ public class FiveImpl implements Five {
                 }
                 wateredSectionLength++;
                 stableHeightLength = 0;
-            } else if (v[i-1] == v[i]){
+            } else if (v[i - 1] == v[i]) {
                 wateredSectionLength++;
                 stableHeightLength++;
             } else {
