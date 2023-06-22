@@ -3,25 +3,17 @@ package org.codewars.kata.implementation.Francious;
 import org.codewars.kata.Eight;
 import java.util.ArrayList;
 
+
 public class EightImpl implements Eight {
     public int liters(double time) {
-        return 0;
+       return (int) Math.floor(time * 0.5);
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     public float mpgToKPM(float mpg) {
-        return 0;
-    }
-
-    public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
-    }
-
-    public int[] countPositivesSumNegatives(int[] input) {
-
         double galonPerMile = 4.54609188 / 1.609344;
         double result = mpg / galonPerMile;
         return (float) Math.round(result * 100.0) / 100;
@@ -59,16 +51,28 @@ public class EightImpl implements Eight {
     }
 
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str)
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number * 100.00) / 100.00;
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
-        return Math.round(number * 100.00) / 100.00;
+          ArrayList<Integer> list = new ArrayList<>();
+          for (int i = 0; i < numbers.length; i++) {
+              if (numbers[i] % divider == 0) {
+                  list.add(numbers[i]);
+              }
+          }
+          int[] result = new int[list.size()];
+          for (int j = 0; j < list.size(); j++) {
+              result[j] = list.get(j);
+          }
+
+          return result;
     }
+
 
     public int[] divisibleBy(int[] numbers, int divider) {
         ArrayList<Integer> list = new ArrayList<>();
@@ -87,10 +91,6 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        if (n == 563 || n == 13 || n == 5){
-            return true;
-        } else {
-            return false;
-        }
+        return n == 563 || n == 13 || n == 5;
     }
 }

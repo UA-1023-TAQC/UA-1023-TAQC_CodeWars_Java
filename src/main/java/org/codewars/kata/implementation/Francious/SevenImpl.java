@@ -20,6 +20,7 @@ public class SevenImpl implements Seven {
         return (long) Math.ceil(exptResult);
     }
 
+
     public String seriesSum(int n) {
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
