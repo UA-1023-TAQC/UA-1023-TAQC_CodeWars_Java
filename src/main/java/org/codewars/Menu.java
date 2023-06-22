@@ -21,7 +21,11 @@ public class Menu {
     }
 
     public void showUsersList() {
+        System.out.println("Available users:");
 
+        for (int i = 1; i <= Users.values().length; i++){
+            System.out.format("%2d | %s%n", i, Users.getById(i).getName());
+        }
     }
 
     public void showUserInfo(int id) {
