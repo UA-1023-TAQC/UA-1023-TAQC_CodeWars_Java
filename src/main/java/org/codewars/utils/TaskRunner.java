@@ -44,9 +44,16 @@ public class TaskRunner {
         return null;
     }
 
-    public static String runStockSummary(){
-        return null;
+    public void runStockSummary(){
+        System.out.println("Help the bookseller !");
+        System.out.println("Input the stock list ");
+        String[] lstOfArt = Reader.readArrString();
+        System.out.println("Input the list of categories ");
+        String[] lstOf1stLetter = Reader.readArrString();
+        String result = user.getSixImpl().stockSummary(lstOfArt,lstOf1stLetter);
+        System.out.printf("Result: %s", result);
     }
+
 
     public static double runGetVolumeOfCuboid(){
         return 0.0;
@@ -64,12 +71,20 @@ public class TaskRunner {
         return 0;
     }
 
-    public static String runSeriesSum(){
-        return null;
+    public void runSeriesSum(){
+        System.out.println("Run task Sum of the first nth term of Series");
+        System.out.println("Input the number");
+        int number = Reader.readInt();
+        String result = user.getSevenImpl().seriesSum(number);
+        System.out.println("Sum of following series up to number " + number + "is: " + result);
     }
 
-    public static int runStringToNumber(){
-        return 0;
+    public void runStringToNumber(){
+        System.out.println("Run task Convert a String to a Number!\n");
+        System.out.println("Input the string that you want to convert to integer type:");
+        String str = Reader.readString();
+        int res = user.getEightImpl().stringToNumber(str);
+        System.out.println("Converted string to int:" + res);
     }
 
     public static int[] runcountPositivesSumNegatives(){
