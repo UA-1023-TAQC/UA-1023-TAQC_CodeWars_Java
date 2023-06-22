@@ -1,8 +1,8 @@
 package org.codewars.kata.implementation.Francious;
 
 import org.codewars.kata.Eight;
-
 import java.util.ArrayList;
+
 
 public class EightImpl implements Eight {
     public int liters(double time) {
@@ -14,7 +14,6 @@ public class EightImpl implements Eight {
     }
 
     public float mpgToKPM(float mpg) {
-
         double galonPerMile = 4.54609188 / 1.609344;
         double result = mpg / galonPerMile;
         return (float) Math.round(result * 100.0) / 100;
@@ -58,6 +57,7 @@ public class EightImpl implements Eight {
     public double TwoDecimalPlaces(double number) {
         return Math.round(number * 100.00) / 100.00;
     }
+
 
     public int[] divisibleBy(int[] numbers, int divider) {
         ArrayList<Integer> list = new ArrayList<>();
