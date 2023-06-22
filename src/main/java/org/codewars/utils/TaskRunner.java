@@ -1,5 +1,7 @@
 package org.codewars.utils;
 
+import java.util.Arrays;
+
 public class TaskRunner {
     private final Reader reader;
     private Users user;
@@ -107,18 +109,19 @@ public class TaskRunner {
         System.out.println("Artificial Rain");
         int[] garden = {0};
         int i = 1;
-        while(i == 1){
+        while (i == 1) {
             System.out.println("Input the set of n rectangles of varying height as the representation of vertical garden ");
             garden = reader.readArrInt();
             System.out.println("The input data is: " + Arrays.toString(garden));
-            for(int element: garden){
+            for (int element : garden) {
                 i = 0;
-                if(element <= 0){
+                if (element <= 0) {
                     System.out.println("Sorry, that input is invalid. Please enter a numbers greater than 0.");
                     i = 1;
                     break;
                 }
-            }}
+            }
+        }
         int result = user.getFiveImpl().artificialRain(garden);
         System.out.printf("Result: %s", result);
     }

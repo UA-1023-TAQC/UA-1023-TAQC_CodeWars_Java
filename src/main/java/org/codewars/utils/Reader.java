@@ -72,6 +72,7 @@ public class Reader {
     public long[] readArrLong() {
         return new long[0];
     }
+
     public Boolean readBoolean() {
         while (true) {
             String input = scanner.nextLine().toLowerCase();

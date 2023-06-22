@@ -52,11 +52,11 @@ public class Menu {
     public void run() {
         Reader reader = new Reader();
         boolean isRun = true;
-        while (isRun){
+        while (isRun) {
             this.showMenu();
             System.out.print("Enter command id: ");
             int commandId = reader.readInt();
-            switch (commandId){
+            switch (commandId) {
                 case 0: {
                     isRun = false;
                     System.out.println("Bye!!!");
