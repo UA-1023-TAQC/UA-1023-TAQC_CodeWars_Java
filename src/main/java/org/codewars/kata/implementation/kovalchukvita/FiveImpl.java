@@ -40,7 +40,28 @@ public class FiveImpl implements Five {
     }
 
     public long[] smallest(long n) {
-        return new long[0];
+        String numberStr = Long.toString(n);
+        long smallestNumber = n;
+        int indexI = 0;
+        int indexJ = 0;
+
+        for (int i = 0; i < numberStr.length(); i++) {
+            char digit = numberStr.charAt(i);
+            String withoutDigit = numberStr.substring(0, i) + numberStr.substring(i + 1);
+
+            for (int j = 0; j <= withoutDigit.length(); j++) {
+                String modifiedNumberStr = withoutDigit.substring(0, j) + digit + withoutDigit.substring(j);
+                long modifiedNumber = Long.parseLong(modifiedNumberStr);
+
+                if (modifiedNumber < smallestNumber) {
+                    smallestNumber = modifiedNumber;
+                    indexI = i;
+                    indexJ = j;
+                }
+            }
+        }
+
+        return new long[] {smallestNumber, indexI, indexJ};
     }
 
     @Override
