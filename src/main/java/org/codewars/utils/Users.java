@@ -83,6 +83,9 @@ public enum Users {
     }
 
     public static void showUsers() {
+        for (Users user : values()){
+            System.out.println(String.format("%2s. %30s, Git: %20s", user.id, user.name, user.nickname));
+        }
     }
     public static Users getById(int id) {
         for (Users user : values()){
@@ -91,6 +94,11 @@ public enum Users {
             }
         }
         return null;
+    }
+    @Override
+    public String toString() {
+        return String.format("Users:id=%d, name='%s, nickname='%s', eightImpl=%s, " +
+    "sevenImpl=%s, sixImpl=%s, fiveImpl=%s", id, name, nickname, eightImpl, sevenImpl, sixImpl, fiveImpl);
     }
 
 
