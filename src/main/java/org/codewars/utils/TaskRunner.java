@@ -43,13 +43,13 @@ public class TaskRunner {
     }
 
     public void runStockSummary(){
-        System.out.println("Build a pile of Cubes");
+        System.out.println("Help the bookseller !");
         System.out.println("Input the stock list ");
         String[] lstOfArt = Reader.readArrString();
         System.out.println("Input the list of categories ");
         String[] lstOf1stLetter = Reader.readArrString();
         String result = user.getSixImpl().stockSummary(lstOfArt,lstOf1stLetter);
-        System.out.printf("Result: %s%n", result);
+        System.out.printf("Result: %s", result);
     }
 
 
