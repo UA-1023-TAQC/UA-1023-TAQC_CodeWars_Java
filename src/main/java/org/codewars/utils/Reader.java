@@ -45,7 +45,7 @@ public class Reader {
     }
 
     public String readString() {
-        return "";
+        return scanner.nextLine();
     }
 
     public int[] readArrInt() {
