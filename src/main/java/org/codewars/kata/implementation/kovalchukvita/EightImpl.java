@@ -3,7 +3,9 @@ package org.codewars.kata.implementation.kovalchukvita;
 import org.codewars.kata.Eight;
 
 public class EightImpl implements Eight {
-    public int liters(double time) {return 0;}
+
+  
+        public int liters(double time) {return 0;}
 
 
         public double getVolumeOfCuboid(double length, double width, double height) {
