@@ -1,7 +1,5 @@
 package org.codewars.utils;
 
-import java.math.BigInteger;
-
 public class TaskRunner {
     private final Reader reader;
     private Users user;
@@ -11,37 +9,36 @@ public class TaskRunner {
         reader = new Reader();
     }
 
+    public void runGap() {
 
-    public static long[] runGap() {
-        return new long[0];
     }
 
-    public static BigInteger runPerimeter(){
-        return new BigInteger("0");
+    public void runPerimeter() {
+
     }
 
-    public static int runZeros(){
-       return 0;
+    public void runZeros() {
+
     }
 
-    public static double runF(){
-        return 0.0;
+    public void runF() {
+
     }
 
-    public static long runFindNb(){
-        return 0;
+    public void runMean() {
+
     }
 
-    public static double runMean(){
-        return 0;
+    public void runVariance() {
+
     }
 
-    public static double runVariance(){
-        return 0;
+    public void runBalance() {
+
     }
 
-    public static String runBalance(){
-        return null;
+    public void runNbaCup() {
+
     }
 
     public void runNbaCup(){
@@ -54,68 +51,95 @@ public class TaskRunner {
         System.out.println(result);
     }
 
-    public static String runStockSummary(){
-        return null;
+    public void runLiters() {
+
     }
 
-    public static double runGetVolumeOfCuboid(){
-        return 0.0;
+    public void runWhereIsHe() {
+
     }
 
-    public static int runLiters(){
-        return 0;
+    public void runNewAvg() {
+
     }
 
-    public static int runWhereIsHe(){
-        return 0;
+    public void runcountPositivesSumNegatives() {
+
     }
 
-    public  static long runNewAvg(){
-        return 0;
+    public void runMpgToKPM() {
+
     }
 
-    public static String runSeriesSum(){
-        return null;
+    public void runTwoDecimalPlaces() {
+
     }
 
-    public static int runStringToNumber(){
-        return 0;
+    public void runAmIWilson() {
+
     }
 
-    public static int[] runcountPositivesSumNegatives(){
-        return new int[0];
+    public void runDivisibleBy() {
+
     }
 
-    public static float runMpgToKPM(){
-        return 0.0f;
+    public void runSquareOrSquareRoot() {
+
     }
 
-    public static double runTwoDecimalPlaces(){
-        return 0.0;
+    public void runSolve() {
+
     }
 
-    public static boolean runAmIWilson(){
-        return false;
+    public void runSmallest() {
+
     }
 
-    public static int[] runDivisibleBy(){
-        return new int[0];
+    public void runArtificialRain() {
+
     }
 
-    public static int[] runSquareOrSquareRoot(){
-        return new int[0];
+    public void runFindNb() {
+        System.out.println("Build a pile of Cubes");
+        System.out.println("Input the total volume of the building. ");
+        long m = reader.readLong();
+        long result = user.getSixImpl().findNb(m);
+        System.out.printf("Result: %s%n", result);
+
     }
 
-    public static double runSolve(){
-        return 0.0;
+    public void setUser(Users user) {
+        this.user = user;
     }
 
-    public static long[] runSmallest(){
-        return new long[0];
+    public void setUser(int userId) {
+        this.user = Users.getById(userId);
     }
 
-    public static int runArtificialRain(){
-        return 0;
+    public void runStockSummary() {
+        System.out.println("Help the bookseller !");
+        System.out.println("Input the stock list ");
+        String[] lstOfArt = reader.readArrString();
+        System.out.println("Input the list of categories ");
+        String[] lstOf1stLetter = reader.readArrString();
+        String result = user.getSixImpl().stockSummary(lstOfArt, lstOf1stLetter);
+        System.out.printf("Result: %s", result);
+    }
+
+    public void runSeriesSum() {
+        System.out.println("Run task Sum of the first nth term of Series");
+        System.out.println("Input the number");
+        int number = reader.readInt();
+        String result = user.getSevenImpl().seriesSum(number);
+        System.out.println("Sum of following series up to number " + number + "is: " + result);
+    }
+
+    public void runStringToNumber() {
+        System.out.println("Run task Convert a String to a Number!\n");
+        System.out.println("Input the string that you want to convert to integer type:");
+        String str = reader.readString();
+        int res = user.getEightImpl().stringToNumber(str);
+        System.out.println("Converted string to int:" + res);
     }
 
 }
