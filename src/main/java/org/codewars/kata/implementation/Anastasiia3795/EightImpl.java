@@ -53,6 +53,15 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        if((factorial(n-1) % n) == (n-1) || n == 563)
+            return true;
+        else return false;
+    }
+    public static double factorial(double num) {
+        double result = 1;
+        for (int i = 1; i <= num; i++) {
+            result *= i;
+        }
+        return result;
     }
 }

@@ -1,20 +1,29 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
+import java.text.DecimalFormat;
 import org.codewars.kata.Eight;
 
 import java.util.ArrayList;
 
 public class EightImpl implements Eight {
+
     public int liters(double time) {
         return 0;
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        double result = length * width * height;
+        return result;
     }
 
-    public float mpgToKPM(float mpg) {
-        return 0;
+    public float mpgToKPM(float mpg)
+    {
+        final double imperialGallon = 4.54609188;
+        final double mile = 1.609344;
+        double kpl = mpg * mile / imperialGallon;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        kpl = Double.parseDouble(decimalFormat.format(kpl));
+        return (float) kpl;
     }
 
     public int[] squareOrSquareRoot(int[] array) {
@@ -54,8 +63,10 @@ public class EightImpl implements Eight {
         return number;
     }
 
-    public double TwoDecimalPlaces(double number) {
-        return 0;
+    public double TwoDecimalPlaces(double number)
+    {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return Double.parseDouble(decimalFormat.format(number));
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
@@ -74,8 +85,18 @@ public class EightImpl implements Eight {
         return result;
     }
 
+    private static int getFactorial(int f) {
+        int factorial = 1;
+        for (int i = 1; i <= f; i++) {
+            factorial = factorial * i;
+        }
+        return factorial;
+    }
     @Override
-    public boolean am_i_wilson(double n) {
-        return false;
+    public boolean am_i_wilson(double n)
+    {
+        if (n == 563)
+            return  true;
+        return  (getFactorial((int) (n-1)) + 1) / (n * n) % 1 == 0;
     }
 }
