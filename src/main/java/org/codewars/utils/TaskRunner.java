@@ -6,7 +6,7 @@ public class TaskRunner {
     public TaskRunner(Users user) {
         this.user = user;
     }
-    private static final Reader reader = new Reader();
+
     private static Users user;
 
     public static void setUser(int id){
@@ -92,7 +92,7 @@ public class TaskRunner {
     {
         System.out.println("Run task Wilson primes");
         System.out.println("Input number");
-        double number = reader.readDouble();
+        double number = Reader.readDouble();
         boolean result = user.getEightImpl().am_i_wilson(number);
         if (result)
             System.out.println(String.format("It is a Wilson prime"));
