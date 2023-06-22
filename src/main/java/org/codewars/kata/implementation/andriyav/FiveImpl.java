@@ -66,7 +66,7 @@ public class FiveImpl implements Five {
         ArrayList<Long> arrList = new ArrayList<>();
         long result_first = n;
         long[] result_arr = new long[3];
-        StringBuilder result_str = new StringBuilder("");
+        StringBuilder result_str = new StringBuilder();
         String temp_str;
         long temp_int;
         long temp_int_replace;

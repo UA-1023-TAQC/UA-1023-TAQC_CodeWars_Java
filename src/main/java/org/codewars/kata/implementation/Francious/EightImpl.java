@@ -3,6 +3,7 @@ package org.codewars.kata.implementation.Francious;
 import org.codewars.kata.Eight;
 import java.util.ArrayList;
 
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return 0;
@@ -57,6 +58,7 @@ public class EightImpl implements Eight {
       return Math.round(number * 100.00) / 100.00;
     }
 
+
     public int[] divisibleBy(int[] numbers, int divider) {
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < numbers.length; i++) {
@@ -74,10 +76,6 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        if (n == 563 || n == 13 || n == 5){
-            return true;
-        } else {
-            return false;
-        }
+        return n == 563 || n == 13 || n == 5;
     }
 }
