@@ -22,7 +22,16 @@ public class Menu {
     }
 
     public void showUserInfo(int id) {
-
+        user = Users.getById(id);
+        while (user == null) {
+            Reader reader = new Reader();
+            System.out.print("Wrong user id! Enter int from 1 to 11 included: ");
+            id = reader.readInt();
+            user = Users.getById(id);
+        }
+        System.out.println("id: " + user.getId());
+        System.out.println("name: " + user.getName());
+        System.out.println("github nickname: " + user.getNickname());
     }
 
     public void showTaskList() {
