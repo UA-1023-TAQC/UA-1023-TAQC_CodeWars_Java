@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class EightImpl implements Eight {
     public int liters(double time) {
-        return (int) Math.floor(time * 0.5);
+       return (int) Math.floor(time * 0.5);
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
@@ -56,6 +56,21 @@ public class EightImpl implements Eight {
 
     public double TwoDecimalPlaces(double number) {
       return Math.round(number * 100.00) / 100.00;
+    }
+
+    public int[] divisibleBy(int[] numbers, int divider) {
+          ArrayList<Integer> list = new ArrayList<>();
+          for (int i = 0; i < numbers.length; i++) {
+              if (numbers[i] % divider == 0) {
+                  list.add(numbers[i]);
+              }
+          }
+          int[] result = new int[list.size()];
+          for (int j = 0; j < list.size(); j++) {
+              result[j] = list.get(j);
+          }
+
+          return result;
     }
 
 
