@@ -54,7 +54,13 @@ public class TaskRunner {
     }
 
     public void runNewAvg() {
-
+        System.out.println("Run task 'Looking for a benefactor'");
+        System.out.println("Input financial donations array");
+        double[] arr = reader.readArrDouble();
+        System.out.println("Input number which donations should reach an average");
+        double nav = reader.readDouble();
+        long result = user.getSevenImpl().newAvg(arr, nav);
+        System.out.println(result);
     }
 
     public void runcountPositivesSumNegatives() {
