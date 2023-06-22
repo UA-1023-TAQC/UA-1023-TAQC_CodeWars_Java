@@ -59,7 +59,6 @@ public class EightImpl implements Eight {
         return Math.round(number * 100.00) / 100.00;
     }
 
-
     public int[] divisibleBy(int[] numbers, int divider) {
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < numbers.length; i++) {
@@ -74,6 +73,7 @@ public class EightImpl implements Eight {
 
         return result;
     }
+
 
     @Override
     public boolean am_i_wilson(double n) {

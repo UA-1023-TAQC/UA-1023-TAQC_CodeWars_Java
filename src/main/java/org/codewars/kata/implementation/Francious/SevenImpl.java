@@ -4,6 +4,7 @@ import org.codewars.kata.Seven;
 
 import java.text.DecimalFormat;
 
+
 public class SevenImpl implements Seven {
     public long newAvg(double[] arr, double navg) {
         double result = 0;
@@ -42,6 +43,6 @@ public class SevenImpl implements Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        return Math.min(p - bef, aft + 1);
     }
 }

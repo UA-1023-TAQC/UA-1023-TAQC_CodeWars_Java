@@ -5,12 +5,31 @@ import org.codewars.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+
+    public static boolean isPrime(long n) {
+        for (int i = 2; i < n / 2; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long prev = 0;
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                if ((i - prev) == g) return new long[]{prev, i};
+                prev = i;
+            }
+        }
+        return null;
     }
 
     public int zeros(int n) {
-        return 0;
+        int counter = 0;
+        for (int i = 5; n / i > 0; i *= 5) {
+            counter += n / i;
+        }
+        return counter;
     }
 
     public BigInteger perimeter(BigInteger n) {

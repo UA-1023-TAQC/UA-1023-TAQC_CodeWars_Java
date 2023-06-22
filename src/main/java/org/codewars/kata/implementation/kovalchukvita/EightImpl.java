@@ -8,7 +8,6 @@ public class EightImpl implements Eight {
         return 0;
     }
 
-
     public double getVolumeOfCuboid(double length, double width, double height) {
         return 0;
     }
