@@ -45,7 +45,7 @@ public class Menu {
         boolean isRun = true;
         while (isRun){
             this.showMenu();
-            System.out.print("set command id: ");
+            System.out.print("Enter command id: ");
             int commandId = reader.readInt();
             switch (commandId){
                 case 0: {
