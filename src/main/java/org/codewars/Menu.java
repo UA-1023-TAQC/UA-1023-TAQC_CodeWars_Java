@@ -37,7 +37,20 @@ public class Menu {
     }
 
     public void showMenu() {
-        System.out.println("Run!!!");
+        System.out.println("Menu:");
+        String[] menu = new String[] {
+                "Exit",
+                "Show Users",
+                "Show Tasks",
+                "Show User Info",
+                "Show Task Info",
+                "Set User",
+                "Run Task"
+        };
+        for (int i = 0; i < menu.length; i++) {
+            System.out.format("[%2d] %s%n", i, menu[i]);
+        }
+        System.out.println("Enter number in [] to run action: ");
     }
 
     public void run() {
