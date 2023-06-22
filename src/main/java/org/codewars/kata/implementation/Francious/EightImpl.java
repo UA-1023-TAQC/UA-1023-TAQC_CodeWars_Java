@@ -1,7 +1,6 @@
 package org.codewars.kata.implementation.Francious;
 
 import org.codewars.kata.Eight;
-
 import java.util.ArrayList;
 
 public class EightImpl implements Eight {
@@ -14,7 +13,6 @@ public class EightImpl implements Eight {
     }
 
     public float mpgToKPM(float mpg) {
-
         double galonPerMile = 4.54609188 / 1.609344;
         double result = mpg / galonPerMile;
         return (float) Math.round(result * 100.0) / 100;
