@@ -51,22 +51,7 @@ public class TaskRunner {
             System.out.println("Error! You entered incorrect data.");
         }
     }
-
-
-    public void runVariance() {
-        System.out.println("Run task Rainfall: variance method");
-        System.out.println("Input the name of the city");
-        String town = Reader.readString();
-        System.out.println("Input string with rainfall records. The records of towns  should be separated by \\n." +
-                "The name of each town is followed by : ");
-        String str = Reader.readString();
-        double result = user.getSixImpl().variance(town, str);
-        if (result == -1) {
-            System.out.println("No such city in the records");
-        } else {
-            System.out.println("The variance of rainfall for the city of " + town + " is: " + result);
-        }
-    }
+    
 
     public static String runBalance() {
         return null;
