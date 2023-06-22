@@ -1,6 +1,7 @@
 package org.codewars;
 
 import org.codewars.utils.Reader;
+import org.codewars.utils.Tasks;
 import org.codewars.utils.Users;
 
 public class Menu {
@@ -29,7 +30,15 @@ public class Menu {
     }
 
     public void showTaskInfo(int id) {
-
+        Tasks task = Tasks.getTaskById(id);
+        while (task == null) {
+            Reader reader = new Reader();
+            System.out.print("Wrong task id! Enter int from 1 to 24 included: ");
+            id = reader.readInt();
+            task = Tasks.getTaskById(id);
+        }
+        System.out.println(task.getTaskName());
+        System.out.println(task.getDescription());
     }
 
     public void runTask(int id) {
