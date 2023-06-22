@@ -17,8 +17,14 @@ public class EightImpl implements Eight {
         return result;
     }
 
-    public float mpgToKPM(float mpg) {
-        return 0;
+    public float mpgToKPM(float mpg)
+    {
+        final double imperialGallon = 4.54609188;
+        final double mile = 1.609344;
+        double kpl = mpg * mile / imperialGallon;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        kpl = Double.parseDouble(decimalFormat.format(kpl));
+        return (float) kpl;
     }
 
     public int[] squareOrSquareRoot(int[] array) {
