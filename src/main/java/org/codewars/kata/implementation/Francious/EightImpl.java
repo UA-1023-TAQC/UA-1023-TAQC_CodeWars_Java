@@ -3,6 +3,7 @@ package org.codewars.kata.implementation.Francious;
 import org.codewars.kata.Eight;
 import java.util.ArrayList;
 
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return (int) Math.floor(time * 0.5);
@@ -56,6 +57,7 @@ public class EightImpl implements Eight {
     public double TwoDecimalPlaces(double number) {
         return Math.round(number * 100.00) / 100.00;
     }
+
 
     public int[] divisibleBy(int[] numbers, int divider) {
         ArrayList<Integer> list = new ArrayList<>();
