@@ -83,7 +83,7 @@ public class FiveImpl implements Five {
                 upperBound = midpoint;
             }
         }
-
+        
         return lowerBound;
     }
 
@@ -109,7 +109,7 @@ public class FiveImpl implements Five {
                 sb.deleteCharAt(j);
             }
         }
-
+        
         long minNum = Long.parseLong(minNumStr);
         return new long[]{minNum, minIndex, insertIndex};
     }

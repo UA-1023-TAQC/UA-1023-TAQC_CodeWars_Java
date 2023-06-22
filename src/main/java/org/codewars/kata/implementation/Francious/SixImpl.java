@@ -73,7 +73,7 @@ public class SixImpl implements Six {
     }
 
     public double f(double x) {
-        return x / (Math.pow((1 + x), 0.5) + 1);
+      return x / (Math.pow((1 + x), 0.5) + 1);
     }
 
     public String nbaCup(String resultSheet, String toFind) {
