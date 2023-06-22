@@ -3,7 +3,7 @@ package org.codewars.kata.implementation.Francious;
 import org.codewars.kata.Six;
 
 public class SixImpl implements Six {
-    public static double mean(String town, String strng) {
+    public double mean(String town, String strng) {
         String[] towns = strng.split("\n");
         for (String townData : towns) {
             if (townData.startsWith(town + ":")) {
@@ -21,7 +21,7 @@ public class SixImpl implements Six {
         return -1;
     }
 
-    public static double variance(String town, String strng) {
+    public double variance(String town, String strng) {
         String[] towns = strng.split("\n");
         for (String townData : towns) {
             if (townData.startsWith(town + ":")) {
@@ -73,7 +73,7 @@ public class SixImpl implements Six {
     }
 
     public double f(double x) {
-      return x / (Math.pow((1 + x), 0.5) + 1);
+        return x / (Math.pow((1 + x), 0.5) + 1);
     }
 
     public String nbaCup(String resultSheet, String toFind) {

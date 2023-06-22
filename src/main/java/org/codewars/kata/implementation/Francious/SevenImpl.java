@@ -1,6 +1,7 @@
 package org.codewars.kata.implementation.Francious;
 
 import org.codewars.kata.Seven;
+
 import java.text.DecimalFormat;
 
 

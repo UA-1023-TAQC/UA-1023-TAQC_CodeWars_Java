@@ -61,7 +61,7 @@ public class FiveImpl implements Five {
     }
 
     public double solve(double m) {
-         double lowerBound = 0.0;
+        double lowerBound = 0.0;
         double upperBound = 1.0;
         double precision = 1e-12;
 
@@ -83,7 +83,7 @@ public class FiveImpl implements Five {
                 upperBound = midpoint;
             }
         }
-        
+
         return lowerBound;
     }
 
@@ -109,7 +109,7 @@ public class FiveImpl implements Five {
                 sb.deleteCharAt(j);
             }
         }
-        
+
         long minNum = Long.parseLong(minNumStr);
         return new long[]{minNum, minIndex, insertIndex};
     }
