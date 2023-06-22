@@ -11,7 +11,13 @@ public class Reader {
     }
 
     public int readInt() {
-        return 0;
+        while (true) {
+            try {
+                return Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("An invalid integer was entered. Attempt again:");
+            }
+        }
     }
 
     public BigInteger readBigInteger() {
