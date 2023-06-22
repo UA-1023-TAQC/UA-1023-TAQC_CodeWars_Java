@@ -82,9 +82,9 @@ public class FiveImpl implements Five {
             } else {
                 upperBound = midpoint;
             }
-
-        long minNum = Long.parseLong(minNumStr);
-        return new long[]{minNum, minIndex, insertIndex};
+        }
+        
+        return lowerBound;
     }
 
     public long[] smallest(long n) {
@@ -108,6 +108,9 @@ public class FiveImpl implements Five {
                 }
                 sb.deleteCharAt(j);
             }
+
+        long minNum = Long.parseLong(minNumStr);
+        return new long[]{minNum, minIndex, insertIndex};
     }
 
     @Override
