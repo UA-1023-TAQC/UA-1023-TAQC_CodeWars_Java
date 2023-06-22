@@ -48,9 +48,9 @@ public class Menu {
                 "Run Task"
         };
         for (int i = 0; i < menu.length; i++) {
-            System.out.format("[%2d] %s%n", i, menu[i]);
+            System.out.format("%2d | %s%n", i, menu[i]);
         }
-        System.out.println("Enter number in [] to run action: ");
+        System.out.println("Enter left number to run corresponding action: ");
     }
 
     public void run() {
