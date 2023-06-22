@@ -3,6 +3,8 @@ package org.codewars.utils;
 import java.math.BigInteger;
 
 public class TaskRunner {
+
+    private final Users user;
     public static void setUser(int id){
         // TODO: Implement setUser() method
     }
@@ -69,8 +71,12 @@ public class TaskRunner {
         return 0;
     }
 
-    public static String runSeriesSum(){
-        return null;
+    public void runSeriesSum(){
+        System.out.println("Run task Sum of the first nth term of Series");
+        System.out.println("Input the number");
+        int number = Reader.readInt();
+        String result = user.getSevenImpl().seriesSum(number);
+        System.out.println("Sum of following series up to number " + number + "is: " + result);
     }
 
     public void runStringToNumber(){
