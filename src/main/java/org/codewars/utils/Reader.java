@@ -23,7 +23,13 @@ public class Reader {
     }
 
     public BigInteger readBigInteger() {
-        return BigInteger.ZERO;
+        while (true) {
+            try {
+                return new BigInteger(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("An invalid BigInteger was entered. Attempt again:");
+            }
+        }
     }
 
     public Double readDouble() {
