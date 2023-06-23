@@ -104,6 +104,15 @@ public class TaskRunner {
     }
 
     public void runSquareOrSquareRoot() {
+        System.out.println("Run task To square(root) or not to square(root)");
+        System.out.println("Input an array of integers.The input array should always contain only positive numbers " +
+                "and should never be empty or zero.");
+        int[] array = reader.readArrInt();
+        int[] result = user.getEightImpl().squareOrSquareRoot(array);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println("A new array : " + result);
 
     }
 
