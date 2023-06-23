@@ -55,9 +55,6 @@ public class Reader {
         while(true) {
             System.out.print("Enter double numbers, separated with space: ");
             String input = scanner.nextLine();
-
-            if(input.isEmpty()) throw new IllegalArgumentException("Line is empty");
-
             String[] numberStrings = input.split(" ");
             double[] numbers = new double[numberStrings.length];
             try {
