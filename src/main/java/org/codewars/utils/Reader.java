@@ -49,7 +49,7 @@ public class Reader {
         return scanner.nextLine();
     }
 
-    public static int[] readArrInt() {
+    public int[] readArrInt() {
         String input = scanner.nextLine().trim();
         if (input.isEmpty()) {
             throw new IllegalArgumentException("Line is empty");
