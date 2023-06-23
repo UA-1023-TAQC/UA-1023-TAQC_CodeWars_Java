@@ -95,8 +95,16 @@ public class TaskRunner {
 
     }
 
-    public void runAmIWilson() {
-
+    public void runAmIWilson()
+    {
+        System.out.println("Run task Wilson primes");
+        System.out.println("Input number");
+        double number = reader.readDouble();
+        boolean result = user.getEightImpl().am_i_wilson(number);
+        if (result)
+            System.out.println(String.format("It is a Wilson prime"));
+        else
+            System.out.println(String.format("It is not a Wilson prime"));
     }
 
     public void runDivisibleBy() {
