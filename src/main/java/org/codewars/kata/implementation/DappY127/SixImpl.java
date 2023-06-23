@@ -8,6 +8,25 @@ import java.util.Map;
 import static java.util.stream.Stream.of;
 
 public class SixImpl implements Six {
+    private static void updateMatchStatistics(int pointsA, int pointsB, boolean home, int[] stats) {
+        if (home) {
+            int temp = pointsA;
+            pointsA = pointsB;
+            pointsB = temp;
+        }
+
+        stats[3] += pointsA;
+        stats[4] += pointsB;
+
+        if (pointsA > pointsB) {
+            stats[0]++;
+        } else if (pointsA < pointsB) {
+            stats[1]++;
+        } else {
+            stats[2]++;
+        }
+    }
+
     public long findNb(long m) {
         long n = 1;
         long volume = 0;
@@ -91,25 +110,6 @@ public class SixImpl implements Six {
             }
         }
         return toFind + (stats[3] + stats[4] > 0 ? ":W=" + stats[0] + ";D=" + stats[2] + ";L=" + stats[1] + ";Scored=" + stats[3] + ";Conceded=" + stats[4] + ";Points=" + (3 * stats[0] + stats[2]) : ":This team didn't play!");
-    }
-
-    private static void updateMatchStatistics(int pointsA, int pointsB, boolean home, int[] stats) {
-        if (home) {
-            int temp = pointsA;
-            pointsA = pointsB;
-            pointsB = temp;
-        }
-
-        stats[3] += pointsA;
-        stats[4] += pointsB;
-
-        if (pointsA > pointsB) {
-            stats[0]++;
-        } else if (pointsA < pointsB) {
-            stats[1]++;
-        } else {
-            stats[2]++;
-        }
     }
 
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
