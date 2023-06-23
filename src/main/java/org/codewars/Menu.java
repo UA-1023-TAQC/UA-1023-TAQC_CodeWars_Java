@@ -42,7 +42,11 @@ public class Menu {
     }
 
     public void showTaskList() {
+        System.out.println("Available tasks:");
 
+        for (int i = 1; i <= Tasks.values().length; i++){
+            System.out.format("%2d | %s%n", i, Tasks.getTaskById(i).getTaskName());
+        }
     }
 
     public void showTaskInfo(int id) {
