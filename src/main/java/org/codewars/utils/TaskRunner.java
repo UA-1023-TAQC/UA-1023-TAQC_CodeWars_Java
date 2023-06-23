@@ -91,10 +91,6 @@ public class TaskRunner {
         System.out.println(result);
     }
 
-    public void runLiters() {
-
-    }
-
     public void runWhereIsHe() {
 
     }
@@ -112,7 +108,7 @@ public class TaskRunner {
     public void runLiters() {
         System.out.println("Run task liters\n" +
                 "Enter the time in hours to count the number of liters Nathan will drink:");
-        double time = Reader.readDouble();
+        double time = reader.readDouble();
         int result = user.getEightImpl().liters(time);
         System.out.println("Nathan will drink " + result + " liters");
     }
