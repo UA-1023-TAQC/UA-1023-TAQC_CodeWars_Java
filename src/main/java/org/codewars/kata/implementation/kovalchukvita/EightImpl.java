@@ -9,17 +9,17 @@ public class EightImpl implements Eight {
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return length*width*height;
+        return length * width * height;
     }
 
     public float mpgToKPM(float mpg) {
         double kpl = (mpg / 4.54609188) * 1.609344;
-        return Math.round(kpl*100.0)/100.0f;
+        return Math.round(kpl * 100.0) / 100.0f;
     }
 
     public int[] squareOrSquareRoot(int[] array) {
-        int [] result = new int [array.length];
-        for (int i = 0; i<array.length; i++) {
+        int[] result = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
             int squareRoot = (int) Math.sqrt(array[i]); //корінь квадратний
             if (squareRoot * squareRoot == array[i]) {
                 result[i] = squareRoot;
@@ -38,14 +38,14 @@ public class EightImpl implements Eight {
         int countOfPositive = 0;
         int sumOfNegative = 0;
 
-        for (int i=0; i< input.length; i++) {
-            if ( input.length != 0 && input[i]>0) {
-                countOfPositive ++;
-            } else  if (input.length != 0 && input[i] < 0) {
+        for (int i = 0; i < input.length; i++) {
+            if (input.length != 0 && input[i] > 0) {
+                countOfPositive++;
+            } else if (input.length != 0 && input[i] < 0) {
                 sumOfNegative = sumOfNegative + input[i];
             }
         }
-        int result [] = new int[] {countOfPositive, sumOfNegative};
+        int[] result = new int[]{countOfPositive, sumOfNegative};
         return result; //return an array with count of positives and sum of negatives
     }
 
@@ -56,7 +56,7 @@ public class EightImpl implements Eight {
     }
 
     public double TwoDecimalPlaces(double number) {
-        return Math.round(number*100d)/100d;
+        return Math.round(number * 100d) / 100d;
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {

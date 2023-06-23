@@ -37,7 +37,7 @@ public class FiveImpl implements Five {
         BigInteger secondNum = BigInteger.ONE;
         BigInteger sum = BigInteger.ZERO;
 
-        for(BigInteger i = BigInteger.ZERO; i.compareTo(n)<=0; i=i.add(BigInteger.ONE)) {
+        for (BigInteger i = BigInteger.ZERO; i.compareTo(n) <= 0; i = i.add(BigInteger.ONE)) {
 
             BigInteger nextNum = firstNum.add(secondNum);
             firstNum = secondNum;
@@ -49,7 +49,7 @@ public class FiveImpl implements Five {
     }
 
     public double solve(double m) {
-        double s =  Math.sqrt(4 * m + 1);
+        double s = Math.sqrt(4 * m + 1);
         return (1 - s) / (2 * m) + 1;
     }
 

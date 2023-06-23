@@ -23,17 +23,18 @@ public class SevenImpl implements Seven {
             sum += 1d / (1 + 3 * i);
         return String.format("%.2f", sum);
     }
-        public int whereIsHe(int p, int bef, int aft) {
-            int count = 0;
 
-            for (int i = 1; i <= p; i++) {
-                int before = i - 1;
-                int after = p - i;
-                if (before>=bef && after <= aft) {
-                    count++;
-                }
+    public int whereIsHe(int p, int bef, int aft) {
+        int count = 0;
+
+        for (int i = 1; i <= p; i++) {
+            int before = i - 1;
+            int after = p - i;
+            if (before >= bef && after <= aft) {
+                count++;
             }
-            return count;
         }
+        return count;
     }
+}
 

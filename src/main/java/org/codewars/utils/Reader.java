@@ -1,9 +1,9 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Reader {
     private final Scanner scanner;
@@ -33,20 +33,21 @@ public class Reader {
     }
 
     public double readDouble() {
-        while(true) {
-            try{
+        while (true) {
+            try {
                 return scanner.nextDouble();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Your value is invalid. Try again");
                 scanner.nextLine();
             }
         }
     }
+
     public float readFloat() {
-        while(true) {
-            try{
+        while (true) {
+            try {
                 return scanner.nextFloat();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Your value is invalid. Try again");
                 scanner.nextLine();
             }
@@ -54,10 +55,10 @@ public class Reader {
     }
 
     public long readLong() {
-        while(true) {
-            try{
+        while (true) {
+            try {
                 return scanner.nextLong();
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Your value is invalid. Try again");
                 scanner.nextLine();
             }
@@ -86,8 +87,9 @@ public class Reader {
         scanner.close();
         return arr;
     }
+
     public double[] readArrDouble() {
-        while(true) {
+        while (true) {
             System.out.print("Enter double numbers, separated with space: ");
             String input = scanner.nextLine();
             String[] numberStrings = input.split(" ");
@@ -116,8 +118,9 @@ public class Reader {
         }
         return strings.toArray(new String[0]);
     }
+
     public long[] readArrLong() {
-        while(true) {
+        while (true) {
             System.out.print("Enter numbers, separated with space: ");
             String input = scanner.nextLine();
             String[] numberStrings = input.split(" ");

@@ -106,7 +106,7 @@ public class SixImpl implements Six {
         String town_formated = String.format("%s:(.*)", town);
         Matcher town_line = Pattern.compile(town_formated).matcher(strng);
         Matcher town_line_check = Pattern.compile(town_formated).matcher(strng);
-        if(town_line_check.find()==false)return -1;
+        if (!town_line_check.find()) return -1;
         String town_str = "";
         while (town_line.find()) {
             town_str = town_line.group();
@@ -120,7 +120,7 @@ public class SixImpl implements Six {
             town_number = town_line2.group();
             sum += Float.parseFloat(town_number);
         }
-        avarage = sum/12;
+        avarage = sum / 12;
         float variance_sum = 0;
         String town_number2;
         Matcher town_line3 = Pattern.compile("\\d+.\\d+").matcher(town_str);
@@ -129,7 +129,7 @@ public class SixImpl implements Six {
             float float_nam2 = Float.parseFloat(town_number2);
             variance_sum += Math.pow((avarage - float_nam2), 2);
         }
-        float variance = variance_sum/12;
+        float variance = variance_sum / 12;
         return avarage;
     }
 
@@ -137,7 +137,7 @@ public class SixImpl implements Six {
         String town_formated = String.format("%s:(.*)", town);
         Matcher town_line = Pattern.compile(town_formated).matcher(strng);
         Matcher town_line_check = Pattern.compile(town_formated).matcher(strng);
-        if(town_line_check.find()==false)return -1;
+        if (!town_line_check.find()) return -1;
         String town_str = null;
         while (town_line.find()) {
             town_str = town_line.group();
@@ -150,7 +150,7 @@ public class SixImpl implements Six {
             town_number = town_line2.group();
             sum += Float.parseFloat(town_number);
         }
-        avarage = sum/12;
+        avarage = sum / 12;
         float variance_sum = 0;
         String town_number2;
         Matcher town_line3 = Pattern.compile("\\d+.\\d+").matcher(town_str);
@@ -159,7 +159,7 @@ public class SixImpl implements Six {
             float float_nam2 = Float.parseFloat(town_number2);
             variance_sum += Math.pow((avarage - float_nam2), 2);
         }
-        float variance = variance_sum/12;
+        float variance = variance_sum / 12;
         return variance;
     }
 
