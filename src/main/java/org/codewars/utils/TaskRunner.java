@@ -33,8 +33,12 @@ public class TaskRunner {
         System.out.println("Sum of the perimeters of all the squares is : " + result);
     }
 
-    public void runZeros() {
-
+    public void runZeros(){
+            System.out.println("Run task Number of trailing zeros of N!");
+            System.out.println("Input number to calculate the number of trailing zeros");
+            int x = reader.readInt();
+            int result = user.getFiveImpl().zeros(x);
+            System.out.println("The number of trailing zeros is " + result);
     }
 
     public void runF() {
@@ -144,7 +148,9 @@ public class TaskRunner {
         System.out.println("The smallest number obtained is : " + result);
     }
 
+
     public void runMpgToKPM() {
+
         System.out.println("Run task 'Miles per gallon to kilometers per lite'");
         System.out.println("Input mpg value");
         float mpg = reader.readFloat();
