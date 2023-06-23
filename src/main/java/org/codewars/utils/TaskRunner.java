@@ -87,10 +87,6 @@ public class TaskRunner {
 
     }
 
-    public void runMpgToKPM() {
-
-    }
-
     public void runTwoDecimalPlaces() {
 
     }
@@ -119,8 +115,16 @@ public class TaskRunner {
 
     }
 
-    public void runSmallest() {
+     public void runSmallest() {
 
+     }
+    
+    public void runMpgToKPM(){
+        System.out.println("Run task 'Miles per gallon to kilometers per lite'");
+        System.out.println("Input mpg value");
+        float mpg = reader.readFloat();
+        float result = user.getFiveImlp().mpgToKPM(mpg);
+        System.out.println(result);
     }
 
     public void runArtificialRain() {
