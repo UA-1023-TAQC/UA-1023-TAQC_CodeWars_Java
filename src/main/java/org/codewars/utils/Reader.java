@@ -68,13 +68,10 @@ public class Reader {
         }
         return strings.toArray(new String[0]);
     }
-    public static long[] readArrLong() {
+    public long[] readArrLong() {
         while(true) {
             System.out.print("Enter numbers, separated with space: ");
             String input = scanner.nextLine();
-
-            if(input.isEmpty()) throw new IllegalArgumentException("Line is empty");
-
             String[] numberStrings = input.split(" ");
             long[] numbers = new long[numberStrings.length];
             try {
