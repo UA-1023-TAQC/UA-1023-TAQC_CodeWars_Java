@@ -53,11 +53,11 @@ public class TaskRunner {
 
         System.out.println("Run task Volume of a Cuboid.");
         System.out.println("Input length of the cuboid ");
-        double length = Reader.readDouble();
+        double length = reader.readDouble();
         System.out.println("Input width of the cuboid ");
-        double width = Reader.readDouble();
+        double width = reader.readDouble();
         System.out.println("Input height of the cuboid");
-        double height = Reader.readDouble();
+        double height = reader.readDouble();
         double result =  user.getEightImpl().getVolumeOfCuboid(length, width, height);
         System.out.println(String.format("Result: %f", result));
 
