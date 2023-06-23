@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class TaskRunner {
     private final Reader reader;
@@ -128,7 +129,14 @@ public class TaskRunner {
     }
 
     public void runSmallest() {
-
+        System.out.println("Run task Find the smallest");
+        System.out.println("Input a positive number");
+        long number = reader.readLong();
+        long[] result = user.getFiveImpl().smallest(number);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println("The smallest number obtained is : " + result);
     }
 
     public void runMpgToKPM() {
