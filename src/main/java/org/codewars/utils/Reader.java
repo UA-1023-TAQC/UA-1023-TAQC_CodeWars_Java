@@ -42,9 +42,15 @@ public class Reader {
             }
         }
     }
-
     public float readFloat() {
-        return 0.0f;
+        while(true) {
+            try{
+                return scanner.nextFloat();
+            } catch(Exception e) {
+                System.out.println("Your value is invalid. Try again");
+                scanner.nextLine();
+            }
+        }
     }
 
     public long readLong() {
