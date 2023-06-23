@@ -2,7 +2,6 @@ package org.codewars.utils;
 
 import java.math.BigInteger;
 import java.util.Arrays;
-import java.util.InputMismatchException;
 
 public class TaskRunner {
     private final Reader reader;
@@ -33,12 +32,12 @@ public class TaskRunner {
         System.out.println("Sum of the perimeters of all the squares is : " + result);
     }
 
-    public void runZeros(){
-            System.out.println("Run task Number of trailing zeros of N!");
-            System.out.println("Input number to calculate the number of trailing zeros");
-            int x = reader.readInt();
-            int result = user.getFiveImpl().zeros(x);
-            System.out.println("The number of trailing zeros is " + result);
+    public void runZeros() {
+        System.out.println("Run task Number of trailing zeros of N!");
+        System.out.println("Input number to calculate the number of trailing zeros");
+        int x = reader.readInt();
+        int result = user.getFiveImpl().zeros(x);
+        System.out.println("The number of trailing zeros is " + result);
     }
 
     public void runF() {
@@ -46,7 +45,7 @@ public class TaskRunner {
         System.out.println("Input x ");
         double x = reader.readDouble();
         double result = user.getSixImpl().f(x);
-        System.out.println(String.format("Result: %f", result));
+        System.out.printf("Result: %f%n", result);
     }
 
 
@@ -112,6 +111,7 @@ public class TaskRunner {
         int result = user.getEightImpl().liters(time);
         System.out.println("Nathan will drink " + result + " liters");
     }
+
     public void runTwoDecimalPlaces() {
         System.out.println("Run task Formatting decimal places");
         System.out.println("Input a number of the double type to format");
@@ -126,13 +126,9 @@ public class TaskRunner {
         double number = reader.readDouble();
         boolean result = user.getEightImpl().am_i_wilson(number);
         if (result)
-            System.out.println(String.format("It is a Wilson prime"));
+            System.out.println("It is a Wilson prime");
         else
-            System.out.println(String.format("It is not a Wilson prime"));
-    }
-
-    public void runDivisibleBy() {
-
+            System.out.println("It is not a Wilson prime");
     }
 
     public void runSquareOrSquareRoot() {
@@ -208,6 +204,16 @@ public class TaskRunner {
         long result = user.getSixImpl().findNb(m);
         System.out.printf("Result: %s%n", result);
 
+    }
+
+    public void runDivisibleBy() {
+        System.out.println("Run task divisibleBy\n" +
+                "Enter the array of integers:");
+        int[] numbers = reader.readArrInt();
+        System.out.println("Enter the divisor: ");
+        int divider = reader.readInt();
+        int[] resultArr = user.getEightImpl().divisibleBy(numbers, divider);
+        System.out.println("There are the numbers which are divisible by the given divisor:\n" + resultArr);
     }
 
     public void setUser(Users user) {
