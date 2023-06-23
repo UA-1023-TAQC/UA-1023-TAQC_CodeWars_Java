@@ -1,5 +1,6 @@
 package org.codewars.utils;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
@@ -25,11 +26,19 @@ public class TaskRunner {
     }
 
     public void runPerimeter() {
-
+        System.out.println("Run task Perimeter of squares in a rectangle");
+        System.out.println("Input the number of squares in the rectangle");
+        BigInteger x = reader.readBigInteger();
+        BigInteger result = user.getFiveImpl().perimeter(x);
+        System.out.println("Sum of the perimeters of all the squares is : " + result);
     }
 
-    public void runZeros() {
-
+    public void runZeros(){
+            System.out.println("Run task Number of trailing zeros of N!");
+            System.out.println("Input number to calculate the number of trailing zeros");
+            int x = reader.readInt();
+            int result = user.getFiveImpl().zeros(x);
+            System.out.println("The number of trailing zeros is " + result);
     }
 
     public void runF() {
@@ -110,6 +119,15 @@ public class TaskRunner {
     }
 
     public void runSquareOrSquareRoot() {
+        System.out.println("Run task To square(root) or not to square(root)");
+        System.out.println("Input an array of integers.The input array should always contain only positive numbers " +
+                "and should never be empty or zero.");
+        int[] array = reader.readArrInt();
+        int[] result = user.getEightImpl().squareOrSquareRoot(array);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println("A new array : " + result);
 
     }
 
@@ -126,10 +144,19 @@ public class TaskRunner {
     }
 
     public void runSmallest() {
-
+        System.out.println("Run task Find the smallest");
+        System.out.println("Input a positive number");
+        long number = reader.readLong();
+        long[] result = user.getFiveImpl().smallest(number);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println("The smallest number obtained is : " + result);
     }
 
+
     public void runMpgToKPM() {
+
         System.out.println("Run task 'Miles per gallon to kilometers per lite'");
         System.out.println("Input mpg value");
         float mpg = reader.readFloat();
