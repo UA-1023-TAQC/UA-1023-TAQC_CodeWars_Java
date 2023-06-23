@@ -46,13 +46,19 @@ public class TaskRunner {
     public void runBalance() {
 
     }
-
-    public void runNbaCup() {
+    
+    public void runGetVolumeOfCuboid() {
 
     }
 
-    public void runGetVolumeOfCuboid() {
-
+    public void runNbaCup(){
+        System.out.println("Run task 'Ranking NBA teams'");
+        System.out.println("Input string with results of NBA teams");
+        String resultSheet = reader.readString();
+        System.out.println("Input string of the name of a team ");
+        String toFind = reader.readString();
+        String result = user.getSixImpl().nbaCup(resultSheet, toFind);
+        System.out.println(result);
     }
 
     public void runLiters() {
