@@ -55,7 +55,7 @@ public class TaskRunner {
                 "check number, category, check amount.");
         String x = reader.readString();
         String result = user.getSixImpl().balance(x);
-        System.out.println("Check book" + result);
+        System.out.println("Check book " + result);
     }
 
     public void runGetVolumeOfCuboid() {
