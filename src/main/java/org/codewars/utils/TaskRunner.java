@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.InputMismatchException;
 
 public class TaskRunner {
 
@@ -84,11 +85,15 @@ public class TaskRunner {
 
 
     public void runTwoDecimalPlaces() {
+        try{
         System.out.println("Run task Formatting decimal places");
-        System.out.println("Input a number to format");
+        System.out.println("Input a number of the double type to format");
         double number = Reader.readDouble();
         double result = user.getEightImpl().TwoDecimalPlaces(number);
         System.out.println("The number rounded to two decimal places is" + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Error! The value you entered is not an integer.");
+        }
     }
 
 
