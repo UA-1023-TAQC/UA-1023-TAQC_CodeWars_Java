@@ -53,8 +53,7 @@ public class TaskRunner {
         System.out.println("Run task Rainfall");
         System.out.println("Input the name of the city");
         String town = reader.readString();
-        System.out.println("Input string with rainfall records. City entries should be separated by \\n." +
-                "The name of each city is followed by :");
+        System.out.println("Input string with rainfall records. City entries should be separated by \\n." + "The name of each city is followed by :");
         String str = reader.readString();
         double resultMean = user.getSixImpl().mean(town, str);
         double resultVariance = user.getSixImpl().variance(town, str);
@@ -68,9 +67,7 @@ public class TaskRunner {
 
     public void runBalance() {
         System.out.println("Run task Easy Balance Checking");
-        System.out.println("Input data of check book.The first line should show the opening balance." +
-                " Each other line (if it is not empty) contains the following information: " +
-                "check number, category, check amount.");
+        System.out.println("Input data of check book.The first line should show the opening balance." + " Each other line (if it is not empty) contains the following information: " + "check number, category, check amount.");
         String x = reader.readString();
         String result = user.getSixImpl().balance(x);
         System.out.println("Check book " + result);
@@ -105,8 +102,7 @@ public class TaskRunner {
     }
 
     public void runLiters() {
-        System.out.println("Run task liters\n" +
-                "Enter the time in hours to count the number of liters Nathan will drink:");
+        System.out.println("Run task liters\n" + "Enter the time in hours to count the number of liters Nathan will drink:");
         double time = reader.readDouble();
         int result = user.getEightImpl().liters(time);
         System.out.println("Nathan will drink " + result + " liters");
@@ -125,16 +121,13 @@ public class TaskRunner {
         System.out.println("Input number");
         double number = reader.readDouble();
         boolean result = user.getEightImpl().am_i_wilson(number);
-        if (result)
-            System.out.println("It is a Wilson prime");
-        else
-            System.out.println("It is not a Wilson prime");
+        if (result) System.out.println("It is a Wilson prime");
+        else System.out.println("It is not a Wilson prime");
     }
 
     public void runSquareOrSquareRoot() {
         System.out.println("Run task To square(root) or not to square(root)");
-        System.out.println("Input an array of integers.The input array should always contain only positive numbers " +
-                "and should never be empty or zero.");
+        System.out.println("Input an array of integers.The input array should always contain only positive numbers " + "and should never be empty or zero.");
         int[] array = reader.readArrInt();
         int[] result = user.getEightImpl().squareOrSquareRoot(array);
         for (int i = 0; i < result.length; i++) {
@@ -148,12 +141,7 @@ public class TaskRunner {
         System.out.println("Run task Count of positives / sum of negatives");
         int[] givenArr = reader.readArrInt();
         int[] result = user.getEightImpl().countPositivesSumNegatives(givenArr);
-        System.out.println("The count of positives numbers: " + result[0] +
-                "; sum of negative numbers: " + result[1]);
-    }
-
-    public void runSolve() {
-
+        System.out.println("The count of positives numbers: " + result[0] + "; sum of negative numbers: " + result[1]);
     }
 
     public void runSmallest() {
@@ -207,8 +195,7 @@ public class TaskRunner {
     }
 
     public void runDivisibleBy() {
-        System.out.println("Run task divisibleBy\n" +
-                "Enter the array of integers:");
+        System.out.println("Run task divisibleBy\n" + "Enter the array of integers:");
         int[] numbers = reader.readArrInt();
         System.out.println("Enter the divisor: ");
         int divider = reader.readInt();
@@ -222,6 +209,13 @@ public class TaskRunner {
 
     public void setUser(int userId) {
         this.user = Users.getById(userId);
+    }
+
+    public void runSolve() {
+        System.out.println("Run task Which x for that sum?\nEnter the sum:");
+        double m = reader.readDouble();
+        double x = user.getFiveImpl().solve(m);
+        System.out.println("For the given sum x is " + x);
     }
 
     public void runStockSummary() {
