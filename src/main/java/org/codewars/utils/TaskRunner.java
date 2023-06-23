@@ -109,7 +109,7 @@ public class TaskRunner {
 
     public void runCountPositivesSumNegatives(){
         System.out.println("Run task Count of positives / sum of negatives");
-        int[] givenArr = Reader.readArrInt();
+        int[] givenArr = reader.readArrInt();
         int[] result = user.getEightImpl().countPositivesSumNegatives(givenArr);
         System.out.println("The count of positives numbers: " + result[0] +
                 "; sum of negative numbers: " + result[1]);
@@ -126,7 +126,7 @@ public class TaskRunner {
         System.out.println("Run task 'Miles per gallon to kilometers per lite'");
         System.out.println("Input mpg value");
         float mpg = reader.readFloat();
-        float result = user.getFiveImlp().mpgToKPM(mpg);
+        float result = user.getEightImpl().mpgToKPM(mpg);
         System.out.println(result);
     }
 

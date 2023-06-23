@@ -32,8 +32,15 @@ public class Reader {
         }
     }
 
-    public Double readDouble() {
-        return 0.0;
+    public double readDouble() {
+        while(true) {
+            try{
+                return scanner.nextDouble();
+            } catch(Exception e) {
+                System.out.println("Your value is invalid. Try again");
+                scanner.nextLine();
+            }
+        }
     }
 
     public float readFloat() {
