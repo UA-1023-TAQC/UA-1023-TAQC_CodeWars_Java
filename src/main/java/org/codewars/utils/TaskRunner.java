@@ -49,12 +49,22 @@ public class TaskRunner {
         System.out.println(String.format("Result: %f", result));
     }
 
-    public void runMean() {
 
-    }
-
-    public void runVariance() {
-
+    public void rainfall() {
+        System.out.println("Run task Rainfall");
+        System.out.println("Input the name of the city");
+        String town = reader.readString();
+        System.out.println("Input string with rainfall records. City entries should be separated by \\n." +
+                "The name of each city is followed by :");
+        String str = reader.readString();
+        double resultMean = user.getSixImpl().mean(town, str);
+        double resultVariance = user.getSixImpl().variance(town, str);
+        if (resultMean == -1 || resultVariance == -1) {
+            System.out.println("No such city in the records.");
+        } else {
+            System.out.println("The average of rainfall for the city of " + town + " is: " + resultMean);
+            System.out.println("The variance of rainfall for the city of " + town + " is: " + resultVariance);
+        }
     }
 
     public void runBalance() {
