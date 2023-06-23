@@ -4,11 +4,11 @@ import org.codewars.kata.Six;
 
 public class SixImpl implements Six {
     public long findNb(long m) {
-        long res =0;
-        long n=0;
-        while (res<m){
+        long res = 0;
+        long n = 0;
+        while (res < m) {
             n++;
-            res +=n*n*n;
+            res += n * n * n;
         }
         if (res == m)
             return n;

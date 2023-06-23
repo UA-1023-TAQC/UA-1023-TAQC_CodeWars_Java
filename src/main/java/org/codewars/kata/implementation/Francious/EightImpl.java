@@ -4,6 +4,7 @@ import org.codewars.kata.Eight;
 
 import java.util.ArrayList;
 
+
 public class EightImpl implements Eight {
     public int liters(double time) {
         return (int) Math.floor(time * 0.5);
@@ -14,14 +15,13 @@ public class EightImpl implements Eight {
     }
 
     public float mpgToKPM(float mpg) {
-
         double galonPerMile = 4.54609188 / 1.609344;
         double result = mpg / galonPerMile;
         return (float) Math.round(result * 100.0) / 100;
     }
 
     public int[] squareOrSquareRoot(int[] array) {
-        for (int i = 0; i < array.length; i++){
+        for (int i = 0; i < array.length; i++) {
             double sqrt = Math.sqrt(array[i]);
             if (sqrt == (int) sqrt) {
                 array[i] = (int) sqrt;
@@ -39,8 +39,8 @@ public class EightImpl implements Eight {
 
         int[] result = new int[2];
 
-        for (int i = 0; i < input.length; i++){
-            if (input[i] > 0){
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] > 0) {
                 result[0] += 1;
             }
 
@@ -61,21 +61,22 @@ public class EightImpl implements Eight {
 
     public int[] divisibleBy(int[] numbers, int divider) {
         ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < numbers.length; i++){
-            if (numbers[i] % divider == 0){
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
                 list.add(numbers[i]);
             }
         }
         int[] result = new int[list.size()];
-        for (int j = 0; j < list.size(); j++){
+        for (int j = 0; j < list.size(); j++) {
             result[j] = list.get(j);
         }
 
         return result;
     }
 
+
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        return n == 563 || n == 13 || n == 5;
     }
 }

@@ -13,7 +13,7 @@ public class FiveImpl implements Five {
                 prevPrime = i;
                 continue;
             }
-            if (i - prevPrime == g) return new long[] {prevPrime, i};
+            if (i - prevPrime == g) return new long[]{prevPrime, i};
             prevPrime = i;
         }
         return null;
@@ -23,7 +23,7 @@ public class FiveImpl implements Five {
         if (number <= 1) return false;
 
         long i = 2;
-        while (i < number-1) {
+        while (i < number - 1) {
             if (number % i == 0) {
                 return false;
             }
@@ -74,8 +74,8 @@ public class FiveImpl implements Five {
             for (int j = 0; j < num.length(); j++) {
                 if (i == j) continue;
                 StringBuilder tmp = new StringBuilder(num);
-                String ch = tmp.substring(i, i+1);
-                tmp.delete(i, i+1);
+                String ch = tmp.substring(i, i + 1);
+                tmp.delete(i, i + 1);
                 tmp.insert(j, ch);
                 if (result.compareTo(String.valueOf(tmp)) > 0) {
                     result = String.valueOf(tmp);
@@ -84,11 +84,35 @@ public class FiveImpl implements Five {
                 }
             }
         }
-        return new long[] {Long.parseLong(result), resi, resj};
+        return new long[]{Long.parseLong(result), resi, resj};
     }
 
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        boolean isGroving = false;
+        int wateredSectionLength = 1;
+        int maxWateredSectionLength = wateredSectionLength;
+        int stableHeightLength = 0;
+
+        for (int i = 1; i < v.length; i++) {
+            if (v[i - 1] < v[i]) {
+                if (!isGroving) {
+                    if (maxWateredSectionLength < wateredSectionLength) maxWateredSectionLength = wateredSectionLength;
+                    wateredSectionLength = 1 + stableHeightLength;
+                    isGroving = true;
+                }
+                wateredSectionLength++;
+                stableHeightLength = 0;
+            } else if (v[i - 1] == v[i]) {
+                wateredSectionLength++;
+                stableHeightLength++;
+            } else {
+                if (isGroving) isGroving = false;
+                wateredSectionLength++;
+                stableHeightLength = 0;
+            }
+        }
+        if (maxWateredSectionLength < wateredSectionLength) maxWateredSectionLength = wateredSectionLength;
+        return maxWateredSectionLength;
     }
 }

@@ -1,4 +1,8 @@
+package org.codewars.kata.implementation.andriyav;
+
 import org.codewars.kata.Six;
+
+import java.util.Arrays;
 import java.util.Arrays
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -217,7 +221,7 @@ public class SixImpl implements Six {
                 }
             }
         }
-        int points = win * 3 + draw * 1;
+        int points = win * 3 + draw;
         return toFind + ":" + "W=" + win + ";D=" + draw + ";L=" + lost + ";Scored=" + scored + ";Conceded=" + conceded + ";Points=" + points;
     }
 
@@ -236,7 +240,7 @@ public class SixImpl implements Six {
                         String[] split_str = lstOfArt[k].split(" ");
                         sum += Integer.parseInt(split_str[1]);
                     }
-                    result_sum = "(" + lstOf1stLetter[i] + " : " + String.valueOf(sum) + ")";
+                    result_sum = "(" + lstOf1stLetter[i] + " : " + sum + ")";
                 }
                 result += " - " + result_sum;
             }

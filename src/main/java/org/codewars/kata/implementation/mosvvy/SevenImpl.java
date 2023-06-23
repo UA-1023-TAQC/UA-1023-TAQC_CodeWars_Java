@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class SevenImpl implements Seven {
     public long newAvg(double[] arr, double navg) {
-        double result = (navg * (arr.length+1) - Arrays.stream(arr).sum());
+        double result = (navg * (arr.length + 1) - Arrays.stream(arr).sum());
         if (result <= 0) throw new IllegalArgumentException();
         return (long) Math.ceil(result);
     }
@@ -15,13 +15,13 @@ public class SevenImpl implements Seven {
         double result = 0.0;
 
         for (int i = 1; i <= n; ++i) {
-            result += 1.0 / (3*i-2);
+            result += 1.0 / (3 * i - 2);
         }
 
         return String.format("%.2f", result);
     }
 
     public int whereIsHe(int p, int bef, int aft) {
-        return Math.min(p-bef, aft+1);
+        return Math.min(p - bef, aft + 1);
     }
 }

@@ -20,13 +20,13 @@ public class SevenImpl implements Seven {
     }
 
     public String seriesSum(int n) {
-        if(n==0) return "0.00";
+        if (n == 0) return "0.00";
         DecimalFormat df = new DecimalFormat("#.00");
         System.out.println(n);
         int k = 1;
         double index = 0;
-        for(int i = 0; i<n; i++){
-            index += (double) 1 /k;
+        for (int i = 0; i < n; i++) {
+            index += (double) 1 / k;
             k += 3;
         }
         String formattedNumber = df.format(index);

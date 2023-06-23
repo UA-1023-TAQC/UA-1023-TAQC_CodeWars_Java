@@ -2,19 +2,22 @@ package org.codewars.kata.implementation.mosvvy;
 
 import org.codewars.kata.Six;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 public class SixImpl implements Six {
     public long findNb(long m) {
         long n = 0;
         do {
             n++;
-            m -= n*n*n;
+            m -= n * n * n;
             if (m == 0) return n;
         } while (m > 0);
         return -1;
     }
 
     public String balance(String book) {
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         String[] parseBook = book.replaceAll("[^a-zA-Z0-9\n.]", " ").split("\n");
 
         double balance = Double.parseDouble(parseBook[0]);
@@ -33,7 +36,7 @@ public class SixImpl implements Six {
     }
 
     public double f(double x) {
-        return 0;
+        return BigDecimal.valueOf(x).add(BigDecimal.ONE).sqrt(MathContext.DECIMAL128).subtract(BigDecimal.ONE).doubleValue();
     }
 
     public double mean(String town, String strng) {
@@ -52,21 +55,21 @@ public class SixImpl implements Six {
         int score = 0;
         int conceded = 0;
 
-        for (String resultRow:resultSheet.split(",")) {
-            if (!resultRow.contains(toFind+" ")) continue;
+        for (String resultRow : resultSheet.split(",")) {
+            if (!resultRow.contains(toFind + " ")) continue;
             if (resultRow.contains(".")) return String.format("Error(float number):%s", resultRow);
             int pointsOfTeam;
             int pointsOfTeam2;
-            if (resultRow.indexOf(toFind+" ") == 0) {
+            if (resultRow.indexOf(toFind + " ") == 0) {
                 int toFindL = toFind.length();
-                int startTpt = resultRow.indexOf(" ", toFindL+1);
-                pointsOfTeam = Integer.parseInt(resultRow.substring(toFindL+1, startTpt));
-                pointsOfTeam2 = Integer.parseInt(resultRow.substring(resultRow.lastIndexOf(" ")+1));
+                int startTpt = resultRow.indexOf(" ", toFindL + 1);
+                pointsOfTeam = Integer.parseInt(resultRow.substring(toFindL + 1, startTpt));
+                pointsOfTeam2 = Integer.parseInt(resultRow.substring(resultRow.lastIndexOf(" ") + 1));
             } else {
-                int startT = resultRow.indexOf(toFind+" ");
+                int startT = resultRow.indexOf(toFind + " ");
                 int toFindL = toFind.length();
-                pointsOfTeam = Integer.parseInt(resultRow.substring(startT+toFindL+1));
-                pointsOfTeam2 = Integer.parseInt(resultRow.substring(resultRow.lastIndexOf(" ", startT-2)+1, startT-1));
+                pointsOfTeam = Integer.parseInt(resultRow.substring(startT + toFindL + 1));
+                pointsOfTeam2 = Integer.parseInt(resultRow.substring(resultRow.lastIndexOf(" ", startT - 2) + 1, startT - 1));
             }
             if (pointsOfTeam == pointsOfTeam2) draws++;
             else if (pointsOfTeam > pointsOfTeam2) wins++;
@@ -75,10 +78,10 @@ public class SixImpl implements Six {
             conceded += pointsOfTeam2;
         }
 
-        if (wins+draws+losses == 0) return String.format("%s:This team didn't play!", toFind);
+        if (wins + draws + losses == 0) return String.format("%s:This team didn't play!", toFind);
 
         return String.format("%s:W=%d;D=%d;L=%d;Scored=%d;Conceded=%d;Points=%d",
-                toFind, wins, draws, losses, score, conceded, 3*wins + draws);
+                toFind, wins, draws, losses, score, conceded, 3 * wins + draws);
     }
 
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
