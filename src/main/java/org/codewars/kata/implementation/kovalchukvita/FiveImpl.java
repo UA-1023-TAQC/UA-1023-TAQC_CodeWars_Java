@@ -5,12 +5,31 @@ import org.codewars.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+
+    public static boolean isPrime(long n) {
+        for (int i = 2; i < n / 2; i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long prev = 0;
+        for (long i = m; i <= n; i++) {
+            if (isPrime(i)) {
+                if ((i - prev) == g) return new long[]{prev, i};
+                prev = i;
+            }
+        }
+        return null;
     }
 
     public int zeros(int n) {
-        return 0;
+        int counter = 0;
+        for (int i = 5; n / i > 0; i *= 5) {
+            counter += n / i;
+        }
+        return counter;
     }
 
     public BigInteger perimeter(BigInteger n) {
@@ -22,7 +41,28 @@ public class FiveImpl implements Five {
     }
 
     public long[] smallest(long n) {
-        return new long[0];
+        String numberStr = Long.toString(n);
+        long smallestNumber = n;
+        int indexI = 0;
+        int indexJ = 0;
+
+        for (int i = 0; i < numberStr.length(); i++) {
+            char digit = numberStr.charAt(i);
+            String withoutDigit = numberStr.substring(0, i) + numberStr.substring(i + 1);
+
+            for (int j = 0; j <= withoutDigit.length(); j++) {
+                String modifiedNumberStr = withoutDigit.substring(0, j) + digit + withoutDigit.substring(j);
+                long modifiedNumber = Long.parseLong(modifiedNumberStr);
+
+                if (modifiedNumber < smallestNumber) {
+                    smallestNumber = modifiedNumber;
+                    indexI = i;
+                    indexJ = j;
+                }
+            }
+        }
+
+        return new long[]{smallestNumber, indexI, indexJ};
     }
 
     @Override
