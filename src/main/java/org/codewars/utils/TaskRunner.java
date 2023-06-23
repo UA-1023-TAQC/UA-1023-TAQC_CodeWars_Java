@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class TaskRunner {
     private final Reader reader;
@@ -35,7 +36,7 @@ public class TaskRunner {
         System.out.println("Floating-point Approximation");
         System.out.println("Input x ");
         double x = reader.readDouble();
-        double result =  user.getSixImpl().f(x);
+        double result = user.getSixImpl().f(x);
         System.out.println(String.format("Result: %f", result));
     }
 
@@ -55,7 +56,7 @@ public class TaskRunner {
 
     }
 
-    public void runNbaCup(){
+    public void runNbaCup() {
         System.out.println("Run task 'Ranking NBA teams'");
         System.out.println("Input string with results of NBA teams");
         String resultSheet = reader.readString();
@@ -87,8 +88,7 @@ public class TaskRunner {
 
     }
 
-    public void runAmIWilson()
-    {
+    public void runAmIWilson() {
         System.out.println("Run task Wilson primes");
         System.out.println("Input number");
         double number = reader.readDouble();
@@ -107,22 +107,30 @@ public class TaskRunner {
 
     }
 
-    public void runCountPositivesSumNegatives(){
+    public void runCountPositivesSumNegatives() {
         System.out.println("Run task Count of positives / sum of negatives");
         int[] givenArr = reader.readArrInt();
         int[] result = user.getEightImpl().countPositivesSumNegatives(givenArr);
         System.out.println("The count of positives numbers: " + result[0] +
                 "; sum of negative numbers: " + result[1]);
     }
+
     public void runSolve() {
 
     }
 
-     public void runSmallest() {
+    public void runSmallest() {
+        System.out.println("Run task Find the smallest");
+        System.out.println("Input a positive number");
+        long number = reader.readLong();
+        long[] result = user.getFiveImpl().smallest(number);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println("The smallest number obtained is : " + result);
+    }
 
-     }
-
-    public void runMpgToKPM(){
+    public void runMpgToKPM() {
         System.out.println("Run task 'Miles per gallon to kilometers per lite'");
         System.out.println("Input mpg value");
         float mpg = reader.readFloat();
