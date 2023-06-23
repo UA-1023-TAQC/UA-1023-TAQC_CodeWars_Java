@@ -49,7 +49,22 @@ public class Reader {
     }
 
     public int[] readArrInt() {
-        return new int[0];
+        String input = scanner.nextLine().trim();
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("Line is empty");
+        }
+        String[] strArr = input.split("\\s+");
+        int[] arr = new int[strArr.length];
+
+        try {
+            for (int i = 0; i < strArr.length; i++) {
+                arr[i] = Integer.parseInt(strArr[i]);
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Incorect line. Enter whole numbers.");
+        }
+        scanner.close();
+        return arr;
     }
     public double[] readArrDouble() {
         while(true) {
