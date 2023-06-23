@@ -58,7 +58,13 @@ public class TaskRunner {
     }
 
     public void runBalance() {
-
+        System.out.println("Run task Easy Balance Checking");
+        System.out.println("Input data of check book.The first line should show the opening balance." +
+                " Each other line (if it is not empty) contains the following information: " +
+                "check number, category, check amount.");
+        String x = reader.readString();
+        String result = user.getSixImpl().balance(x);
+        System.out.println("Check book " + result);
     }
 
     public void runGetVolumeOfCuboid() {
