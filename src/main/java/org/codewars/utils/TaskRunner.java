@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.InputMismatchException;
 
 public class TaskRunner {
     private final Users user;
@@ -16,11 +17,15 @@ public class TaskRunner {
     }
 
     public void runZeros(){
+        try{
         System.out.println("Run task Number of trailing zeros of N!");
         System.out.println("Input number to calculate the number of trailing zeros");
         int x = Reader.readInt();
         int result = user.getFiveImpl().zeros(x);
-        System.out.println("The number of trailing zeros is" + result);
+        System.out.println("The number of trailing zeros is " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Error! The value you entered is not an integer.");
+        }
     }
 
     public static double runF(){
