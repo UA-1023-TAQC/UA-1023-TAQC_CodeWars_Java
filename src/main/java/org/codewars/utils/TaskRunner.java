@@ -74,6 +74,15 @@ public class TaskRunner {
     }
 
     public void runGetVolumeOfCuboid() {
+        System.out.println("Run task Volume of a Cuboid.");
+        System.out.println("Input length of the cuboid ");
+        double length = reader.readDouble();
+        System.out.println("Input width of the cuboid ");
+        double width = reader.readDouble();
+        System.out.println("Input height of the cuboid");
+        double height = reader.readDouble();
+        double result = user.getEightImpl().getVolumeOfCuboid(length, width, height);
+        System.out.printf("Result: %f%n", result);
 
     }
 
