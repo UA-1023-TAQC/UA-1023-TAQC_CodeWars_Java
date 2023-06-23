@@ -3,16 +3,37 @@ package org.codewars.kata.implementation.kovalchukvita;
 import org.codewars.kata.Seven;
 
 public class SevenImpl implements Seven {
-  
-        public long newAvg(double[] arr, double navg) {
-            return 0;
+    public long newAvg(double[] arr, double navg) {
+        double sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum = sum + arr[i];
         }
+        double numDonations = arr.length + 1;
+        double expectedDonation = navg * numDonations - sum;
 
-        public String seriesSum(int n) {
-            return null;
+        if (expectedDonation <= 0) {
+            throw new IllegalArgumentException();
         }
-
-    public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        return (long) Math.ceil(expectedDonation);
     }
-}
+
+    public String seriesSum(int n) {
+        double sum = 0d;
+        for (int i = 0; i < n; i++)
+            sum += 1d / (1 + 3 * i);
+        return String.format("%.2f", sum);
+    }
+        public int whereIsHe(int p, int bef, int aft) {
+            int count = 0;
+
+            for (int i = 1; i <= p; i++) {
+                int before = i - 1;
+                int after = p - i;
+                if (before>=bef && after <= aft) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+
