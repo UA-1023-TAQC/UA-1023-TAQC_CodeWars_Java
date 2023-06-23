@@ -83,10 +83,6 @@ public class TaskRunner {
         System.out.println(result);
     }
 
-    public void runcountPositivesSumNegatives() {
-
-    }
-
     public void runTwoDecimalPlaces() {
 
     }
@@ -111,6 +107,13 @@ public class TaskRunner {
 
     }
 
+    public void runCountPositivesSumNegatives(){
+        System.out.println("Run task Count of positives / sum of negatives");
+        int[] givenArr = Reader.readArrInt();
+        int[] result = user.getEightImpl().countPositivesSumNegatives(givenArr);
+        System.out.println("The count of positives numbers: " + result[0] +
+                "; sum of negative numbers: " + result[1]);
+    }
     public void runSolve() {
 
     }
