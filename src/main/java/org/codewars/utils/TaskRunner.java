@@ -109,6 +109,15 @@ public class TaskRunner {
     }
 
     public void runSquareOrSquareRoot() {
+        System.out.println("Run task To square(root) or not to square(root)");
+        System.out.println("Input an array of integers.The input array should always contain only positive numbers " +
+                "and should never be empty or zero.");
+        int[] array = reader.readArrInt();
+        int[] result = user.getEightImpl().squareOrSquareRoot(array);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println("A new array : " + result);
 
     }
 
@@ -125,7 +134,14 @@ public class TaskRunner {
     }
 
     public void runSmallest() {
-
+        System.out.println("Run task Find the smallest");
+        System.out.println("Input a positive number");
+        long number = reader.readLong();
+        long[] result = user.getFiveImpl().smallest(number);
+        for (int i = 0; i < result.length; i++) {
+            System.out.print(result[i] + " ");
+        }
+        System.out.println("The smallest number obtained is : " + result);
     }
 
     public void runMpgToKPM() {
