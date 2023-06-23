@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class TaskRunner {
     private final Reader reader;
@@ -27,8 +28,12 @@ public class TaskRunner {
 
     }
 
-    public void runZeros() {
-
+    public void runZeros(){
+            System.out.println("Run task Number of trailing zeros of N!");
+            System.out.println("Input number to calculate the number of trailing zeros");
+            int x = reader.readInt();
+            int result = user.getFiveImpl().zeros(x);
+            System.out.println("The number of trailing zeros is " + result);
     }
 
     public void runF() {
