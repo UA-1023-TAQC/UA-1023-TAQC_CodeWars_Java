@@ -32,7 +32,11 @@ public class TaskRunner {
     }
 
     public void runF() {
-
+        System.out.println("Floating-point Approximation");
+        System.out.println("Input x ");
+        double x = reader.readDouble();
+        double result =  user.getSixImpl().f(x);
+        System.out.println(String.format("Result: %f", result));
     }
 
     public void runMean() {
