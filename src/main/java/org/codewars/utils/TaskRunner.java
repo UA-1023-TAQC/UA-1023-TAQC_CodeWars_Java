@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class TaskRunner {
     private final Reader reader;
@@ -35,16 +36,26 @@ public class TaskRunner {
         System.out.println("Floating-point Approximation");
         System.out.println("Input x ");
         double x = reader.readDouble();
-        double result =  user.getSixImpl().f(x);
+        double result = user.getSixImpl().f(x);
         System.out.println(String.format("Result: %f", result));
     }
 
-    public void runMean() {
 
-    }
-
-    public void runVariance() {
-
+    public void rainfall() {
+        System.out.println("Run task Rainfall");
+        System.out.println("Input the name of the city");
+        String town = reader.readString();
+        System.out.println("Input string with rainfall records. City entries should be separated by \\n." +
+                "The name of each city is followed by :");
+        String str = reader.readString();
+        double resultMean = user.getSixImpl().mean(town, str);
+        double resultVariance = user.getSixImpl().variance(town, str);
+        if (resultMean == -1 || resultVariance == -1) {
+            System.out.println("No such city in the records.");
+        } else {
+            System.out.println("The average of rainfall for the city of " + town + " is: " + resultMean);
+            System.out.println("The variance of rainfall for the city of " + town + " is: " + resultVariance);
+        }
     }
 
     public void runBalance() {
@@ -55,7 +66,7 @@ public class TaskRunner {
 
     }
 
-    public void runNbaCup(){
+    public void runNbaCup() {
         System.out.println("Run task 'Ranking NBA teams'");
         System.out.println("Input string with results of NBA teams");
         String resultSheet = reader.readString();
@@ -87,8 +98,7 @@ public class TaskRunner {
 
     }
 
-    public void runAmIWilson()
-    {
+    public void runAmIWilson() {
         System.out.println("Run task Wilson primes");
         System.out.println("Input number");
         double number = reader.readDouble();
@@ -107,22 +117,23 @@ public class TaskRunner {
 
     }
 
-    public void runCountPositivesSumNegatives(){
+    public void runCountPositivesSumNegatives() {
         System.out.println("Run task Count of positives / sum of negatives");
         int[] givenArr = reader.readArrInt();
         int[] result = user.getEightImpl().countPositivesSumNegatives(givenArr);
         System.out.println("The count of positives numbers: " + result[0] +
                 "; sum of negative numbers: " + result[1]);
     }
+
     public void runSolve() {
 
     }
 
-     public void runSmallest() {
+    public void runSmallest() {
 
-     }
+    }
 
-    public void runMpgToKPM(){
+    public void runMpgToKPM() {
         System.out.println("Run task 'Miles per gallon to kilometers per lite'");
         System.out.println("Input mpg value");
         float mpg = reader.readFloat();
