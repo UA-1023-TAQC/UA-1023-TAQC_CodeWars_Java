@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
+import java.util.InputMismatchException;
 
 public class TaskRunner {
     private final Users user;
@@ -36,11 +37,17 @@ public class TaskRunner {
     }
 
     public void runBalance(){
+        try{
         System.out.println("Run task Easy Balance Checking");
-        System.out.println("Input data of check book");
+        System.out.println("Input data of check book.The first line should show the opening balance." +
+                " Each other line (if it is not empty) contains the following information: " +
+                "check number, category, check amount.");
         String x = Reader.readString();
         String result = user.getSixImpl().balance(x);
         System.out.println("Check book" + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Error! You entered incorrect data.");
+        }
     }
 
     public static String runNbaCup(){
