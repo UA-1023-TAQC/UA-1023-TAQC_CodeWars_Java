@@ -48,7 +48,14 @@ public class Reader {
     }
 
     public long readLong() {
-        return 0;
+        while(true) {
+            try{
+                return scanner.nextLong();
+            } catch(Exception e) {
+                System.out.println("Your value is invalid. Try again");
+                scanner.nextLine();
+            }
+        }
     }
 
     public String readString() {
