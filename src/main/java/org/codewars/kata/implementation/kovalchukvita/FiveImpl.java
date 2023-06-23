@@ -33,11 +33,24 @@ public class FiveImpl implements Five {
     }
 
     public BigInteger perimeter(BigInteger n) {
-        return null;
+        BigInteger firstNum = BigInteger.ZERO;
+        BigInteger secondNum = BigInteger.ONE;
+        BigInteger sum = BigInteger.ZERO;
+
+        for(BigInteger i = BigInteger.ZERO; i.compareTo(n)<=0; i=i.add(BigInteger.ONE)) {
+
+            BigInteger nextNum = firstNum.add(secondNum);
+            firstNum = secondNum;
+            secondNum = nextNum;
+            sum = sum.add(firstNum);
+
+        }
+        return sum.multiply(BigInteger.valueOf(4));
     }
 
     public double solve(double m) {
-        return 0;
+        double s =  Math.sqrt(4 * m + 1);
+        return (1 - s) / (2 * m) + 1;
     }
 
     public long[] smallest(long n) {
