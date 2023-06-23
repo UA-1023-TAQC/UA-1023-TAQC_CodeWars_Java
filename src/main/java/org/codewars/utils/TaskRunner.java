@@ -105,10 +105,13 @@ public class TaskRunner {
 
     public void runSmallest() {
         try {
-            System.out.println("Run task runSmallest");
+            System.out.println("Run task Find the smallest");
             System.out.println("Input a positive number");
             long number = Reader.readLong();
             long[] result = user.getFiveImpl().smallest(number);
+            for (int i = 0; i < result.length; i++) {
+                System.out.print(result[i] + " ");
+            }
             System.out.println("The smallest number obtained is : " + result);
         } catch (InputMismatchException e) {
             System.out.println("Error! The value you entered is not an integer.");
