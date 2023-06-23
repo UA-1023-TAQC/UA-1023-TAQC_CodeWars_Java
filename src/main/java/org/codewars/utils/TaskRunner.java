@@ -100,7 +100,11 @@ public class TaskRunner {
     }
 
     public void runTwoDecimalPlaces() {
-
+        System.out.println("Run task Formatting decimal places");
+        System.out.println("Input a number of the double type to format");
+        double number = reader.readDouble();
+        double result = user.getEightImpl().TwoDecimalPlaces(number);
+        System.out.println("The number rounded to two decimal places is " + result);
     }
 
     public void runAmIWilson() {
@@ -156,7 +160,6 @@ public class TaskRunner {
 
 
     public void runMpgToKPM() {
-
         System.out.println("Run task 'Miles per gallon to kilometers per lite'");
         System.out.println("Input mpg value");
         float mpg = reader.readFloat();
