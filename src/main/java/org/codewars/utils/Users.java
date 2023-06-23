@@ -99,8 +99,7 @@ public enum Users {
 
     @Override
     public String toString() {
-        return String.format("Users:id=%d, name='%s, nickname='%s', eightImpl=%s, " +
-                "sevenImpl=%s, sixImpl=%s, fiveImpl=%s", id, name, nickname, eightImpl, sevenImpl, sixImpl, fiveImpl);
+        return String.format("Users:id=%d, name='%s', nickname='%s'", id, name, nickname);
     }
 
 

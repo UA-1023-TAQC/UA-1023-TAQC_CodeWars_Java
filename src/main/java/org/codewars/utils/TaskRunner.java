@@ -32,7 +32,11 @@ public class TaskRunner {
     }
 
     public void runF() {
-
+        System.out.println("Floating-point Approximation");
+        System.out.println("Input x ");
+        double x = reader.readDouble();
+        double result =  user.getSixImpl().f(x);
+        System.out.println(String.format("Result: %f", result));
     }
 
     public void runMean() {
@@ -79,20 +83,20 @@ public class TaskRunner {
         System.out.println(result);
     }
 
-    public void runcountPositivesSumNegatives() {
-
-    }
-
-    public void runMpgToKPM() {
-
-    }
-
     public void runTwoDecimalPlaces() {
 
     }
 
-    public void runAmIWilson() {
-
+    public void runAmIWilson()
+    {
+        System.out.println("Run task Wilson primes");
+        System.out.println("Input number");
+        double number = reader.readDouble();
+        boolean result = user.getEightImpl().am_i_wilson(number);
+        if (result)
+            System.out.println(String.format("It is a Wilson prime"));
+        else
+            System.out.println(String.format("It is not a Wilson prime"));
     }
 
     public void runDivisibleBy() {
@@ -103,12 +107,27 @@ public class TaskRunner {
 
     }
 
+    public void runCountPositivesSumNegatives(){
+        System.out.println("Run task Count of positives / sum of negatives");
+        int[] givenArr = Reader.readArrInt();
+        int[] result = user.getEightImpl().countPositivesSumNegatives(givenArr);
+        System.out.println("The count of positives numbers: " + result[0] +
+                "; sum of negative numbers: " + result[1]);
+    }
     public void runSolve() {
 
     }
 
-    public void runSmallest() {
+     public void runSmallest() {
 
+     }
+    
+    public void runMpgToKPM(){
+        System.out.println("Run task 'Miles per gallon to kilometers per lite'");
+        System.out.println("Input mpg value");
+        float mpg = reader.readFloat();
+        float result = user.getFiveImlp().mpgToKPM(mpg);
+        System.out.println(result);
     }
 
     public void runArtificialRain() {

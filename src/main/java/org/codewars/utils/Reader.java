@@ -1,10 +1,9 @@
 package org.codewars.utils;
 
 import java.math.BigInteger;
-
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Reader {
     private final Scanner scanner;
@@ -67,9 +66,22 @@ public class Reader {
         scanner.close();
         return arr;
     }
-
     public double[] readArrDouble() {
-        return new double[0];
+        while(true) {
+            System.out.print("Enter double numbers, separated with space: ");
+            String input = scanner.nextLine();
+            String[] numberStrings = input.split(" ");
+            double[] numbers = new double[numberStrings.length];
+            try {
+                for (int i = 0; i < numberStrings.length; i++) {
+                    numbers[i] = Double.parseDouble(numberStrings[i]);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Your value is invalid\nTry again");
+                continue;
+            }
+            return numbers;
+        }
     }
 
     public String[] readArrString() {
@@ -84,9 +96,22 @@ public class Reader {
         }
         return strings.toArray(new String[0]);
     }
-
     public long[] readArrLong() {
-        return new long[0];
+        while(true) {
+            System.out.print("Enter numbers, separated with space: ");
+            String input = scanner.nextLine();
+            String[] numberStrings = input.split(" ");
+            long[] numbers = new long[numberStrings.length];
+            try {
+                for (int i = 0; i < numberStrings.length; i++) {
+                    numbers[i] = Long.parseLong(numberStrings[i]);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Your value is invalid\nTry again");
+                continue;
+            }
+            return numbers;
+        }
     }
 
     public Boolean readBoolean() {
