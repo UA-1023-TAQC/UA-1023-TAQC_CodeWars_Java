@@ -46,7 +46,7 @@ public class SixImpl implements Six {
     }
 
     public double f(double x) {
-        return 0;
+        return x / (1 + Math.sqrt(1 + x));
     }
 
     public double mean(String town, String strng) {
@@ -97,6 +97,26 @@ public class SixImpl implements Six {
     }
 
     public String stockSummary(String[] lstOfArt, String[] lstOf1stLetter) {
-        return null;
+        if (lstOfArt.length == 0 || lstOf1stLetter.length == 0) {
+            return "";
+        }
+        StringBuilder listOfBook = new StringBuilder();
+        String[] stock = {};
+        String list = "";
+        for (String s : lstOf1stLetter) {
+            int res = 0;
+            for (String value : lstOfArt) {
+                if (s.charAt(0) == value.charAt(0)) {
+                    stock = value.split(" ");
+                    res += Integer.parseInt(stock[1]);
+                }
+                list = "(" + s + " : " + res + ")";
+
+            }
+            listOfBook.append(" - ").append(list);
+
+        }
+        listOfBook = new StringBuilder(listOfBook.toString().replaceFirst(" - ", ""));
+        return listOfBook.toString();
     }
 }
