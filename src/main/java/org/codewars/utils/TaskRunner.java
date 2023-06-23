@@ -90,7 +90,7 @@ public class TaskRunner {
         System.out.println("Input a number of the double type to format");
         double number = Reader.readDouble();
         double result = user.getEightImpl().TwoDecimalPlaces(number);
-        System.out.println("The number rounded to two decimal places is" + result);
+        System.out.println("The number rounded to two decimal places is " + result);
         } catch (InputMismatchException e) {
             System.out.println("Error! The value you entered is not an integer.");
         }
