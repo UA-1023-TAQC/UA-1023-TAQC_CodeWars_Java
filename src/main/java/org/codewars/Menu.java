@@ -76,6 +76,12 @@ public class Menu {
         menu.put(5, "Set User");
         menu.put(6, "Run Task");
 
+        if (user == null) {
+            System.out.println("Current User is not set");
+        } else {
+            System.out.format("Current %s%n", user);
+        }
+
         for (Map.Entry<Integer, String> menuItem : menu.entrySet()) {
             System.out.format("%2d | %s%n", menuItem.getKey(), menuItem.getValue());
         }
