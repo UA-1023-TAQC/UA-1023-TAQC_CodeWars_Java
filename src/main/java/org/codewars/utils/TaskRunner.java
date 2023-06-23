@@ -85,6 +85,10 @@ public class TaskRunner {
 
     }
 
+     public void runSmallest() {
+
+     }
+    
     public void runMpgToKPM(){
         System.out.println("Run task 'Miles per gallon to kilometers per lite'");
         System.out.println("Input mpg value");
