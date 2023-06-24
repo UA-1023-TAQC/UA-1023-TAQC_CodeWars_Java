@@ -20,7 +20,25 @@ public class SixImpl implements Six {
     }
 
     public double variance(String town, String strng) {
-        return 0;
+        Double avg = mean(town, strng);
+
+        String[] records = strng.split("\n");
+        Double variance = 0.0;
+        Integer counter = 0;
+        for(String record : records){
+            if(record.split(":")[0].equals(town)){
+                String[] array = record.split(",");
+                for(String a : array){
+                    counter++;
+                    variance = variance + Math.pow(Double.parseDouble(a.split(" ")[1]) - avg, 2);
+                }
+            }
+        }
+        System.out.println(town);
+        if(counter == 0){
+            return -1;
+        }
+        return variance / counter;
     }
 
     public String nbaCup(String resultSheet, String toFind) {
