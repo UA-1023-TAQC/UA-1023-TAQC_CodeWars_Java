@@ -35,7 +35,7 @@ public class SixImpl implements Six {
     }
 
     public double f(double x) {
-        return x / (Math.sqrt(1 + x) + 1);
+        return 0;
     }
 
     public double mean(String town, String strng) {
