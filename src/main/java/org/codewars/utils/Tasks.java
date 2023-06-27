@@ -217,7 +217,7 @@ public enum Tasks {
                     "Note:\n" +
                     "In the result codes and their values are in the same order as in M."),
     TASK_5_1(19, "Artificial Rain",
-            "6.\n" +
+            "Little Petya often visits his grandmother in the countryside. The grandmother has a large vertical garden, which can be represented as a set of n rectangles of varying height.\nDue to the newest irrigation system we can create artificial rain above them.\n" +
                     "\n" +
 
 
