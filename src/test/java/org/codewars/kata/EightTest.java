@@ -33,10 +33,22 @@ public class EightTest extends UserImplementations {
     public void testGetVolumeOfCuboid() {
     }
 
-    @Test
-    public void testMpgToKPM() {
-    }
 
+    @DataProvider(name = "MpgToKPMTestData")
+    private Object[][] MpgToKPMTestData() {
+        Object[][] testData = new Object[][]{
+                {3.54f, 10, 0.001f},
+                {7.08f, 20, 0.001f},
+                {10.62f, 30, 0.001f},
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+
+    }
+    @Test(dataProvider = "MpgToKPMTestData")
+    public void testMpgToKPM(Eight impl, float expected, float value, float data ) {
+        double actual = impl.mpgToKPM(value);
+        assertEquals(actual, expected, data);
+    }
     @Test
     public void testSquareOrSquareRoot() {
     }
