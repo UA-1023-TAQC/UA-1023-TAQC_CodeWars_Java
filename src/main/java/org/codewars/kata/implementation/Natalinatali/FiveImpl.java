@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.Natalinatali;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Five;
 
 import java.math.BigInteger;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     public static boolean isPrim(long x) {
         if (x == 2) return true;
         if (x % 2 != 0) {

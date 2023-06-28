@@ -1,8 +1,9 @@
 package org.codewars.kata.implementation.Tk4V;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
-public class EightImpl implements Eight {
+public class EightImpl extends Base implements Eight {
     public int liters(double time) {
         return 0;
     }

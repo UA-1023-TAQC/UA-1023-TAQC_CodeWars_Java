@@ -1,11 +1,12 @@
 package org.codewars.kata.implementation.mosvvy;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
         long n = 0;
         do {

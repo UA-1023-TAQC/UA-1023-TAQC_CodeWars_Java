@@ -1,11 +1,12 @@
 package org.codewars.kata.implementation.Francious;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Seven;
 
 import java.text.DecimalFormat;
 
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     public long newAvg(double[] arr, double navg) {
         double result = 0;
         for (double donation : arr) {

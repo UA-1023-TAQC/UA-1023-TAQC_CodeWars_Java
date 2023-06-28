@@ -1,11 +1,12 @@
 package org.codewars.kata.implementation.andriyav;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Five;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     public long[] gap(int g, long m, long n) {
         long[] prime = new long[2];
         for (long i = m; i <= n; i++) {

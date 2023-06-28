@@ -1,10 +1,11 @@
 package org.codewars.kata;
 
+import org.codewars.UserImplementations;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class FiveTest {
+public class FiveTest extends UserImplementations {
 
     @Test
     public void testGap() {

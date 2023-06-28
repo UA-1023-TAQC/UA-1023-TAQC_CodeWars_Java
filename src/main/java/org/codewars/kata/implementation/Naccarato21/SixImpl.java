@@ -1,8 +1,9 @@
 package org.codewars.kata.implementation.Naccarato21;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
         return 0;
     }
