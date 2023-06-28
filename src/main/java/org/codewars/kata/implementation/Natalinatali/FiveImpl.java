@@ -5,8 +5,37 @@ import org.codewars.kata.Five;
 import java.math.BigInteger;
 
 public class FiveImpl implements Five {
+    public static boolean isPrim(long x) {
+        if (x == 2) return true;
+        if (x % 2 != 0) {
+            for (int i = 2; i <= x / 2; i++) {
+                if (x % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     public long[] gap(int g, long m, long n) {
-        return new long[0];
+        long lastPrim = 0;
+        for (long i = m; i < n; i++) {
+            if (isPrim(i)) {
+                if (lastPrim == 0) {
+                    lastPrim = i;
+                } else if (i - lastPrim == g) {
+                    long[] arr = new long[]{lastPrim, i};
+                    for (int j = 0; j < arr.length; j++) {
+                        System.out.println(arr[j]);
+                    }
+                    return arr;
+                } else {
+                    lastPrim = i;
+                }
+            }
+        }
+        return null;
     }
 
     public int zeros(int n) {

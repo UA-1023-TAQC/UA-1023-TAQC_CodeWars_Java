@@ -1,6 +1,7 @@
 package org.codewars;
 
 import org.codewars.utils.Reader;
+import org.codewars.utils.TaskRunner;
 import org.codewars.utils.Tasks;
 import org.codewars.utils.Users;
 
@@ -9,6 +10,7 @@ import java.util.Map;
 
 public class Menu {
     private Users user;
+    private TaskRunner taskRunner;
 
 
     public int getUserId() {
@@ -17,7 +19,13 @@ public class Menu {
 
     //In setter need to check is value is valid
     public void setUserById(int userID) {
-        this.user = Users.getById(userID);
+        user = Users.getById(userID);
+        while (user == null) {
+            Reader reader = new Reader();
+            System.out.print("Wrong user id! Enter int from 1 to 11 included: ");
+            userID = reader.readInt();
+            user = Users.getById(userID);
+        }
     }
 
     public void showUsersList() {
@@ -62,6 +70,109 @@ public class Menu {
     }
 
     public void runTask(int id) {
+        TaskRunner taskRunner = new TaskRunner(getUserId());
+        switch (id) {
+            case 1: {
+                taskRunner.runLiters();
+                break;
+            }
+            case 2: {
+                taskRunner.runGetVolumeOfCuboid();
+                break;
+            }
+            case 3: {
+                taskRunner.runMpgToKPM();
+                break;
+            }
+            case 4: {
+                taskRunner.runSquareOrSquareRoot();
+                break;
+            }
+            case 5: {
+                taskRunner.runCountPositivesSumNegatives();
+                break;
+            }
+            case 6: {
+                taskRunner.runStringToNumber();
+                break;
+            }
+            case 7: {
+                taskRunner.runAmIWilson();
+                break;
+            }
+            case 8: {
+                taskRunner.runTwoDecimalPlaces();
+                break;
+            }
+            case 9: {
+                taskRunner.runDivisibleBy();
+                break;
+            }
+            case 10: {
+                taskRunner.runNewAvg();
+                break;
+            }
+            case 11: {
+                taskRunner.runSeriesSum();
+                break;
+            }
+            case 12: {
+                taskRunner.runWhereIsHe();
+                break;
+            }
+            case 13: {
+                taskRunner.runFindNb();
+                break;
+            }
+            case 14: {
+                taskRunner.runBalance();
+                break;
+            }
+            case 15: {
+                taskRunner.runF();
+                break;
+            }
+            case 16: {
+                taskRunner.rainfall();
+                break;
+            }
+            case 17: {
+                taskRunner.runNbaCup();
+                break;
+            }
+            case 18: {
+                taskRunner.runStockSummary();
+                break;
+            }
+            case 19: {
+                taskRunner.runArtificialRain();
+                break;
+            }
+            case 20: {
+                taskRunner.runGap();
+                break;
+            }
+            case 21: {
+                taskRunner.runZeros();
+                break;
+            }
+            case 22: {
+                taskRunner.runPerimeter();
+                break;
+            }
+            case 23: {
+                taskRunner.runSolve();
+                break;
+            }
+            case 24: {
+                taskRunner.runSmallest();
+                break;
+            }
+            default: {
+                System.out.println("Unknown action. Try again, please.");
+                break;
+            }
+        }
 
     }
 

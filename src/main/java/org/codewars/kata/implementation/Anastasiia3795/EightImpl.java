@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.Anastasiia3795;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
 import java.util.Arrays;
 
-public class EightImpl implements Eight {
+public class EightImpl extends Base implements Eight{
     public static double factorial(double num) {
         double result = 1;
         for (int i = 1; i <= num; i++) {
