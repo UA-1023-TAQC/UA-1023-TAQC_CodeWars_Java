@@ -71,7 +71,7 @@ public class Menu {
 
     public void runTask(int id) {
         TaskRunner taskRunner = new TaskRunner(getUserId());
-        switch (id){
+        switch (id) {
             case 1: {
                 taskRunner.runLiters();
                 break;
