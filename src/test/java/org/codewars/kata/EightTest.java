@@ -45,8 +45,22 @@ public class EightTest extends UserImplementations {
     public void testCountPositivesSumNegatives() {
     }
 
-    @Test
-    public void testStringToNumber() {
+    @DataProvider(name = "stringToNumberTestData")
+    private Object[][] stringToNumberTestData() {
+        Object[][] testData = new Object[][]{
+                {"2", 2},
+                {"0", 0},
+                {"-123", -123},
+                {"495797", 495797},
+                {"2147483647", 2147483647}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+
+    }
+    @Test(dataProvider = "stringToNumberTestData")
+    public void testStringToNumber(Eight impl, String value, int expected) {
+        int actual = impl.stringToNumber(value);
+        assertEquals(actual, expected);
     }
 
     @Test
