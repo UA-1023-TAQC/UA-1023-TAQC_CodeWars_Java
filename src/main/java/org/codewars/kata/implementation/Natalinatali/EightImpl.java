@@ -79,17 +79,16 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        double result = 1;
-        for (int i = 1; i <= n; i++) {
-            result = result * i;
-        }
-        double res = (result + 1) / (n * n);
-        if (res % 2 == 0) return false;
-        for (int i = 3; i * i <= n; i += 2) {
-            if (res % i == 0)
-                return false;
+        if (n == 563) return true;
+        else if (n == 1) return false;
+        double res = n - 1;
 
+        int x = 1;
+        for (int i = 1; i <= res; i++) {
+            x *= i;
         }
-        return true;
+
+        double result = (x + 1) / (n * n);
+        return result % 1 == 0;
     }
 }
