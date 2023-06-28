@@ -1,8 +1,9 @@
 package org.codewars.kata.implementation.zakotiukk;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
-public class EightImpl implements Eight {
+public class EightImpl extends Base implements Eight {
     public int liters(double time) {
         double liters = time * 0.5;
         return (int) Math.floor(liters);

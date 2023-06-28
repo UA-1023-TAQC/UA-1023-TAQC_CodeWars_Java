@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.mosvvy;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Seven;
 
 import java.util.Arrays;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     public long newAvg(double[] arr, double navg) {
         double result = (navg * (arr.length + 1) - Arrays.stream(arr).sum());
         if (result <= 0) throw new IllegalArgumentException();

@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.DappY127;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Five;
 
 import java.math.BigInteger;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     private static boolean isPrime(long number) {
         if (number < 2) {
             return false;

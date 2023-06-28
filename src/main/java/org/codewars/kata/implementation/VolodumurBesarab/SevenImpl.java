@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Seven;
 
 import java.text.DecimalFormat;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     public long newAvg(double[] arr, double navg) {
         int n = arr.length;
         double currentSum = 0;
