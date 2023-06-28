@@ -60,7 +60,7 @@ public class EightTest extends UserImplementations {
     @Test(dataProvider = "stringToNumberTestData")
     public void testStringToNumber(Eight impl, String value, int expected) {
         int actual = impl.stringToNumber(value);
-        assertEquals(actual, expected);
+        assertEquals(actual, expected, "Number was parsed wrong:");
     }
 
     @Test
