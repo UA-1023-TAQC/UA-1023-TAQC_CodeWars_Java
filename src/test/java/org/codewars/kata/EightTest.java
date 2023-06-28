@@ -28,9 +28,21 @@ public class EightTest extends UserImplementations {
         assertEquals(actual, expected);
     }
 
+    @DataProvider(name = "getVolumeOfCuboidTestData")
+    private Object[][] getVolumeOfCuboidTestData() {
+        Object[][] testData = new Object[][]{
+                {1, 2, 2, 4},
+                {6.3, 2, 5, 63},
+                {86.94277953642487, 55.602452271607994, 89.56383587984139, 432972.33902047126}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
 
-    @Test
-    public void testGetVolumeOfCuboid() {
+    }
+    @Test(dataProvider = "getVolumeOfCuboidTestData")
+    public void testGetVolumeOfCuboid(Eight impl, double length, double width, double height, double expected) {
+        double actual = impl.getVolumeOfCuboid(length, width, height);
+        final double delta = 0.0001;
+        assertEquals(actual, expected, delta);
     }
 
     @Test
