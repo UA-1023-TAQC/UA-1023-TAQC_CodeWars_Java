@@ -4,6 +4,7 @@ package org.codewars.kata;
 import org.codewars.UserImplementations;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import java.util.Arrays;
 
 import static org.testng.Assert.assertEquals;
 
@@ -37,8 +38,18 @@ public class EightTest extends UserImplementations {
     public void testMpgToKPM() {
     }
 
-    @Test
-    public void testSquareOrSquareRoot() {
+    @DataProvider(name = "squareOrSquareRootTestData")
+    private Object[][] squareOrSquareRootTestData() {
+        Object[][][] testData = new Object[][][]{
+                {{ 4, 3, 9, 7, 2, 1 }, { 4, 3, 9, 7, 2, 1 }}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+
+    }
+    @Test(dataProvider = "squareOrSquareRootTestData")
+    public void testSquareOrSquareRoot(Eight impl, int[] value, int[] expected) {
+        int[] actual = impl.squareOrSquareRoot(value);
+        assertEquals(Arrays.toString(expected),  Arrays.toString(actual));
     }
 
     @Test
