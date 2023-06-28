@@ -12,6 +12,10 @@ public class Reader {
         scanner = new Scanner(System.in);
     }
 
+    public Reader(Scanner scan) {
+        scanner = scan;
+    }
+
     public int readInt() {
         while (true) {
             try {
