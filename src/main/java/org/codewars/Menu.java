@@ -19,7 +19,13 @@ public class Menu {
 
     //In setter need to check is value is valid
     public void setUserById(int userID) {
-        this.user = Users.getById(userID);
+        user = Users.getById(userID);
+        while (user == null) {
+            Reader reader = new Reader();
+            System.out.print("Wrong user id! Enter int from 1 to 11 included: ");
+            userID = reader.readInt();
+            user = Users.getById(userID);
+        }
     }
 
     public void showUsersList() {
