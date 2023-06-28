@@ -41,8 +41,7 @@ public class EightTest extends UserImplementations {
     @Test(dataProvider = "getVolumeOfCuboidTestData")
     public void testGetVolumeOfCuboid(Eight impl, double length, double width, double height, double expected) {
         double actual = impl.getVolumeOfCuboid(length, width, height);
-        final double delta = 0.0001;
-        assertEquals(actual, expected, delta);
+        assertEquals(actual, expected);
     }
 
     @Test
