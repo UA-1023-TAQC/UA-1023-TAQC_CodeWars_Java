@@ -31,7 +31,7 @@ public class ReaderTest {
                 {new Scanner("53,08"), 53.08f},
                 {new Scanner("-23453,9999999999"), -23453.9999999999f},
                 {new Scanner(",9"), 0.9f},
-                {new Scanner("53.08"), 53.08f}
+                {new Scanner("sda\nadwqwdcsd sdqwqwwqe12qwdc xcsd\n20,1"), 20.1f}
         };
         return testData;
     }
@@ -39,6 +39,7 @@ public class ReaderTest {
     public void testReadFloat(Scanner scanner, float expected) {
         Reader reader = new Reader(scanner);
         float actual = reader.readFloat();
+        scanner.close();
         assertEquals(actual, expected);
     }
 
