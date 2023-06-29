@@ -21,7 +21,7 @@ public class FiveTest extends UserImplementations {
     }
 
     @DataProvider(name = "solveTestData")
-    private Object[][] litersTestData() {
+    private Object[][] solveTestData() {
         Object[][] testData = new Object[][]{
                 {2.0, 0.5},
                 {8.0, 0.7034648345913732},
