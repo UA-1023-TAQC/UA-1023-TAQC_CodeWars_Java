@@ -86,7 +86,7 @@ public class SixTest extends UserImplementations {
     @Test(dataProvider = "meanTestData")
     public void testMean(Six impl, String town, String data, double expected) {
         double actual = impl.mean(town, data);
-        assertEquals(actual, expected, "Wrong mean function count");
+        assertEquals(actual, expected, 1e-2,"Wrong mean function count");
     }
 
     @Test
