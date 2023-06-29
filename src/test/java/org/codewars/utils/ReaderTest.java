@@ -1,6 +1,10 @@
 package org.codewars.utils;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
 
 import static org.testng.Assert.*;
 
@@ -42,9 +46,23 @@ public class ReaderTest {
     public void testReadArrString() {
     }
 
-    @Test
-    public void testReadArrLong() {
+    @DataProvider(name = "testReadArrLongData" )
+    private Object[][] testReadArrLongData(){
+        Object[][] testData = new Object[][]{
+                {"1 2 3 4 5 2", new long[]{1, 2, 3, 4, 5, 2}},
+                {"2 5 2 4 8 2", new long[]{2, 5, 2, 4, 8, 2}}
+        };
+        return testData;
     }
+    @Test(dataProvider = "testReadArrLongData")
+    public void testReadArrLong(String str, long[] expectedValue) {
+        System.setIn(new ByteArrayInputStream(str.getBytes()));
+        Scanner scanner = new Scanner(System.in);
+        Reader reader = new Reader(scanner);
+        long[] actualValue = reader.readArrLong();
+        assertEquals(expectedValue, actualValue);
+    }
+
 
     @Test
     public void testReadBoolean() {
