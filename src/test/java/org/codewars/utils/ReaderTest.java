@@ -29,7 +29,8 @@ public class ReaderTest {
                 {new Scanner(",666666660"), 0.66666666},
                 {new Scanner("abc"), Double.NaN},
                 {new Scanner(""), Double.NaN},
-                {new Scanner("18.5748"), Double.NaN}
+                {new Scanner("18.5748"), Double.NaN},
+                {new Scanner("six point eight\n44.4\nnew one\n05,29"), 5.29}
         };
         return testData;
     }
