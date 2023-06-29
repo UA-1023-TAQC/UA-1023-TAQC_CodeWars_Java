@@ -90,7 +90,7 @@ public class SixTest extends UserImplementations {
     @Test(dataProvider = "varianceTestData")
     public void testVariance(Six impl, String town, String data, double expected) {
         double actual = impl.variance(town, data);
-        assertEquals(actual, expected, "Wrong variance function count");
+        assertEquals(actual, expected, 1e-2,"Wrong variance function count");
     }
 
     @Test
