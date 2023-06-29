@@ -74,8 +74,21 @@ public class EightTest extends UserImplementations {
         assertEquals(actual, expected, "Number was parsed wrong:");
     }
 
-    @Test
-    public void testTwoDecimalPlaces() {
+    @DataProvider(name = "twoDecimalPlacesTestData")
+    private Object[][] twoDecimalPlacesTestData() {
+        Object[][] testData = new Object[][]{
+                {4.659725356, 4.66},
+                {173735326.3783732637948948, 173735326.38},
+                {0, 0},
+                {-21.23232, -21.23}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+
+    }
+    @Test(dataProvider = "twoDecimalPlacesTestData")
+    public void testTwoDecimalPlaces(Eight impl, double value, double expected) {
+        double actual = impl.TwoDecimalPlaces(value);
+        assertEquals(actual, expected, "The number was formatted incorrectly");
     }
 
     @DataProvider(name = "divisibleByTestData")
