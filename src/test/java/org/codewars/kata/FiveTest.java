@@ -31,8 +31,21 @@ public class FiveTest extends UserImplementations {
     public void testPerimeter() {
     }
 
-    @Test
-    public void testSolve() {
+    @DataProvider(name = "solveTestData")
+    private Object[][] solveTestData() {
+        Object[][] testData = new Object[][]{
+                {2.0, 0.5},
+                {8.0, 0.7034648345913732},
+                {12.0, 0.75}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.FIVES, testData);
+
+    }
+
+    @Test(dataProvider = "solveTestData")
+    public void testSolve(Five impl, double value, double expected) {
+        double actual = impl.solve(value);
+        assertEquals(actual, expected);
     }
 
     @Test
