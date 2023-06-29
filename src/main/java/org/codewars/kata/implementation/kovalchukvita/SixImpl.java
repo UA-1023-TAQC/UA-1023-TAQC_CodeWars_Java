@@ -32,7 +32,7 @@ public class SixImpl extends Base implements Six {
                     .append(String.format(" Balance %.2f", balance - sum)).append(book);
         }
 
-        return report + String.format("Total expense %.2f%sAverage expense %.2f", sum, book, sum / (str.length - 1));
+        return report + String.format("Total expense  %.2f%sAverage expense  %.2f", sum, book, sum / (str.length - 1));
     }
 
     public double f(double x) {
