@@ -3,6 +3,8 @@ package org.codewars.kata.implementation.Anastasiia3795;
 import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
+import java.util.Arrays;
+
 
 public class SixImpl extends Base implements Six {
     public long findNb(long m) {
@@ -43,7 +45,21 @@ public class SixImpl extends Base implements Six {
     }
 
     public double variance(String town, String strng) {
-        return 0;
+        double result = -1;
+        String[] str = strng.split("\n");
+        for(String string: str) {
+            if(string.indexOf(town + ":") == 0) {
+                result = 0;
+                double[] needTownValue = Arrays.stream(string.replaceAll("[^0-9,.]", " ").split(","))
+                        .mapToDouble(Double::parseDouble).toArray();
+                double avg = Arrays.stream(needTownValue).sum() / needTownValue.length;
+                for(double value: needTownValue) {
+                    result += Math.pow(value - avg, 2);
+                }
+                result /= needTownValue.length;
+            }
+        }
+        return result;
     }
 
     public String nbaCup(String resultSheet, String toFind) {
