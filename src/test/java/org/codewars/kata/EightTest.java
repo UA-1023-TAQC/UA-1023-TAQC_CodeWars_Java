@@ -57,7 +57,20 @@ public class EightTest extends UserImplementations {
     public void testDivisibleBy() {
     }
 
-    @Test
-    public void testAm_i_wilson() {
+    @DataProvider(name = "wilsonTestData")
+    private Object[][] wilsonTestData() {
+        Object[][] testData = new Object[][]{
+                {0, false},
+                {1, false},
+                {5, true},
+                {13, true},
+                {563, true}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+    }
+    @Test(dataProvider = "wilsonTestData")
+    public void testAm_i_wilson(Eight impl, int value, boolean expected) {
+        boolean actual = impl.am_i_wilson(value);
+        assertEquals(actual, expected);
     }
 }
