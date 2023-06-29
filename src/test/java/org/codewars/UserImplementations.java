@@ -65,12 +65,28 @@ public class UserImplementations {
         Object[][] fullTestData = new Object[testData.length * implementations.length][testData[0].length + 1];
         int count = 0;
         for (Object impl : implementations) {
-            for (Object[] row : testData) {
+            for (int i = 0; i < testData.length; i++) {
                 fullTestData[count][0] = impl;
-                System.arraycopy(row, 0, fullTestData[count], 1, row.length);
+                if (testData[i] instanceof Object[][]) {
+                    System.arraycopy(deepCopy((Object[][]) testData[i]), 0, fullTestData[count], 1, testData[i].length);
+                } else {
+                    System.arraycopy(testData[i], 0, fullTestData[count], 1, testData[i].length);
+                }
                 count++;
             }
         }
         return fullTestData;
+    }
+
+    public static Object[][] deepCopy(Object[][] array) {
+        Object[][] copy = new Object[array.length][];
+
+        for (int i = 0; i < array.length; i++) {
+            copy[i] = new Object[array[i].length];
+            for (int j = 0; j < array[i].length; j++) {
+                copy[i][j] = array[i][j];
+            }
+        }
+        return copy;
     }
 }
