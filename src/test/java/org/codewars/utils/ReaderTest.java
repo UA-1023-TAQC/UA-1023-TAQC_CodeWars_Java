@@ -1,6 +1,10 @@
 package org.codewars.utils;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 import static org.testng.Assert.*;
 
@@ -38,8 +42,27 @@ public class ReaderTest {
     public void testReadArrDouble() {
     }
 
-    @Test
-    public void testReadArrString() {
+    @DataProvider(name = "readStringTestData")
+    private Object[][] readStringTestData() {
+        Object[][] testData = new Object[][] {
+                {new Scanner("Hello"), "Hello"},
+                {new Scanner("   World   "), "   World   "},
+                {new Scanner("\n\nNew Line\n\n"), ""},
+                {new Scanner("Special\tCharacters"), "Special\tCharacters"},
+                {new Scanner("Привіт, світ!"), "Привіт, світ!"},
+                {new Scanner(""), null}  // Ожидается генерация исключения NoSuchElementException
+        };
+        return testData;
+    }
+    @Test(dataProvider = "readStringTestData")
+    public void testReadString(Scanner scanner, String expected) {
+        Reader reader = new Reader(scanner);
+        try {
+            String actual = reader.readString();
+            assertEquals(actual, expected);
+        } catch (NoSuchElementException e) {
+            assertEquals(expected, "");
+        }
     }
 
     @Test
