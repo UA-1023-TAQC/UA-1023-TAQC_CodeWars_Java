@@ -64,8 +64,21 @@ public class EightTest extends UserImplementations {
     public void testTwoDecimalPlaces() {
     }
 
-    @Test
-    public void testDivisibleBy() {
+    @DataProvider(name = "divisibleTestData")
+    private Object[][] divisibleByTestData() {
+        Object[][] testData = new Object[][]{
+                {new int[] {1,2,3,4,5,6},2},
+                {new int[] {1,2,3,4,5,6},3},
+                {new int[] {0,1,2,3,4,5,6},4}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+
+    }
+
+    @Test(dataProvider = "divisibleByTestData")
+    public void testDivisibleBy(Eight impl, int[] numbers, int divider, double expected) {
+        int[] actual = impl.divisibleBy(numbers, divider);
+        assertEquals(actual, expected);
     }
 
     @Test
