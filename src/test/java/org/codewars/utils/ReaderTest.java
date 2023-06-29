@@ -1,6 +1,7 @@
 package org.codewars.utils;
 
 import org.codewars.UserImplementations;
+import org.codewars.kata.Base;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,15 +26,22 @@ public class ReaderTest {
                 {new Scanner("7"), 7.0},
                 {new Scanner("0"), 0.0},
                 {new Scanner("-2,54"), -2.54},
-                {new Scanner(",666666660"), 0.66666666}
+                {new Scanner(",666666660"), 0.66666666},
+                {new Scanner("abc"), Double.NaN},
+                {new Scanner(""), Double.NaN},
+                {new Scanner("18.5748"), Double.NaN}
         };
         return testData;
     }
     @Test(dataProvider = "readDoubleTestData")
     public void testReadDouble(Scanner scanner, double expected) {
         Reader reader = new Reader(scanner);
-        double actual = reader.readDouble();
-        assertEquals(actual, expected);
+        try {
+            double actual = reader.readDouble();
+            assertEquals(actual, expected);
+        } catch (NoSuchElementException e) {
+            assertTrue(Double.isNaN(expected));
+        }
     }
 
     @Test
