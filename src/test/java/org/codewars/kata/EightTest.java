@@ -72,7 +72,6 @@ public class EightTest extends UserImplementations {
                 {new int[] {0,1,2,3,4,5,6},4}
         };
         return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
-
     }
 
     @Test(dataProvider = "divisibleByTestData")
