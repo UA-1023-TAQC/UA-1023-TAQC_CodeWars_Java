@@ -1,5 +1,6 @@
 package org.codewars.kata.implementation.DappY127;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
 import java.util.HashMap;
@@ -7,7 +8,7 @@ import java.util.Map;
 
 import static java.util.stream.Stream.of;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     private static void updateMatchStatistics(int pointsA, int pointsB, boolean home, int[] stats) {
         if (home) {
             int temp = pointsA;

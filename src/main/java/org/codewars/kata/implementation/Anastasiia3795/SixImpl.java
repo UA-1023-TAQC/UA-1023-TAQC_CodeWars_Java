@@ -1,9 +1,10 @@
 package org.codewars.kata.implementation.Anastasiia3795;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
         return 0;
     }
@@ -38,7 +39,20 @@ public class SixImpl implements Six {
     }
 
     public double mean(String town, String strng) {
-        return 0;
+        double result = -1;
+        String[] str = strng.split("\n");
+        for(String string: str) {
+            if(string.indexOf(town + ":") == 0) {
+                result = 0;
+                String[] needTown = string.replaceAll("[^0-9,.]", " ").split(",");
+                for(String value: needTown) {
+                    result += Double.parseDouble(value);
+                }
+                result /= 12;
+                break;
+            }
+        }
+        return result;
     }
 
     public double variance(String town, String strng) {

@@ -1,8 +1,9 @@
 package org.codewars.kata.implementation.kovalchukvita;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
         long count = 0; //count of cubes
         for (int i = 1; i < m - 1; i++) { //i - lelgth of cubes

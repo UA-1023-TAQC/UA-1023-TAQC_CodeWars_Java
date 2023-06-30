@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.mosvvy;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Five;
 
 import java.math.BigInteger;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     public long[] gap(int g, long m, long n) {
         long prevPrime = 0;
         for (long i = m; i <= n; i++) {

@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
 import java.text.DecimalFormat;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
         long n = 1;
         long sum = 0;

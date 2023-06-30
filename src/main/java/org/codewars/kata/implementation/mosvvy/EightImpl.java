@@ -1,5 +1,6 @@
 package org.codewars.kata.implementation.mosvvy;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
 import java.math.BigDecimal;
@@ -7,7 +8,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EightImpl implements Eight {
+public class EightImpl extends Base implements Eight {
     public int liters(double time) {
         return (int) time / 2;
     }

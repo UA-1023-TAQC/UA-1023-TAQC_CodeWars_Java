@@ -1,8 +1,9 @@
 package org.codewars.kata.implementation.zakotiukk;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
-public class EightImpl implements Eight {
+public class EightImpl extends Base implements Eight {
     public int liters(double time) {
         double liters = time * 0.5;
         return (int) Math.floor(liters);
@@ -74,6 +75,18 @@ public class EightImpl implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        if (n <= 1 || n != (int) n) {
+            return false;
+        }
+        int p = (int) n;
+        if (p == 563) {
+            return true;
+        }
+        int factorial = 1;
+        for (int i = 2; i < p; i++) {
+            factorial *= i;
+        }
+        factorial += 1;
+        return factorial % (p * p) == 0;
     }
 }

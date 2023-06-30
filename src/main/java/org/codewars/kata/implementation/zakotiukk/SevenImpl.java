@@ -1,8 +1,9 @@
 package org.codewars.kata.implementation.zakotiukk;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Seven;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     public long newAvg(double[] arr, double navg) {
         double sum = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -28,6 +29,6 @@ public class SevenImpl implements Seven {
 
     @Override
     public int whereIsHe(int p, int bef, int aft) {
-        return 0;
+        return p - Math.max(bef + 1, p - aft) + 1;
     }
 }
