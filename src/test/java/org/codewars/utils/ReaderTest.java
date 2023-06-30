@@ -5,7 +5,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.math.BigInteger;
+import java.util.NoSuchElementException;
 
 import static org.testng.Assert.*;
 
@@ -30,6 +34,26 @@ public class ReaderTest {
         Reader reader = new Reader();
         BigInteger actual = reader.readBigInteger();
         Assert.assertEquals(actual, expected);
+    }
+
+    @DataProvider(name = "readBigIntegerTestDataInv")
+    private Object[][] readBigIntegerTestDataInv() {
+        return new Object[][]{
+                {"1rhqewjeqwjk", new BigInteger("1"), "No line found"}
+        };
+    }
+    @Test(dataProvider = "readBigIntegerTestDataInv")
+    public void testReadBigIntegerInv(String input, BigInteger expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        try {
+            BigInteger actual = reader.readBigInteger();
+            Assert.assertEquals(actual, expected);
+        } catch (NoSuchElementException e) {
+            Assert.fail("Invalid data for BigInteger. Try again");
+        }
     }
 
     @Test
