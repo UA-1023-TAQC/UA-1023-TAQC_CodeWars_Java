@@ -17,20 +17,6 @@ import static org.testng.Assert.*;
 
 
 public class ReaderTest {
-    private InputStream sysIn;
-    private PrintStream sysOut;
-
-    @BeforeMethod
-    public void setup() {
-        sysIn = System.in;
-        sysOut = System.out;
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        System.setIn(sysIn);
-        System.setOut(sysOut);
-    }
 
     private InputStream sysIn;
     private PrintStream sysOut;
