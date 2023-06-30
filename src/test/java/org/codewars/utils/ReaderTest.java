@@ -75,8 +75,23 @@ public class ReaderTest {
     public void testReadLong() {
     }
 
-    @Test
-    public void testReadString() {
+    @DataProvider(name = "readStringTestData")
+    private Object[][] readStringTestData() {
+        return new Object[][]{
+                {"Hello", "Hello"},
+                {"!№;%:?*(", "!№;%:?*("},
+                {"12345", "12345"},
+                {"   Spaces   ", "   Spaces   "}
+        };
+    }
+    @Test(dataProvider = "readStringTestData")
+    public void testReadString(String input, String expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        String actual = reader.readString();
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
