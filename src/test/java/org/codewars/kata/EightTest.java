@@ -44,16 +44,40 @@ public class EightTest extends UserImplementations {
         assertEquals(actual, expected);
     }
 
-    @Test
-    public void testMpgToKPM() {
-    }
 
+    @DataProvider(name = "MpgToKPMTestData")
+    private Object[][] MpgToKPMTestData() {
+        Object[][] testData = new Object[][]{
+                {3.54f, 10, 0.001f},
+                {7.08f, 20, 0.001f},
+                {10.62f, 30, 0.001f},
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+
+    }
+    @Test(dataProvider = "MpgToKPMTestData")
+    public void testMpgToKPM(Eight impl, float expected, float value, float data ) {
+        double actual = impl.mpgToKPM(value);
+        assertEquals(actual, expected, data);
+    }
     @Test
     public void testSquareOrSquareRoot() {
     }
 
-    @Test
-    public void testCountPositivesSumNegatives() {
+    @DataProvider(name = "countPositivesSumNegatives")
+    private Object[][] countPositivesSumNegatives() {
+        Object[][] testData = new Object[][] {
+                {new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}, new int[]{10, -65}},
+                {new int[]{0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14},new int[]{8, -50}},
+                {null, new int[]{}},
+                {new int[]{}, new int[]{}}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+    }
+    @Test(dataProvider = "countPositivesSumNegatives")
+    public void testCountPositivesSumNegatives(Eight impl, int[] value, int[] expected) {
+        int[] actual = impl.countPositivesSumNegatives(value);
+        assertEquals(actual, expected, "Wrong count positives and sum negatives");
     }
 
     @DataProvider(name = "stringToNumberTestData")
