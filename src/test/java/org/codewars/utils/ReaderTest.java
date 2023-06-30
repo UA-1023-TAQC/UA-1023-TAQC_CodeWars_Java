@@ -1,9 +1,13 @@
 package org.codewars.utils;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import static org.testng.Assert.*;
@@ -48,19 +52,36 @@ public class ReaderTest {
 
     @DataProvider(name = "testReadArrLongData" )
     private Object[][] testReadArrLongData(){
-        Object[][] testData = new Object[][]{
+        return new Object[][]{
                 {"1 2 3 4 5 2", new long[]{1, 2, 3, 4, 5, 2}},
                 {"2 5 2 4 8 2", new long[]{2, 5, 2, 4, 8, 2}}
         };
-        return testData;
     }
     @Test(dataProvider = "testReadArrLongData")
     public void testReadArrLong(String str, long[] expectedValue) {
         System.setIn(new ByteArrayInputStream(str.getBytes()));
-        Scanner scanner = new Scanner(System.in);
-        Reader reader = new Reader(scanner);
+        Reader reader = new Reader();
         long[] actualValue = reader.readArrLong();
         assertEquals(expectedValue, actualValue);
+    }
+
+    @DataProvider(name = "testReadArrLongDataInvalid" )
+    private Object[][] testReadArrLongDataInvalid(){
+        return new Object[][]{
+                {"s 5 2 4 8 2\n2 5 2 4 8 2", new long[]{2, 5, 2, 4, 8, 2}, "Enter numbers, separated with space: " +
+                        "Your value is invalid\nTry again\nEnter numbers, separated with space: "}
+        };
+    }
+
+    @Test(dataProvider = "testReadArrLongDataInvalid")
+    public void testReadArrLongInvalid(String str, long[] expectedValue, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(str.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        long[] actualValue = reader.readArrLong();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actualValue, expectedValue);
     }
 
 
