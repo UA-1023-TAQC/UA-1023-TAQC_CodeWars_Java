@@ -64,19 +64,19 @@ public class FiveImpl extends Base implements Five {
     public double solve(double m) {
         double lowerBound = 0.0;
         double upperBound = 1.0;
-        double precision = 1e-12;
+        double precision = 1e-15;
 
         while (upperBound - lowerBound > precision) {
             double midpoint = (lowerBound + upperBound) / 2;
             double result = 0.0;
             double term = midpoint;
 
-            for (int n = 2; term >= 1e-15; n++) {
+            for (int n = 2; n <= 1000; n++) {
                 result += term;
                 term *= midpoint * n / (n - 1);
             }
 
-            if (Math.abs(result - m) < precision) {
+            if (Math.abs(result - m) / Math.max(Math.abs(result), Math.abs(m)) < precision) {
                 return midpoint;
             } else if (result < m) {
                 lowerBound = midpoint;
