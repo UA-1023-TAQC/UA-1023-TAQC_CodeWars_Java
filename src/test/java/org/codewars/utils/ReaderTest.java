@@ -1,6 +1,6 @@
 package org.codewars.utils;
 
-import static org.testng.Assert.assertEquals;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -38,29 +38,27 @@ public class ReaderTest {
 
     @DataProvider(name = "readFloatTestData")
     private Object[][] readFloatTestData() {
-        Object[][] testData = new Object[][]{
+        return new Object[][]{
                 {"10", 10f},
                 {"0", 0.0f},
                 {"53,08", 53.08f},
                 {"-23453,9999999999", -23453.9999999999f},
                 {",9", 0.9f}
         };
-        return testData;
     }
     @Test(dataProvider = "readFloatTestData")
     public void testReadFloat(String input, float expected) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         Reader reader = new Reader();
         float actual = reader.readFloat();
-        assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected);
     }
 
     @DataProvider(name = "readFloatTestDataInv")
     private Object[][] readFloatTestDataInv() {
-        Object[][] testData = new Object[][]{
+        return new Object[][]{
                 {"sda\nadwqwdcsd sdqwqwwqe12qwdc xcsd\n20,1", 20.1f, "Your value is invalid. Try again\nYour value is invalid. Try again\n"}
         };
-        return testData;
     }
     @Test(dataProvider = "readFloatTestDataInv")
     public void testReadFloatInv(String input, float expected, String expectedOut) {
@@ -69,8 +67,8 @@ public class ReaderTest {
         System.setOut(new PrintStream(out));
         Reader reader = new Reader();
         float actual = reader.readFloat();
-        assertEquals(out.toString().replace("\r", ""), expectedOut);
-        assertEquals(actual, expected);
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
