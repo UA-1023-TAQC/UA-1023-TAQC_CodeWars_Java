@@ -199,7 +199,22 @@ public class ReaderTest {
     }
 
 
-    @Test
-    public void testReadBoolean() {
+    @DataProvider(name = "readBooleanTestData")
+    private Object[][] readBooleanTestData() {
+        Object[][] testData = new Object[][]{
+                {"false", false},
+                {"f", false},
+                {"true", true},
+                {"t", true}
+        };
+        return testData;
+
+    }
+    @Test(dataProvider = "readBooleanTestData")
+    public void testReadBoolean(String value, boolean expected) {
+        System.setIn(new ByteArrayInputStream(value.getBytes()));
+        Reader reader = new Reader();
+        Boolean result = reader.readBoolean();
+        assertEquals(result, expected);
     }
 }
