@@ -1,6 +1,11 @@
 package org.codewars.utils;
 
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.io.ByteArrayInputStream;
+import java.math.BigInteger;
 
 import static org.testng.Assert.*;
 
@@ -10,8 +15,21 @@ public class ReaderTest {
     public void testReadInt() {
     }
 
-    @Test
-    public void testReadBigInteger() {
+    @DataProvider(name = "readBigIntegerTestData")
+    private Object[][] readBigIntegerTestData() {
+        return new Object[][]{
+                {"0", new BigInteger("0")},
+                {"1", new BigInteger("1")},
+                {"-225", new BigInteger("-225")},
+                {"34778324257332478453", new BigInteger("34778324257332478453")},
+        };
+    }
+    @Test(dataProvider = "readBigIntegerTestData")
+    public void testReadBigInteger(String input, BigInteger expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Reader reader = new Reader();
+        BigInteger actual = reader.readBigInteger();
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
