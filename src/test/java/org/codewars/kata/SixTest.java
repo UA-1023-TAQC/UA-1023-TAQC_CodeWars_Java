@@ -29,7 +29,7 @@ public class SixTest extends UserImplementations {
         return UserImplementations.combineImplWithTests(UserImplementations.SIXES, testData);
 
     }
-    private static void assertFuzzyEquals(double act, double exp){
+    private void assertFuzzyEquals(double act, double exp){
         boolean inrange;
         double merr = 1e-12;
         if (exp == 0.0)
