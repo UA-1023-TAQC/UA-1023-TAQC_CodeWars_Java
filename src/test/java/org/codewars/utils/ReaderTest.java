@@ -5,6 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import java.util.NoSuchElementException;
 
 import java.io.*;
 
@@ -81,7 +82,8 @@ public class ReaderTest {
                 {"Hello", "Hello"},
                 {"!№;%:?*(", "!№;%:?*("},
                 {"12345", "12345"},
-                {"   Spaces   ", "   Spaces   "}
+                {"   Spaces   ", "   Spaces   "},
+                {"\n\n\n", ""},
         };
     }
     @Test(dataProvider = "readStringTestData")
@@ -92,6 +94,28 @@ public class ReaderTest {
         Reader reader = new Reader();
         String actual = reader.readString();
         Assert.assertEquals(actual, expected);
+    }
+
+    @DataProvider(name = "readStringTestDataInv")
+    private Object[][] readStringTestDataInv() {
+        return new Object[][]{
+                {"", "", "No line found"},
+        };
+    }
+
+    @Test(dataProvider = "readStringTestDataInv")
+    public void testReadStringInv(String input, String expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+
+        try {
+            String actual = reader.readString();
+            Assert.assertEquals(actual, expected);
+        } catch (NoSuchElementException e) {
+            Assert.assertEquals(e.getMessage(), expectedOut);
+        }
     }
 
     @Test
