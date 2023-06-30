@@ -5,6 +5,8 @@ import org.codewars.kata.Five;
 import org.codewars.kata.Seven;
 import org.codewars.kata.Six;
 
+import org.apache.commons.lang3.SerializationUtils;
+
 public class UserImplementations {
     public static final Eight[] EIGHTS = new Eight[]{
             new org.codewars.kata.implementation.Anastasiia3795.EightImpl(),
@@ -61,32 +63,18 @@ public class UserImplementations {
             new org.codewars.kata.implementation.VolodumurBesarab.FiveImpl(),
             new org.codewars.kata.implementation.zakotiukk.FiveImpl()
     };
+
     public static Object[][] combineImplWithTests(Object[] implementations, Object[][] testData) {
         Object[][] fullTestData = new Object[testData.length * implementations.length][testData[0].length + 1];
         int count = 0;
         for (Object impl : implementations) {
-            for (int i = 0; i < testData.length; i++) {
+            for (Object[] row : testData) {
                 fullTestData[count][0] = impl;
-                if (testData[i] instanceof Object[][]) {
-                    System.arraycopy(deepCopy((Object[][]) testData[i]), 0, fullTestData[count], 1, testData[i].length);
-                } else {
-                    System.arraycopy(testData[i], 0, fullTestData[count], 1, testData[i].length);
-                }
+                System.arraycopy(row, 0, fullTestData[count], 1, row.length);
                 count++;
             }
         }
-        return fullTestData;
-    }
-
-    public static Object[][] deepCopy(Object[][] array) {
-        Object[][] copy = new Object[array.length][];
-
-        for (int i = 0; i < array.length; i++) {
-            copy[i] = new Object[array[i].length];
-            for (int j = 0; j < array[i].length; j++) {
-                copy[i][j] = array[i][j];
-            }
-        }
-        return copy;
+        byte[] serializedObj = SerializationUtils.serialize(fullTestData);
+        return (Object[][]) SerializationUtils.deserialize(serializedObj);
     }
 }
