@@ -1,15 +1,25 @@
 package org.codewars.utils;
 
-import org.codewars.UserImplementations;
-import org.testng.annotations.DataProvider;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Scanner;
-import java.util.stream.Stream;
-
-import static org.testng.Assert.*;
+import java.io.*;
 
 public class ReaderTest {
+    private InputStream sysIn;
+
+    @BeforeMethod
+    public void setup() {
+        sysIn = System.in;
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        System.setIn(sysIn);
+
+    }
 
     @Test
     public void testReadInt() {
