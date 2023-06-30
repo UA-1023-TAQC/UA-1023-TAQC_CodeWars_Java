@@ -64,8 +64,20 @@ public class EightTest extends UserImplementations {
     public void testSquareOrSquareRoot() {
     }
 
-    @Test
-    public void testCountPositivesSumNegatives() {
+    @DataProvider(name = "countPositivesSumNegatives")
+    private Object[][] countPositivesSumNegatives() {
+        Object[][] testData = new Object[][] {
+                {new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15}, new int[]{10, -65}},
+                {new int[]{0, 2, 3, 0, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14},new int[]{8, -50}},
+                {null, new int[]{}},
+                {new int[]{}, new int[]{}}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.EIGHTS, testData);
+    }
+    @Test(dataProvider = "countPositivesSumNegatives")
+    public void testCountPositivesSumNegatives(Eight impl, int[] value, int[] expected) {
+        int[] actual = impl.countPositivesSumNegatives(value);
+        assertEquals(actual, expected, "Wrong count positives and sum negatives");
     }
 
     @DataProvider(name = "stringToNumberTestData")
