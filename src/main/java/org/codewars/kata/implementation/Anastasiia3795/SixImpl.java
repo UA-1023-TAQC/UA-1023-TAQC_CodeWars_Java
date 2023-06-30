@@ -39,20 +39,7 @@ public class SixImpl extends Base implements Six {
     }
 
     public double mean(String town, String strng) {
-        double result = -1;
-        String[] str = strng.split("\n");
-        for(String string: str) {
-            if(string.indexOf(town + ":") == 0) {
-                result = 0;
-                String[] needTown = string.replaceAll("[^0-9,.]", " ").split(",");
-                for(String value: needTown) {
-                    result += Double.parseDouble(value);
-                }
-                result /= 12;
-                break;
-            }
-        }
-        return result;
+        return 0;
     }
 
     public double variance(String town, String strng) {
