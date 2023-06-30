@@ -6,7 +6,7 @@ import org.codewars.kata.Eight;
 public class EightImpl extends Base implements Eight {
 
     public int liters(double time) {
-        return (int) Math.floor(time / 0.5);
+       return (int) (time * 0.5);
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
