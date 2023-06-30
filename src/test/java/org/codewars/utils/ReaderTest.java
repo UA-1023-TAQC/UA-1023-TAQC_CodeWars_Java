@@ -54,11 +54,11 @@ public class ReaderTest {
     @DataProvider(name = "readBigIntegerTestDataInv")
     private Object[][] readBigIntegerTestDataInv() {
         return new Object[][]{
-                {"1rhqewjeqwjk", new BigInteger("1")}
+                {"1rhqewjeqwjk", new BigInteger("1"), "No line found"}
         };
     }
     @Test(dataProvider = "readBigIntegerTestDataInv")
-    public void testReadBigIntegerInv(String input, BigInteger expected) {
+    public void testReadBigIntegerInv(String input, BigInteger expected, String expectedOut) {
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
@@ -67,7 +67,7 @@ public class ReaderTest {
             BigInteger actual = reader.readBigInteger();
             Assert.assertEquals(actual, expected);
         } catch (NoSuchElementException e) {
-            Reporter.log("Invalid data for BigInteger. Try again");
+            Assert.assertEquals(e.getMessage(), expectedOut);
         }
     }
 
