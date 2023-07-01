@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.*;
+import java.util.NoSuchElementException;
 
 public class ReaderTest {
     private InputStream sysIn;
@@ -73,6 +74,32 @@ public class ReaderTest {
 
     @Test
     public void testReadLong() {
+        System.setIn(new ByteArrayInputStream("9876543210".getBytes()));
+        Reader reader = new Reader();
+        long actual = reader.readLong();
+        Assert.assertEquals(actual, 9876543210L);
+    }
+
+    @DataProvider(name = "readLongTestDataInvalid")
+    private Object[][] readLongTestDataInv() {
+        return new Object[][]{
+                {"qwerty\nqwertyqwerty\n1234567890", 1234567890L, "Your value is invalid. Try again\nYour value is invalid. Try again\n"},
+                {"qwerty\n1234567890", 1234567890L, "Your value is invalid. Try again\n"},
+        };
+    }
+
+    @Test(dataProvider = "readLongTestDataInvalid")
+    public void testReadLongInvalid(String input, long expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        try {
+            long actual = reader.readLong();
+            Assert.assertEquals(actual, expected);
+        } catch (NoSuchElementException e) {
+            Assert.assertEquals(e.getMessage(), expectedOut);
+        }
     }
 
     @Test
