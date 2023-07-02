@@ -25,10 +25,43 @@ public class ReaderTest {
         System.setOut(sysOut);
     }
 
-    @Test
-    public void testReadInt() {
+    @DataProvider(name = "readIntTestData")
+    private Object[][] readIntTestData() {
+        return new Object[][]{
+                {"-2147483648", -2147483648},
+                {"0", 0},
+                {"67", 67},
+                {"2147483647", 2147483647},
+        };
     }
-
+    @Test(dataProvider = "readIntTestData")
+    public void testReadInt(String input, int expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Reader reader = new Reader();
+        int actual = reader.readInt();
+        Assert.assertEquals(actual, expected);
+    }
+    @DataProvider(name = "readIntTestDataInvalid")
+    private Object[][] readIntTestDataInvalid() {
+        return new Object[][]{
+                {"@#$%\n1", 1, "An invalid integer was entered. Attempt again:\n"},
+                {"3.4e-38\n38", 38, "An invalid integer was entered. Attempt again:\n"},
+                {"9.1\n91", 91, "An invalid integer was entered. Attempt again:\n"},
+                {"  \n477", 477, "An invalid integer was entered. Attempt again:\n"},
+                {"six\n6", 6, "An invalid integer was entered. Attempt again:\n"},
+                {"sda\ngjklpu scfhte566gtu asd\n7", 7, "An invalid integer was entered. Attempt again:\nAn invalid integer was entered. Attempt again:\n"}
+        };
+        };
+    @Test(dataProvider = "readIntTestDataInvalid")
+    public void testReadIntInvalid(String input, int expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        int actual = reader.readInt();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actual, expected);
+    }
     @Test
     public void testReadBigInteger() {
     }
