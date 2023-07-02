@@ -105,8 +105,45 @@ public class ReaderTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testReadLong() {
+    @DataProvider(name = "readLongTestDataValid")
+    private Object[][] readLongTestDataValid() {
+        return new Object[][]{
+                {"1234567890", 1234567890L},
+                {"-9876543210", -9876543210L},
+                {"0", 0L},
+                {"  12345  ", 12345L},
+                {"  -999  ", -999L},
+                {"999999999999999", 999999999999999L},
+                {"-123", -123L},
+                {"  0  ", 0L},
+        };
+    }
+
+    @Test(dataProvider = "readLongTestDataValid")
+    public void testReadLong(String input, long expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Reader reader = new Reader();
+        long actual = reader.readLong();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @DataProvider(name = "readLongTestDataInvalid")
+    private Object[][] readLongTestDataInv() {
+        return new Object[][]{
+                {"qwerty\nqwertyqwerty\n1234567890", 1234567890L, "Your value is invalid. Try again\nYour value is invalid. Try again\n"},
+                {"qwerty\n1234567890", 1234567890L, "Your value is invalid. Try again\n"},
+        };
+    }
+
+    @Test(dataProvider = "readLongTestDataInvalid")
+    public void testReadLongInvalid(String input, long expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        long actual = reader.readLong();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actual, expected);
     }
 
     @Test
