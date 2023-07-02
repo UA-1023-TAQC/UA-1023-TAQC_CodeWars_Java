@@ -31,20 +31,7 @@ public class SixImpl implements Six {
     }
 
     public double variance(String town, String strng) {
-        String[] towns = strng.split("\n");
-        for (String townData : towns) {
-            if (townData.startsWith(town + ":")) {
-                String[] rainfallData = townData.split(":")[1].split(",");
-                double mean = mean(town, strng);
-                double sumOfSquares = 0.0;
-                for (String data : rainfallData) {
-                    double rainfall = Double.parseDouble(data.split(" ")[1]);
-                    sumOfSquares += Math.pow(rainfall - mean, 2);
-                }
-                return sumOfSquares / rainfallData.length;
-            }
-        }
-        return -1.0;
+        return 0;
     }
 
     public String nbaCup(String resultSheet, String toFind) {
