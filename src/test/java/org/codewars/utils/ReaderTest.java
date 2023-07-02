@@ -11,8 +11,6 @@ import java.io.*;
 import java.math.BigInteger;
 import java.util.NoSuchElementException;
 
-import static org.testng.Assert.*;
-
 
 public class ReaderTest {
 
