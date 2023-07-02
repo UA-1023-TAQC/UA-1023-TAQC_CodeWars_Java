@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.Natalinatali;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
 import static java.lang.String.format;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
         int counter = 0;
         while (m > 0) {

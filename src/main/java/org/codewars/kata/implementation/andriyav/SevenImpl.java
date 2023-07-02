@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.andriyav;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Seven;
 
 import java.text.DecimalFormat;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     public long newAvg(double[] arr, double navg) {
         double sum = 0;
         int n = 0;

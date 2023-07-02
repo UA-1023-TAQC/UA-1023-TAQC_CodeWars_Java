@@ -1,5 +1,6 @@
 package org.codewars.kata.implementation.andriyav;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
 import java.util.Arrays;
@@ -7,7 +8,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
         long func_result = 0;
         int i;

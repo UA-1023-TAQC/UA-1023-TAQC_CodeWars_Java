@@ -1,12 +1,13 @@
 package org.codewars.kata.implementation.DappY127;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class EightImpl implements Eight {
+public class EightImpl extends Base implements Eight {
     public int liters(double time) {
         return (int) (time * 0.5);
     }

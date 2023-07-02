@@ -1,8 +1,9 @@
 package org.codewars.kata.implementation.Natalinatali;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Seven;
 
-public class SevenImpl implements Seven {
+public class SevenImpl extends Base implements Seven {
     public long newAvg(double[] arr, double navg) {
         long res = 0;
         long count = 1;

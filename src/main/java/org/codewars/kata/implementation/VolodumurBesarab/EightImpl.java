@@ -1,11 +1,12 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class EightImpl implements Eight {
+public class EightImpl extends Base implements Eight {
 
     private static int getFactorial(int f) {
         int factorial = 1;

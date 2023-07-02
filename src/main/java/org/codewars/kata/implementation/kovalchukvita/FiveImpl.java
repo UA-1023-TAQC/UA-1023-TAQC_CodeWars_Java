@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.kovalchukvita;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Five;
 
 import java.math.BigInteger;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
 
     public static boolean isPrime(long n) {
         for (int i = 2; i < n / 2; i++) {
