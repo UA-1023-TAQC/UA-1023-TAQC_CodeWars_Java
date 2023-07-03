@@ -158,9 +158,40 @@ public class ReaderTest {
     public void testReadArrDouble() {
     }
 
-    @Test
-    public void testReadArrString() {
+    @DataProvider(name = "readArrStringTestData")
+    private Object[][] readArrStringTestData(){
+        return new Object[][]{
+                {"Hello\nWorld\n  ", new String[]{"Hello","World"}},
+                {"qq\n12345\n?!\n  ", new String[]{"qq","12345","?!"}},
+        };
     }
+    @Test(dataProvider = "readArrStringTestData")
+    public void testReadArrString(String input,String[] expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Reader reader=new Reader();
+        String[] actual =reader.readArrString();
+        Assert.assertEquals(expected,actual);
+    }
+    @DataProvider(name = "readArrStringTestDataInvalid")
+    private Object[][] readArrStringTestDataInvalid(){
+        return new Object[][]{
+                {"Hello\nWorld\n\nInv\n  ", new String[]{"Hello", "World","","Inv"}, "Enter new String for array from new line.\n"
+                        + "Enter string with 2 spaces (\"  \") to finish input:\n"},
+                {"!!!!\n12345\n\n  ", new String[]{"!!!!", "12345",""}, "Enter new String for array from new line.\n"
+                        + "Enter string with 2 spaces (\"  \") to finish input:\n"}
+        };
+    }
+    @Test(dataProvider = "readArrStringTestDataInvalid")
+    public void testReadArrStringInvalid(String input,String[] expected, String expectedOut){
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        String[] actual = reader.readArrString();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actual,expected);
+    }
+
 
     @DataProvider(name = "testReadArrLongData" )
     private Object[][] testReadArrLongData(){
