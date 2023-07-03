@@ -253,9 +253,43 @@ public class ReaderTest {
     public void testReadArrInt() {
     }
 
-    @Test
-    public void testReadArrDouble() {
+    @DataProvider(name = "testReadArrDoubleData" )
+    private Object[][] testReadArrDoubleData(){
+        return new Object[][]{
+                {".666666660 2.2 -3.34 0.4 5.0 2.777", new double[]{0.66666666, 2.2, -3.34, 0.4, 5.0, 2.777}},
+                {"2.0 5.4 .2 4.33333 8.1 0.2", new double[]{2.0, 5.4, 0.2, 4.33333, 8.1, 0.2}}
+        };
     }
+    @Test(dataProvider = "testReadArrDoubleData")
+    public void testReadArrDouble(String str, double[] expectedValue) {
+        System.setIn(new ByteArrayInputStream(str.getBytes()));
+        Reader reader = new Reader();
+        double[] actualValue = reader.readArrDouble();
+        Assert.assertEquals(actualValue, expectedValue);
+    }
+
+
+    @DataProvider(name = "testReadArrDoubleDataInvalid" )
+    private Object[][] testReadArrDoubleDataInvalid(){
+        return new Object[][]{
+                {".666666660 two -3.34 0.4 5.0 2.777\n.666666660 2.2 -3.34 0.4 5.0 2.777", new double[]{0.66666666, 2.2, -3.34, 0.4, 5.0, 2.777}, "Enter double numbers, separated with space: " +
+                        "Your value is invalid\nTry again\nEnter double numbers, separated with space: "},
+                {"2.0 5.4 zero 4.33333 8.1 0.2\n2.0 5.4 .2 4.33333 8.1 0.2", new double[]{2.0, 5.4, 0.2, 4.33333, 8.1, 0.2}, "Enter double numbers, separated with space: " +
+                        "Your value is invalid\nTry again\nEnter double numbers, separated with space: "}
+        };
+    }
+
+    @Test(dataProvider = "testReadArrDoubleDataInvalid")
+    public void testReadArrDoubleInvalid(String str, double[] expectedValue, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(str.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        double[] actualValue = reader.readArrDouble();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actualValue, expectedValue);
+    }
+
 
     @Test
     public void testReadArrString() {
