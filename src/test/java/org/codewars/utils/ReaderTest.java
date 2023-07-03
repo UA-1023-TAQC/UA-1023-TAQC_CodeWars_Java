@@ -2,14 +2,19 @@ package org.codewars.utils;
 
 import com.beust.ah.A;
 import org.testng.Assert;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.*;
+import java.math.BigInteger;
+import java.util.NoSuchElementException;
+
 
 public class ReaderTest {
+
     private InputStream sysIn;
     private PrintStream sysOut;
 
@@ -62,8 +67,42 @@ public class ReaderTest {
         Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
         Assert.assertEquals(actual, expected);
     }
-    @Test
-    public void testReadBigInteger() {
+
+    @DataProvider(name = "readBigIntegerTestData")
+    private Object[][] readBigIntegerTestData() {
+        return new Object[][]{
+                {"0", new BigInteger("0")},
+                {"1", new BigInteger("1")},
+                {"-225", new BigInteger("-225")},
+                {"34778324257332478453", new BigInteger("34778324257332478453")},
+        };
+    }
+    @Test(dataProvider = "readBigIntegerTestData")
+    public void testReadBigInteger(String input, BigInteger expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Reader reader = new Reader();
+        BigInteger actual = reader.readBigInteger();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @DataProvider(name = "readBigIntegerTestDataInv")
+    private Object[][] readBigIntegerTestDataInv() {
+        return new Object[][]{
+                {"1rhqewjeqwjk", new BigInteger("1"), "No line found"}
+        };
+    }
+    @Test(dataProvider = "readBigIntegerTestDataInv")
+    public void testReadBigIntegerInv(String input, BigInteger expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        try {
+            BigInteger actual = reader.readBigInteger();
+            Assert.assertEquals(actual, expected);
+        } catch (NoSuchElementException e) {
+            Assert.assertEquals(e.getMessage(), expectedOut);
+        }
     }
 
     @Test
