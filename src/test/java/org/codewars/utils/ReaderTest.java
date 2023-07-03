@@ -238,7 +238,41 @@ public class ReaderTest {
     }
 
 
-    @Test
-    public void testReadBoolean() {
+    @DataProvider(name = "readBooleanTestData")
+    private Object[][] readBooleanTestData() {
+        Object[][] testData = new Object[][]{
+                {"false", false},
+                {"f", false},
+                {"true", true},
+                {"t", true}
+        };
+        return testData;
+    }
+
+    @Test(dataProvider = "readBooleanTestData")
+    public void testReadBoolean(String value, boolean expected) {
+        System.setIn(new ByteArrayInputStream(value.getBytes()));
+        Reader reader = new Reader();
+        Boolean result = reader.readBoolean();
+        Assert.assertEquals(result, expected);
+    }
+
+    @DataProvider(name = "testReadBooleanInvalid")
+    private Object[][] testReadBooleanDataInv() {
+        return new Object[][]{
+                {"qwerty\nqwertyqwerty\nfalse", false, "An invalid value was entered. Enter 'true' or 'false':\nAn invalid value was entered. Enter 'true' or 'false':\n"},
+                {"qwerty\nt", true, "An invalid value was entered. Enter 'true' or 'false':\n"},
+        };
+    }
+
+    @Test(dataProvider = "testReadBooleanInvalid")
+    public void testReadBooleanInvalid(String input, boolean expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        boolean actual = reader.readBoolean();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actual, expected);
     }
 }
