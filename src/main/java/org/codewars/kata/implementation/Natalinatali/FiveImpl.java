@@ -74,6 +74,17 @@ public class FiveImpl implements Five {
 
     @Override
     public int artificialRain(int[] v) {
-        return 0;
+        int previous = 0;
+        int area = 0;
+        int temp = 1;
+        for (int i = 1; i < v.length; i++) {
+            if (v[i] < v[i - 1]) previous = i;
+            else if (v[i] > v[i - 1]) {
+                area = Math.max(area, temp);
+                temp = i - previous;
+            }
+            temp++;
+        }
+        return Math.max(area, temp);
     }
 }
