@@ -2,14 +2,12 @@ package org.codewars.utils;
 
 import com.beust.ah.A;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.*;
 import java.math.BigInteger;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 
 
@@ -17,6 +15,11 @@ public class ReaderTest {
 
     private InputStream sysIn;
     private PrintStream sysOut;
+
+    @BeforeClass
+    private void BeforeClass() {
+        Locale.setDefault(Locale.US);
+    }
 
     @BeforeMethod
     public void setup() {
@@ -114,8 +117,8 @@ public class ReaderTest {
         return new Object[][] {
                 {"7", 7.0},
                 {"0", 0.0},
-                {"-2,54", -2.54},
-                {",666666660", 0.66666666}
+                {"-2.54", -2.54},
+                {".666666660", 0.66666666}
         };
     }
     @Test(dataProvider = "readDoubleTestData")
@@ -132,8 +135,8 @@ public class ReaderTest {
     private Object[][] readDoubleTestDataInvalid() {
         return new Object[][] {
                 {"@#$%\n1", 1.0, "Your value is invalid. Try again\n"},
-                {"\n-14.25\n18,58480", 18.5848, "Your value is invalid. Try again\n"},
-                {"six point eight\nnew one\n05,29", 5.29, "Your value is invalid. Try again\nYour value is invalid. Try again\n"},
+                {"\n-14,25\n18.58480", 18.5848, "Your value is invalid. Try again\n"},
+                {"six point eight\nnew one\n05.29", 5.29, "Your value is invalid. Try again\nYour value is invalid. Try again\n"},
                 {"18.180.48\n18,54,49\n-54", -54.0, "Your value is invalid. Try again\nYour value is invalid. Try again\n"}
         };
     }
@@ -153,14 +156,14 @@ public class ReaderTest {
         return new Object[][]{
                 {"10", 10f},
                 {"0", 0.0f},
-                {"53,08", 53.08f},
-                {"-23453,9999999999", -23453.9999999999f},
-                {",9", 0.9f},
-                {"13,", 13.0f},
-                {"   45,3", 45.3f},
+                {"53.08", 53.08f},
+                {"-23453.9999999999", -23453.9999999999f},
+                {".9", 0.9f},
+                {"13.", 13.0f},
+                {"   45.3", 45.3f},
                 {"23     ", 23.0f},
-                {"   567,444335", 567.444335f},
-                {"   9,8 kg nluon klk ,lkjj", 9.8f}
+                {"   567.444335", 567.444335f},
+                {"   9.8 kg nluon klk ,lkjj", 9.8f}
         };
     }
     @Test(dataProvider = "readFloatTestData")
@@ -175,11 +178,11 @@ public class ReaderTest {
     private Object[][] readFloatTestDataInv() {
         String errMsg = "Your value is invalid. Try again\n";
         return new Object[][]{
-                {"sdadqw\n2,1", 2.1f, errMsg.repeat(1)},
-                {"sda\nadwqwdcsd sdqwqwwqe12qwdc xcsd\n20,39", 20.39f, errMsg.repeat(2)},
-                {"wqeqwe2\nwr23\nwer3.r\nwere3,1\n340,6", 340.6f, errMsg.repeat(4)},
-                {"2flfd;\n23wr\n3.rffs\n3,1sdqw\n56,7", 56.7f, errMsg.repeat(4)},
-                {"13.2\n123,4e\nw265,5\n,9",.9f,errMsg.repeat(3)},
+                {"sdadqw\n2.1", 2.1f, errMsg.repeat(1)},
+                {"sda\nadwqwdcsd sdqwqwwqe12qwdc xcsd\n20.39", 20.39f, errMsg.repeat(2)},
+                {"wqeqwe2\nwr23\nwer3.r\nwere3,1\n340.6", 340.6f, errMsg.repeat(4)},
+                {"2flfd;\n23wr\n3.rffs\n3,1sdqw\n56.7", 56.7f, errMsg.repeat(4)},
+                {"13,2\n123.4e\nw265.5\n.9",.9f,errMsg.repeat(3)},
                 {"a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
                         "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
                         "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
@@ -229,7 +232,7 @@ public class ReaderTest {
                         "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
                         "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
                         "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
-                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n,9",.9f,errMsg.repeat(26*50)}
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n.9",.9f,errMsg.repeat(26*50)}
         };
     }
     @Test(dataProvider = "readFloatTestDataInv")
@@ -339,6 +342,7 @@ public class ReaderTest {
     }
     @Test(dataProvider = "testReadArrDoubleData")
     public void testReadArrDouble(String str, double[] expectedValue) {
+
         System.setIn(new ByteArrayInputStream(str.getBytes()));
         Reader reader = new Reader();
         double[] actualValue = reader.readArrDouble();
