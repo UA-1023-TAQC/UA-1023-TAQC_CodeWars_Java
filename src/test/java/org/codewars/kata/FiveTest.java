@@ -23,9 +23,22 @@ public class FiveTest extends UserImplementations {
         assertEquals(actual, expected);
     }
 
-    @Test
-    public void testZeros() {
+    @DataProvider(name = "testZerosData")
+    private Object[][] testZerosData() {
+        Object[][] testData = new Object[][]{
+                {12, 2},
+                {6, 1},
+                {0, 0},
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.FIVES, testData);
+
     }
+    @Test(dataProvider = "testZerosData")
+    public void testZeros(Five impl, int value, int expected) {
+        double actual = impl.zeros(value);
+        assertEquals(actual, expected);
+    }
+
 
     @Test
     public void testPerimeter() {
@@ -67,7 +80,19 @@ public class FiveTest extends UserImplementations {
         assertEquals(actual, expected);
     }
 
-    @Test
-    public void testArtificialRain() {
+
+    @DataProvider(name = "artificialRainTestData")
+    private Object[][] artificialRainTestData() {
+        Object[][] testData = new Object[][]{
+                {new int[] {1,2}, 1},
+                {new int[] {5,1,2,1,2,1}, 3},
+                {new int[] {8,1,2,1,1,1,3,3,4}, 6}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.FIVES, testData);
+    }
+    @Test(dataProvider = "artificialRainTestData")
+    public void testArtificialRain(Five impl, int[] value, int expected) {
+        int actual = impl.artificialRain(value);
+        assertEquals(actual, expected);
     }
 }
