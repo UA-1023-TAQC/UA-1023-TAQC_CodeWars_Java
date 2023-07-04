@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.*;
 import java.math.BigInteger;
@@ -64,8 +65,12 @@ public class ReaderTest {
         System.setOut(new PrintStream(out));
         Reader reader = new Reader();
         int actual = reader.readInt();
-        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
-        Assert.assertEquals(actual, expected);
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        softAssert.assertEquals(actual, expected);
+
+        softAssert.assertAll();
     }
 
     @DataProvider(name = "readBigIntegerTestData")
