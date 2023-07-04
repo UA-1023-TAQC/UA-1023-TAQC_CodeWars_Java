@@ -5,6 +5,8 @@ import org.codewars.kata.Five;
 import org.codewars.kata.Seven;
 import org.codewars.kata.Six;
 
+import org.apache.commons.lang3.SerializationUtils;
+
 public class UserImplementations {
     public static final Eight[] EIGHTS = new Eight[]{
             new org.codewars.kata.implementation.Anastasiia3795.EightImpl(),
@@ -61,16 +63,19 @@ public class UserImplementations {
             new org.codewars.kata.implementation.VolodumurBesarab.FiveImpl(),
             new org.codewars.kata.implementation.zakotiukk.FiveImpl()
     };
+
     public static Object[][] combineImplWithTests(Object[] implementations, Object[][] testData) {
         Object[][] fullTestData = new Object[testData.length * implementations.length][testData[0].length + 1];
         int count = 0;
         for (Object impl : implementations) {
-            for (Object[] row : testData) {
+            Object[][] copyTestData = SerializationUtils.clone(testData);
+            for (Object[] row : copyTestData) {
                 fullTestData[count][0] = impl;
                 System.arraycopy(row, 0, fullTestData[count], 1, row.length);
                 count++;
             }
         }
+
         return fullTestData;
     }
 }
