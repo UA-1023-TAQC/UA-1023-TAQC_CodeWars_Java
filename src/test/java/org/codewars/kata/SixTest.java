@@ -1,15 +1,22 @@
 package org.codewars.kata;
 
 import org.codewars.UserImplementations;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 import static org.testng.Assert.*;
 
 public class SixTest extends UserImplementations {
+
+    @BeforeClass
+     private void beforeClass() {
+        Locale.setDefault(Locale.US);
+    }
 
     @DataProvider(name = "findNbTestData")
     private Object[][] findNbTestData() {
