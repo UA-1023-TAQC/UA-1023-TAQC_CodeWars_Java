@@ -29,25 +29,11 @@ public class SixTest extends UserImplementations {
         return UserImplementations.combineImplWithTests(UserImplementations.SIXES, testData);
 
     }
-    private void assertFuzzyEquals(double act, double exp){
-        boolean inrange;
-        double merr = 1e-12;
-        if (exp == 0.0)
-            inrange = Math.abs(act) <= merr;
-        else {
-            double e = Math.abs((act - exp) / exp);
-            inrange = e <= 1e-12;
-        }
-        if (inrange == false) {
-            DecimalFormat df = new DecimalFormat("#.0000000000000000");
-            System.out.println("Expected must be near " + exp +", but got " + act);
-        }
-        assertEquals(true, inrange);
-    }
+
     @Test(dataProvider = "fTestData")
     public void testF(Six impl, double value, double expected) {
         double actual = impl.f(value);
-        assertFuzzyEquals(actual, expected);
+        assertEquals(actual, expected, 1e-12);
     }
 
     @Test
