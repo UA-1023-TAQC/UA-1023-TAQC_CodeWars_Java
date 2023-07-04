@@ -5,6 +5,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.annotations.DataProvider;
 
+import java.text.DecimalFormat;
+
 import static org.testng.Assert.*;
 
 public class SixTest extends UserImplementations {
@@ -82,8 +84,22 @@ public class SixTest extends UserImplementations {
         assertEquals(actual,expected);
         }
 
-    @Test
-    public void testF() {
+    @DataProvider(name = "fTestData")
+    private Object[][] fTestData() {
+        Object[][] testData = new Object[][]{
+                {2.6e-08, 1.29999999155e-08},
+                {1.4e-09, 6.999999997549999e-10},
+                {5.0e-06, 2.499996875007812e-06},
+                {2.4e-07, 1.1999999280000085e-07}
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.SIXES, testData);
+
+    }
+
+    @Test(dataProvider = "fTestData")
+    public void testF(Six impl, double value, double expected) {
+        double actual = impl.f(value);
+        assertEquals(actual, expected, 1e-12);
     }
 
     final String rainfallData = "Rome:Jan 81.2,Feb 63.2,Mar 70.3,Apr 55.7,May 53.0,Jun 36.4,Jul 17.5,Aug 27.5,Sep 60.9,Oct 117.7,Nov 111.0,Dec 97.9" +
