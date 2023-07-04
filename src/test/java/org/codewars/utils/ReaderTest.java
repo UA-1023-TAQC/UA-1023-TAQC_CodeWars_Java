@@ -105,8 +105,43 @@ public class ReaderTest {
         }
     }
 
-    @Test
-    public void testReadDouble() {
+    @DataProvider(name = "readDoubleTestData")
+    private Object[][] readDoubleTestData() {
+        return new Object[][] {
+                {"7", 7.0},
+                {"0", 0.0},
+                {"-2,54", -2.54},
+                {",666666660", 0.66666666}
+        };
+    }
+    @Test(dataProvider = "readDoubleTestData")
+    public void testReadDouble(String input, double expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        double actual = reader.readDouble();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @DataProvider(name = "readDoubleTestDataInvalid")
+    private Object[][] readDoubleTestDataInvalid() {
+        return new Object[][] {
+                {"@#$%\n1", 1.0, "Your value is invalid. Try again\n"},
+                {"\n-14.25\n18,58480", 18.5848, "Your value is invalid. Try again\n"},
+                {"six point eight\nnew one\n05,29", 5.29, "Your value is invalid. Try again\nYour value is invalid. Try again\n"},
+                {"18.180.48\n18,54,49\n-54", -54.0, "Your value is invalid. Try again\nYour value is invalid. Try again\n"}
+        };
+    }
+    @Test(dataProvider = "readDoubleTestDataInvalid")
+    public void testReadDoubleInvalid(String input, double expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        double actual = reader.readDouble();
+        Assert.assertEquals(out.toString().replaceAll("\r", ""), expectedOut);
+        Assert.assertEquals(actual, expected);
     }
 
     @DataProvider(name = "readFloatTestData")
@@ -314,7 +349,7 @@ public class ReaderTest {
     private Object[][] testReadArrLongDataInvalid(){
         return new Object[][]{
                 {"s 5 2 4 8 2\n2 5 2 4 8 2", new long[]{2, 5, 2, 4, 8, 2}, "Enter numbers, separated with space: " +
-                "Your value is invalid\nTry again\nEnter numbers, separated with space: "},
+                        "Your value is invalid\nTry again\nEnter numbers, separated with space: "},
                 {"1 2 3 4 5 six\n1 2 3 4 5 6", new long[]{1, 2, 3, 4, 5, 6}, "Enter numbers, separated with space: " +
                         "Your value is invalid\nTry again\nEnter numbers, separated with space: "}
         };
@@ -330,7 +365,6 @@ public class ReaderTest {
         Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
         Assert.assertEquals(actualValue, expectedValue);
     }
-
 
     @Test
     public void testReadBoolean() {
