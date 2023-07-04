@@ -68,13 +68,14 @@ public class UserImplementations {
         Object[][] fullTestData = new Object[testData.length * implementations.length][testData[0].length + 1];
         int count = 0;
         for (Object impl : implementations) {
-            for (Object[] row : testData) {
+            Object[][] copyTestData = SerializationUtils.clone(testData);
+            for (Object[] row : copyTestData) {
                 fullTestData[count][0] = impl;
                 System.arraycopy(row, 0, fullTestData[count], 1, row.length);
                 count++;
             }
         }
-        byte[] serializedObj = SerializationUtils.serialize(fullTestData);
-        return (Object[][]) SerializationUtils.deserialize(serializedObj);
+
+        return fullTestData;
     }
 }
