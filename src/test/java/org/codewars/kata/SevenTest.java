@@ -31,8 +31,19 @@ public class SevenTest extends UserImplementations {
     }
 
 
-    @Test
-    public void testSeriesSum() {
+    @DataProvider(name= "seriesSumTestData")
+    private Object[][] seriesSumTestData() {
+        Object[][] testData = new Object[][]{
+                {5,"1,57"},
+                {9,"1,77"},
+                {15,"1,94"},
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.SEVENS, testData);
+    }
+    @Test (dataProvider = "seriesSumTestData")
+    public void testSeriesSum(Seven impl, int n, String expected) {
+        String actual =impl.seriesSum(n);
+        assertEquals(actual,expected);
     }
 
     @DataProvider(name = "whereIsHeTestData")
