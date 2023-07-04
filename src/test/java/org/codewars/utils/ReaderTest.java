@@ -3,8 +3,7 @@ package org.codewars.utils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Scanner;
 
 import static org.testng.Assert.*;
@@ -50,10 +49,29 @@ public class ReaderTest {
     public void testReadArrInt(String input, int[] expected) {
         InputStream i = new ByteArrayInputStream(input.getBytes());
         System.setIn(i);
-        Scanner scanner = new Scanner(System.in);
-        Reader reader = new Reader(scanner);
+        Reader reader = new Reader();
         int[] actual = reader.readArrInt();
         assertEquals(expected, actual);
+    }
+    @DataProvider(name = "testReadArrIntDataNegative" )
+    private Object[][] testReadArrIntNegative(){
+        return new Object[][]{
+                {"q q w e r\n1 2 3 4 5", new int[]{1, 2, 3, 4, 5},
+                        "Incorect line. Enter whole numbers.\n"},
+                {"* - + / =\n1 2 3 4 5", new int[]{1, 2, 3, 4, 5}, "Incorect line. Enter whole numbers.\n"},
+                {". \n1 2 3 4 5", new int[]{1, 2, 3, 4, 5}, "Incorect line. Enter whole numbers.\n"}
+        };
+    }
+
+    @Test(dataProvider = "testReadArrIntDataNegative")
+    public void testReadArrIntNegative(String str, int[] expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(str.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        int[] actual = reader.readArrInt();
+        assertEquals(out.toString().replace("\r", ""), expectedOut);
+        assertEquals(actual, expected);
     }
 
 
