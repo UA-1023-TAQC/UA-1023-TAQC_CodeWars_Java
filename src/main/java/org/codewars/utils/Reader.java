@@ -70,22 +70,25 @@ public class Reader {
     }
 
     public int[] readArrInt() {
-        String input = scanner.nextLine().trim();
-        if (input.isEmpty()) {
-            throw new IllegalArgumentException("Line is empty");
-        }
-        String[] strArr = input.split("\\s+");
-        int[] arr = new int[strArr.length];
-
-        try {
-            for (int i = 0; i < strArr.length; i++) {
-                arr[i] = Integer.parseInt(strArr[i]);
+        while (true) {
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                System.out.println("Line is empty");
             }
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Incorect line. Enter whole numbers.");
+            String[] strArr = input.split("\\s+");
+            int[] arr = new int[strArr.length];
+
+            try {
+                for (int i = 0; i < strArr.length; i++) {
+                    arr[i] = Integer.parseInt(strArr[i]);
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Incorect line. Enter whole numbers.");
+                continue;
+            }
+            scanner.close();
+            return arr;
         }
-        scanner.close();
-        return arr;
     }
 
     public double[] readArrDouble() {
