@@ -4,6 +4,8 @@ import org.codewars.UserImplementations;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.math.BigInteger;
+
 import static org.testng.Assert.*;
 
 public class FiveTest extends UserImplementations {
@@ -23,12 +25,36 @@ public class FiveTest extends UserImplementations {
         assertEquals(actual, expected);
     }
 
-    @Test
-    public void testZeros() {
+    @DataProvider(name = "testZerosData")
+    private Object[][] testZerosData() {
+        Object[][] testData = new Object[][]{
+                {12, 2},
+                {6, 1},
+                {0, 0},
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.FIVES, testData);
+
+    }
+    @Test(dataProvider = "testZerosData")
+    public void testZeros(Five impl, int value, int expected) {
+        double actual = impl.zeros(value);
+        assertEquals(actual, expected);
     }
 
-    @Test
-    public void testPerimeter() {
+
+    @DataProvider(name ="perimeterTestData")
+    private Object[][] perimeterTestData(){
+        Object[][] testData = new Object[][]{
+                {BigInteger.valueOf(5), BigInteger.valueOf(80)},
+                {BigInteger.valueOf(7), BigInteger.valueOf(216)},
+                {BigInteger.valueOf(30), BigInteger.valueOf(14098308)},
+        };
+        return UserImplementations.combineImplWithTests(UserImplementations.FIVES, testData);
+    }
+    @Test(dataProvider = "perimeterTestData")
+    public void testPerimeter(Five impl, BigInteger n, BigInteger expected) {
+        BigInteger actual =impl.perimeter(n);
+        assertEquals(actual,expected);
     }
 
     @DataProvider(name = "solveTestData")

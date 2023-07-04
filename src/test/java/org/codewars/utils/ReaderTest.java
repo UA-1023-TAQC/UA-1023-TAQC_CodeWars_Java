@@ -2,11 +2,11 @@ package org.codewars.utils;
 
 import com.beust.ah.A;
 import org.testng.Assert;
-
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.*;
 import java.math.BigInteger;
@@ -64,8 +64,12 @@ public class ReaderTest {
         System.setOut(new PrintStream(out));
         Reader reader = new Reader();
         int actual = reader.readInt();
-        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
-        Assert.assertEquals(actual, expected);
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        softAssert.assertEquals(actual, expected);
+
+        softAssert.assertAll();
     }
 
     @DataProvider(name = "readBigIntegerTestData")
@@ -105,8 +109,43 @@ public class ReaderTest {
         }
     }
 
-    @Test
-    public void testReadDouble() {
+    @DataProvider(name = "readDoubleTestData")
+    private Object[][] readDoubleTestData() {
+        return new Object[][] {
+                {"7", 7.0},
+                {"0", 0.0},
+                {"-2,54", -2.54},
+                {",666666660", 0.66666666}
+        };
+    }
+    @Test(dataProvider = "readDoubleTestData")
+    public void testReadDouble(String input, double expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        double actual = reader.readDouble();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @DataProvider(name = "readDoubleTestDataInvalid")
+    private Object[][] readDoubleTestDataInvalid() {
+        return new Object[][] {
+                {"@#$%\n1", 1.0, "Your value is invalid. Try again\n"},
+                {"\n-14.25\n18,58480", 18.5848, "Your value is invalid. Try again\n"},
+                {"six point eight\nnew one\n05,29", 5.29, "Your value is invalid. Try again\nYour value is invalid. Try again\n"},
+                {"18.180.48\n18,54,49\n-54", -54.0, "Your value is invalid. Try again\nYour value is invalid. Try again\n"}
+        };
+    }
+    @Test(dataProvider = "readDoubleTestDataInvalid")
+    public void testReadDoubleInvalid(String input, double expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        double actual = reader.readDouble();
+        Assert.assertEquals(out.toString().replaceAll("\r", ""), expectedOut);
+        Assert.assertEquals(actual, expected);
     }
 
     @DataProvider(name = "readFloatTestData")
@@ -116,7 +155,12 @@ public class ReaderTest {
                 {"0", 0.0f},
                 {"53,08", 53.08f},
                 {"-23453,9999999999", -23453.9999999999f},
-                {",9", 0.9f}
+                {",9", 0.9f},
+                {"13,", 13.0f},
+                {"   45,3", 45.3f},
+                {"23     ", 23.0f},
+                {"   567,444335", 567.444335f},
+                {"   9,8 kg nluon klk ,lkjj", 9.8f}
         };
     }
     @Test(dataProvider = "readFloatTestData")
@@ -129,8 +173,63 @@ public class ReaderTest {
 
     @DataProvider(name = "readFloatTestDataInv")
     private Object[][] readFloatTestDataInv() {
+        String errMsg = "Your value is invalid. Try again\n";
         return new Object[][]{
-                {"sda\nadwqwdcsd sdqwqwwqe12qwdc xcsd\n20,1", 20.1f, "Your value is invalid. Try again\nYour value is invalid. Try again\n"}
+                {"sdadqw\n2,1", 2.1f, errMsg.repeat(1)},
+                {"sda\nadwqwdcsd sdqwqwwqe12qwdc xcsd\n20,39", 20.39f, errMsg.repeat(2)},
+                {"wqeqwe2\nwr23\nwer3.r\nwere3,1\n340,6", 340.6f, errMsg.repeat(4)},
+                {"2flfd;\n23wr\n3.rffs\n3,1sdqw\n56,7", 56.7f, errMsg.repeat(4)},
+                {"13.2\n123,4e\nw265,5\n,9",.9f,errMsg.repeat(3)},
+                {"a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n" +
+                        "a\nb\nc\nd\ne\nf\ng\nh\ni\nj\nk\nl\nm\nn\no\np\nq\nr\ns\nt\nu\nv\nw\nx\ny\nz\n,9",.9f,errMsg.repeat(26*50)}
         };
     }
     @Test(dataProvider = "readFloatTestDataInv")
@@ -185,21 +284,124 @@ public class ReaderTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Test
-    public void testReadString() {
+    @DataProvider(name = "readStringTestData")
+    private Object[][] readStringTestData() {
+        return new Object[][]{
+                {"Hello", "Hello"},
+                {"!№;%:?*(", "!№;%:?*("},
+                {"12345", "12345"},
+                {"   Spaces   ", "   Spaces   "},
+                {"\n\n\n", ""},
+        };
+    }
+    @Test(dataProvider = "readStringTestData")
+    public void testReadString(String input, String expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        String actual = reader.readString();
+        Assert.assertEquals(actual, expected);
+    }
+
+    @DataProvider(name = "readStringTestDataInv")
+    private Object[][] readStringTestDataInv() {
+        return new Object[][]{
+                {"", "", "No line found"},
+        };
+    }
+
+    @Test(dataProvider = "readStringTestDataInv")
+    public void testReadStringInv(String input, String expected, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+
+        try {
+            String actual = reader.readString();
+            Assert.assertEquals(actual, expected);
+        } catch (NoSuchElementException e) {
+            Assert.assertEquals(e.getMessage(), expectedOut);
+        }
     }
 
     @Test
     public void testReadArrInt() {
     }
 
-    @Test
-    public void testReadArrDouble() {
+    @DataProvider(name = "testReadArrDoubleData" )
+    private Object[][] testReadArrDoubleData(){
+        return new Object[][]{
+                {".666666660 2.2 -3.34 0.4 5.0 2.777", new double[]{0.66666666, 2.2, -3.34, 0.4, 5.0, 2.777}},
+                {"2.0 5.4 .2 4.33333 8.1 0.2", new double[]{2.0, 5.4, 0.2, 4.33333, 8.1, 0.2}}
+        };
+    }
+    @Test(dataProvider = "testReadArrDoubleData")
+    public void testReadArrDouble(String str, double[] expectedValue) {
+        System.setIn(new ByteArrayInputStream(str.getBytes()));
+        Reader reader = new Reader();
+        double[] actualValue = reader.readArrDouble();
+        Assert.assertEquals(actualValue, expectedValue);
     }
 
-    @Test
-    public void testReadArrString() {
+
+    @DataProvider(name = "testReadArrDoubleDataInvalid" )
+    private Object[][] testReadArrDoubleDataInvalid(){
+        return new Object[][]{
+                {".666666660 two -3.34 0.4 5.0 2.777\n.666666660 2.2 -3.34 0.4 5.0 2.777", new double[]{0.66666666, 2.2, -3.34, 0.4, 5.0, 2.777}, "Enter double numbers, separated with space: " +
+                        "Your value is invalid\nTry again\nEnter double numbers, separated with space: "},
+                {"2.0 5.4 zero 4.33333 8.1 0.2\n2.0 5.4 .2 4.33333 8.1 0.2", new double[]{2.0, 5.4, 0.2, 4.33333, 8.1, 0.2}, "Enter double numbers, separated with space: " +
+                        "Your value is invalid\nTry again\nEnter double numbers, separated with space: "}
+        };
     }
+
+    @Test(dataProvider = "testReadArrDoubleDataInvalid")
+    public void testReadArrDoubleInvalid(String str, double[] expectedValue, String expectedOut) {
+        System.setIn(new ByteArrayInputStream(str.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        double[] actualValue = reader.readArrDouble();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actualValue, expectedValue);
+    }
+
+
+    @DataProvider(name = "readArrStringTestData")
+    private Object[][] readArrStringTestData(){
+        return new Object[][]{
+                {"Hello\nWorld\n  ", new String[]{"Hello","World"}},
+                {"qq\n12345\n?!\n  ", new String[]{"qq","12345","?!"}},
+        };
+    }
+    @Test(dataProvider = "readArrStringTestData")
+    public void testReadArrString(String input,String[] expected) {
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        Reader reader=new Reader();
+        String[] actual =reader.readArrString();
+        Assert.assertEquals(expected,actual);
+    }
+    @DataProvider(name = "readArrStringTestDataInvalid")
+    private Object[][] readArrStringTestDataInvalid(){
+        return new Object[][]{
+                {"Hello\nWorld\n\nInv\n  ", new String[]{"Hello", "World","","Inv"}, "Enter new String for array from new line.\n"
+                        + "Enter string with 2 spaces (\"  \") to finish input:\n"},
+                {"!!!!\n12345\n\n  ", new String[]{"!!!!", "12345",""}, "Enter new String for array from new line.\n"
+                        + "Enter string with 2 spaces (\"  \") to finish input:\n"}
+        };
+    }
+    @Test(dataProvider = "readArrStringTestDataInvalid")
+    public void testReadArrStringInvalid(String input,String[] expected, String expectedOut){
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Reader reader = new Reader();
+        String[] actual = reader.readArrString();
+        Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
+        Assert.assertEquals(actual,expected);
+    }
+
 
     @DataProvider(name = "testReadArrLongData" )
     private Object[][] testReadArrLongData(){
@@ -220,7 +422,7 @@ public class ReaderTest {
     private Object[][] testReadArrLongDataInvalid(){
         return new Object[][]{
                 {"s 5 2 4 8 2\n2 5 2 4 8 2", new long[]{2, 5, 2, 4, 8, 2}, "Enter numbers, separated with space: " +
-                "Your value is invalid\nTry again\nEnter numbers, separated with space: "},
+                        "Your value is invalid\nTry again\nEnter numbers, separated with space: "},
                 {"1 2 3 4 5 six\n1 2 3 4 5 6", new long[]{1, 2, 3, 4, 5, 6}, "Enter numbers, separated with space: " +
                         "Your value is invalid\nTry again\nEnter numbers, separated with space: "}
         };
@@ -236,7 +438,6 @@ public class ReaderTest {
         Assert.assertEquals(out.toString().replace("\r", ""), expectedOut);
         Assert.assertEquals(actualValue, expectedValue);
     }
-
 
     @DataProvider(name = "readBooleanTestData")
     private Object[][] readBooleanTestData() {
