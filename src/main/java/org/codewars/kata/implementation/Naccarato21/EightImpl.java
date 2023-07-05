@@ -17,15 +17,37 @@ public class EightImpl extends Base implements Eight {
     }
 
     public int[] squareOrSquareRoot(int[] array) {
-        return new int[0];
+        for (int i = 0; i < array.length; i++){
+            if (Math.sqrt(array[i]) % 1 == 0){
+                array[i] = (int)Math.sqrt(array[i]);
+            }
+            else{
+                array[i] = (int)Math.pow(array[i], 2);
+            }
+        }
+        return array;
     }
 
     public int[] countPositivesSumNegatives(int[] input) {
-        return new int[0];
+        int countPositives = 0;
+        int sumNegatives = 0;
+
+        if (input == null || input.length == 0) {
+            return new int[] {};
+        }
+
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] > 0) {
+                countPositives++;
+            } else if (input[i] < 0) {
+                sumNegatives += input[i];
+            }
+        }
+        return new int[] {countPositives, sumNegatives};
     }
 
     public int stringToNumber(String str) {
-        return 0;
+        return Integer.parseInt(str);
     }
 
     public double TwoDecimalPlaces(double number) {
