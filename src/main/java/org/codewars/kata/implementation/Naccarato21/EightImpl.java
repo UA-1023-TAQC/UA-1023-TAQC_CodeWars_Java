@@ -5,11 +5,11 @@ import org.codewars.kata.Eight;
 
 public class EightImpl extends Base implements Eight {
     public int liters(double time) {
-        return 0;
+        return (int)Math.floor(time/2);
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     public float mpgToKPM(float mpg) {
