@@ -9,7 +9,15 @@ public class SevenImpl extends Base implements Seven {
     }
 
     public String seriesSum(int n) {
-        return null;
+        if (n == 0)
+            return "0.00";
+        double res = 0;
+        double denominator = 1;
+        for (int i = 0; i < n; i++){
+            res += 1 / denominator;
+            denominator += 3;
+        }
+        return String.format("%.2f", res);
     }
 
     @Override
