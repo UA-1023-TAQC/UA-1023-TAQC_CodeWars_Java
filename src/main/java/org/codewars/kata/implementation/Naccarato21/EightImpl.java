@@ -5,15 +5,16 @@ import org.codewars.kata.Eight;
 
 public class EightImpl extends Base implements Eight {
     public int liters(double time) {
-        return 0;
+        return (int)Math.floor(time/2);
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        return length * width * height;
     }
 
     public float mpgToKPM(float mpg) {
-        return 0;
+        float res = (mpg * (float)(1.609344/4.54609188));
+        return Float.parseFloat(String.format("%.2f", res));
     }
 
     public int[] squareOrSquareRoot(int[] array) {
