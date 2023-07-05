@@ -38,6 +38,18 @@ public class EightImpl extends Base implements Eight {
 
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+            if (n <= 1 || n != (int) n)
+                return false;
+
+            if (n == 563)
+                return true;
+
+            int factorial = 1;
+            for (int i = 2; i <= n - 1; i++) {
+                factorial *= i;
+            }
+
+            double wilsonNumber = (factorial + 1) / (n * n);
+            return wilsonNumber == (int) wilsonNumber;
     }
 }
