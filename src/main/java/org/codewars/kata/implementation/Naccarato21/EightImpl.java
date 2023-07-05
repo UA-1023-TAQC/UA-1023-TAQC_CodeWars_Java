@@ -33,7 +33,18 @@ public class EightImpl extends Base implements Eight {
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
-        return new int[0];
+        int[] result = new int[numbers.length];
+        int index = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divider == 0) {
+                result[index++] = numbers[i];
+            }
+        }
+        int[] divisible = new int[index];
+        for (int i = 0; i < index; i++) {
+            divisible[i] = result[i];
+        }
+        return divisible;
     }
 
     @Override
