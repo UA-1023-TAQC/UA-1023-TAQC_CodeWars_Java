@@ -9,7 +9,19 @@ public class SixImpl extends Base implements Six {
     }
 
     public String balance(String book) {
-        return null;
+        String[] newString = book.split("\n");
+        double totalBalance = Double.parseDouble(newString[0].replaceAll("[^a-zA-Z0-9\\s\\.]", ""));
+        String resultString = new String("Original Balance: ") + newString[0].replaceAll("[^a-zA-Z0-9\\s\\.]", "");
+        System.out.println(resultString);
+        for (int i = 1; i < newString.length; i++) {
+            String temp = newString[i].replaceAll("[^a-zA-Z0-9\\s\\.]", "").replaceAll("  ", " ").trim();
+            totalBalance = totalBalance - Double.parseDouble(temp.split(" ")[2]);
+            resultString += "\\r\\n" + temp + " Balance " + String.format("%.2f", totalBalance);
+        }
+        double expense = Double.parseDouble(newString[0].replaceAll("[^a-zA-Z0-9\\s\\.]", "")) - totalBalance;
+        resultString += "\\r\\nTotal expense  " + String.format("%.2f", expense);
+        resultString += "\\r\\nAverage expense  " + String.format("%.2f", Math.round(expense / (newString.length - (double) 1) * (double) 100.0) / 100.0);
+        return resultString;
     }
 
     public double f(double x) {
