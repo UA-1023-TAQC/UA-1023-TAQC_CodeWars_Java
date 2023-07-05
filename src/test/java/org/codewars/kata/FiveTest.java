@@ -97,9 +97,9 @@ public class FiveTest extends UserImplementations {
     @DataProvider(name = "artificialRainTestData")
     private Object[][] artificialRainTestData() {
         Object[][] testData = new Object[][]{
-                {new int[] {1,2}, 1},
-                {new int[] {5,1,2,1,2,1}, 3},
-                {new int[] {8,1,2,1,1,1,3,3,4}, 6}
+                {new int[] {2}, 1},
+                {new int[] {1,2,1,2,1}, 3},
+                {new int[] {1,2,1,1,1,3,3,4}, 6}
         };
         return UserImplementations.combineImplWithTests(UserImplementations.FIVES, testData);
     }
