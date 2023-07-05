@@ -1,10 +1,20 @@
 package org.codewars.kata.implementation.zakotiukk;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Six;
 
-public class SixImpl implements Six {
+public class SixImpl extends Base implements Six {
     public long findNb(long m) {
-        return 0;
+        long res = 0;
+        long n = 0;
+        while (res < m) {
+            n++;
+            res += n * n * n;
+        }
+        if (res == m)
+            return n;
+        else
+            return -1;
     }
 
     public String balance(String book) {
@@ -12,7 +22,7 @@ public class SixImpl implements Six {
     }
 
     public double f(double x) {
-        return 0;
+        return x / (Math.sqrt(1 + x) + 1);
     }
 
     public double mean(String town, String strng) {

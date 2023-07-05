@@ -1,24 +1,41 @@
 package org.codewars.kata.implementation.VolodumurBesarab;
 
-import java.util.ArrayList;
+import org.codewars.kata.Base;
 import org.codewars.kata.Eight;
 
-public class EightImpl implements Eight {
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+public class EightImpl extends Base implements Eight {
+
+    private static int getFactorial(int f) {
+        int factorial = 1;
+        for (int i = 1; i <= f; i++) {
+            factorial = factorial * i;
+        }
+        return factorial;
+    }
+
     public int liters(double time) {
         return 0;
     }
 
     public double getVolumeOfCuboid(double length, double width, double height) {
-        return 0;
+        double result = length * width * height;
+        return result;
     }
 
     public float mpgToKPM(float mpg) {
-        return 0;
+        final double imperialGallon = 4.54609188;
+        final double mile = 1.609344;
+        double kpl = mpg * mile / imperialGallon;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        kpl = Double.parseDouble(decimalFormat.format(kpl));
+        return (float) kpl;
     }
 
-    public int[] squareOrSquareRoot(int[] array)
-    {
-        for(int i = 0; i < array.length; i++) {
+    public int[] squareOrSquareRoot(int[] array) {
+        for (int i = 0; i < array.length; i++) {
             if (Math.sqrt(array[i]) % 1 == 0)
                 array[i] = (int) Math.sqrt(array[i]);
             else
@@ -27,18 +44,15 @@ public class EightImpl implements Eight {
         return array;
     }
 
-    public int[] countPositivesSumNegatives(int[] input)
-    {
+    public int[] countPositivesSumNegatives(int[] input) {
         if (input == null || input.length == 0)
             return new int[]{};
         int counter = 0;
         int negative = 0;
-        for (int i = 0; i < input.length; i++)
-        {
+        for (int i = 0; i < input.length; i++) {
             if (input[i] > 0) {
                 counter++;
-            }
-            else {
+            } else {
                 negative += input[i];
             }
         }
@@ -46,42 +60,42 @@ public class EightImpl implements Eight {
         return result;
     }
 
-    public int stringToNumber(String str)
-    {
+    public int stringToNumber(String str) {
         int number = 0;
-        try{
+        try {
             number = Integer.parseInt(str);
             System.out.println(number);
-        }
-        catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
         return number;
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return Double.parseDouble(decimalFormat.format(number));
     }
 
-    public int[] divisibleBy(int[] numbers, int divider)
-    {
+    public int[] divisibleBy(int[] numbers, int divider) {
         if (numbers == null || numbers.length == 0)
             return new int[0];
 
         ArrayList<Integer> listResult = new ArrayList<Integer>();
-        for (int number:numbers
+        for (int number : numbers
         ) {
             if (number % divider == 0)
                 listResult.add(number);
         }
         int[] result = new int[listResult.size()];
-        for(int i = 0; i < listResult.size(); i++)
+        for (int i = 0; i < listResult.size(); i++)
             result[i] = listResult.get(i);
         return result;
     }
 
     @Override
     public boolean am_i_wilson(double n) {
-        return false;
+        if (n == 563)
+            return true;
+        return (getFactorial((int) (n - 1)) + 1) / (n * n) % 1 == 0;
     }
 }

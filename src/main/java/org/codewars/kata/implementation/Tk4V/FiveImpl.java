@@ -1,10 +1,11 @@
 package org.codewars.kata.implementation.Tk4V;
 
+import org.codewars.kata.Base;
 import org.codewars.kata.Five;
 
 import java.math.BigInteger;
 
-public class FiveImpl implements Five {
+public class FiveImpl extends Base implements Five {
     public long[] gap(int g, long m, long n) {
         return new long[0];
     }
