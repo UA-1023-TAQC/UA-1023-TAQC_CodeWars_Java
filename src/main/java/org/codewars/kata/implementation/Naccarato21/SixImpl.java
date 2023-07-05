@@ -17,7 +17,23 @@ public class SixImpl extends Base implements Six {
     }
 
     public double mean(String town, String strng) {
-        return 0;
+        String[] records = strng.split("\n");
+        Double total = 0.0;
+        Integer counter = 0;
+        for(String record : records){
+            if(record.split(":")[0].equals(town)){
+                String[] array = record.split(",");
+                for(String a : array){
+                    counter++;
+                    total = total + Double.parseDouble(a.split(" ")[1]);
+                }
+            }
+        }
+        System.out.println(town);
+        if(counter == 0){
+            return -1;
+        }
+        return total / counter;
     }
 
     public double variance(String town, String strng) {
