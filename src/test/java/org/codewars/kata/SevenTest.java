@@ -1,12 +1,19 @@
 package org.codewars.kata;
 
 import org.codewars.UserImplementations;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.Locale;
 
 import static org.testng.Assert.*;
 
 public class SevenTest extends UserImplementations {
+    @BeforeClass
+    private void beforeClass() {
+        Locale.setDefault(Locale.US);
+    }
 
     @DataProvider(name = "testNewAvgData")
     private Object[][] testNewAvgData() {
@@ -34,9 +41,9 @@ public class SevenTest extends UserImplementations {
     @DataProvider(name= "seriesSumTestData")
     private Object[][] seriesSumTestData() {
         Object[][] testData = new Object[][]{
-                {5,"1,57"},
-                {9,"1,77"},
-                {15,"1,94"},
+                {5,"1.57"},
+                {9,"1.77"},
+                {15,"1.94"},
         };
         return UserImplementations.combineImplWithTests(UserImplementations.SEVENS, testData);
     }
