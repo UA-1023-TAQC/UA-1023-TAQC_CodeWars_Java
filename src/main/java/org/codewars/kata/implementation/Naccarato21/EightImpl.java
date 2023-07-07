@@ -29,7 +29,7 @@ public class EightImpl extends Base implements Eight {
     }
 
     public double TwoDecimalPlaces(double number) {
-        return 0;
+        return Math.round(number * 100.0) / 100.0;
     }
 
     public int[] divisibleBy(int[] numbers, int divider) {
