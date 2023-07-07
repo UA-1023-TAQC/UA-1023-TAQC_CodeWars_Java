@@ -51,7 +51,7 @@ public class EightImpl extends Base implements Eight {
     }
 
     public double TwoDecimalPlaces(double number) {
-        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        DecimalFormat decimalFormat = new DecimalFormat("0,00");
         String formattedNumber = decimalFormat.format(number);
         return Double.parseDouble(formattedNumber);
     }
